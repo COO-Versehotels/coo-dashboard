@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COO Executive Dashboard</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --card-soft:#f8fbff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --primary:#2563eb;
+      --primary-soft:#dbeafe;
+      --success:#16a34a;
+      --success-soft:#dcfce7;
+      --warning:#d97706;
+      --warning-soft:#fef3c7;
+      --danger:#dc2626;
+      --danger-soft:#fee2e2;
+      --shadow:0 10px 25px rgba(15,23,42,0.08);
+      --radius:18px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(22,163,74,0.06), transparent 26%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px 12px 28px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#0f172a,#1d4ed8);
+      color:#fff;
+      border-radius:24px;
+      padding:20px 16px;
+      box-shadow:var(--shadow);
+      margin-bottom:14px;
+    }
+
+    .hero-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .hero-title{
+      margin:0 0 6px;
+      font-size:24px;
+      line-height:1.2;
+    }
+
+    .hero-sub{
+      margin:0;
+      color:rgba(255,255,255,0.86);
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .hero-badge{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:bold;
+      white-space:nowrap;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .hero-meta-card{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:16px;
+      padding:12px;
+    }
+
+    .hero-meta-label{
+      font-size:11px;
+      color:rgba(255,255,255,0.75);
+      margin-bottom:6px;
+    }
+
+    .hero-meta-value{
+      font-size:13px;
+      font-weight:bold;
+      line-height:1.4;
+    }
+
+    .section{
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      font-size:16px;
+      font-weight:bold;
+      margin:0 0 10px;
+      padding-left:2px;
+    }
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .summary-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:15px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.75);
+    }
+
+    .summary-label{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .summary-value{
+      font-size:26px;
+      font-weight:bold;
+      line-height:1;
+      margin-bottom:6px;
+    }
+
+    .summary-note{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.4;
+    }
+
+    .executive-grid{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:12px;
+    }
+
+    .panel{
+      background:var(--card);
+      border-radius:22px;
+      padding:16px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.75);
+    }
+
+    .rank-list,
+    .issue-list{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+
+    .rank-item,
+    .issue-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--card-soft);
+    }
+
+    .rank-left,
+    .issue-left{
+      min-width:0;
+    }
+
+    .rank-badge{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:bold;
+      background:var(--primary-soft);
+      color:var(--primary);
+      margin-right:10px;
+      flex-shrink:0;
+    }
+
+    .rank-row{
+      display:flex;
+      align-items:center;
+      min-width:0;
+    }
+
+    .rank-name,
+    .issue-title{
+      font-size:14px;
+      font-weight:bold;
+      line-height:1.35;
+    }
+
+    .rank-sub,
+    .issue-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+      line-height:1.4;
+    }
+
+    .rank-score{
+      text-align:right;
+      font-weight:bold;
+      font-size:18px;
+      white-space:nowrap;
+    }
+
+    .rank-score small{
+      display:block;
+      font-size:11px;
+      color:var(--muted);
+      font-weight:normal;
+      margin-top:3px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:11px;
+      font-weight:bold;
+      white-space:nowrap;
+    }
+
+    .pill-auto{
+      background:var(--success-soft);
+      color:var(--success);
+    }
+
+    .pill-cached{
+      background:var(--warning-soft);
+      color:var(--warning);
+    }
+
+    .pill-error{
+      background:var(--danger-soft);
+      color:var(--danger);
+    }
+
+    .hotel-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .hotel-card{
+      background:var(--card);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.75);
+    }
+
+    .hotel-header{
+      padding:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      flex-wrap:wrap;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff,#f8fbff);
+    }
+
+    .hotel-name{
+      margin:0 0 6px;
+      font-size:20px;
+      line-height:1.25;
+    }
+
+    .hotel-sub{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .hotel-score-chip{
+      background:var(--primary-soft);
+      color:var(--primary);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:bold;
+      white-space:nowrap;
+    }
+
+    .platform-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      padding:14px;
+    }
+
+    .platform-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      background:#fff;
+    }
+
+    .platform-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+
+    .platform-name{
+      font-size:16px;
+      font-weight:bold;
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .metric-box{
+      background:#f8fafc;
+      border:1px solid #eef2f7;
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .metric-label{
+      font-size:11px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+
+    .metric-value{
+      font-size:22px;
+      font-weight:bold;
+      line-height:1.1;
+      margin-bottom:5px;
+    }
+
+    .metric-change{
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .change-up{ color:var(--success); }
+    .change-down{ color:var(--danger); }
+    .change-flat{ color:var(--muted); }
+
+    .info-list{
+      display:grid;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    .info-item{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      font-size:12px;
+      border-top:1px dashed var(--line);
+      padding-top:8px;
+    }
+
+    .info-item span:first-child{
+      color:var(--muted);
+    }
+
+    .info-item span:last-child{
+      text-align:right;
+      font-weight:bold;
+    }
+
+    .error-note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:var(--danger-soft);
+      color:var(--danger);
+      font-size:12px;
+      line-height:1.4;
+    }
+
+    .footer-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:14px;
+      line-height:1.5;
+    }
+
+    @media (max-width: 980px){
+      .executive-grid{
+        grid-template-columns:1fr;
+      }
+
+      .summary-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .platform-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-meta{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 560px){
+      .container{
+        padding:10px 10px 22px;
+      }
+
+      .hero{
+        padding:16px 14px;
+        border-radius:20px;
+      }
+
+      .hero-title{
+        font-size:20px;
+      }
+
+      .summary-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+      }
+
+      .summary-card{
+        padding:13px;
+      }
+
+      .summary-value{
+        font-size:22px;
+      }
+
+      .hotel-header{
+        padding:14px;
+      }
+
+      .hotel-name{
+        font-size:18px;
+      }
+
+      .platform-grid{
+        padding:12px;
+      }
+
+      .metric-grid{
+        grid-template-columns:1fr;
+      }
+
+      .metric-value{
+        font-size:20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <h1 class="hero-title">COO Executive Dashboard</h1>
+          <p class="hero-sub">Ringkasan performa rating dan review seluruh hotel di semua OTA dalam satu tampilan yang lebih siap untuk pengambilan keputusan.</p>
+        </div>
+        <div class="hero-badge">Executive View</div>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-card">
+          <div class="hero-meta-label">Last Update</div>
+          <div class="hero-meta-value" id="lastUpdate">Loading...</div>
+        </div>
+        <div class="hero-meta-card">
+          <div class="hero-meta-label">Mode Perbandingan</div>
+          <div class="hero-meta-value">Awal bulan vs hari ini</div>
+        </div>
+        <div class="hero-meta-card">
+          <div class="hero-meta-label">Platform Aktif</div>
+          <div class="hero-meta-value" id="platformScope">Loading...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-label">Total Hotel</div>
+          <div class="summary-value" id="sumHotels">0</div>
+          <div class="summary-note">Jumlah property dalam dashboard</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Total Platform</div>
+          <div class="summary-value" id="sumPlatforms">0</div>
+          <div class="summary-note">Jumlah kombinasi platform aktif</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Status AUTO</div>
+          <div class="summary-value" id="sumAuto">0</div>
+          <div class="summary-note">Data live yang berhasil dibaca</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Akumulasi Review</div>
+          <div class="summary-value" id="sumReviews">0</div>
+          <div class="summary-note">Total seluruh review lintas platform</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section executive-grid">
+      <div class="panel">
+        <div class="section-title">Ranking Hotel Terbaik</div>
+        <div class="rank-list" id="rankingList">
+          <div class="rank-item">Loading...</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">Perlu Perhatian</div>
+        <div class="issue-list" id="issueList">
+          <div class="issue-item">Loading...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Detail Per Hotel</div>
+      <div class="hotel-grid" id="hotelList">
+        <div class="panel">Loading dashboard...</div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Dashboard ini menampilkan data live lintas platform, status pembacaan data, serta perubahan terhadap baseline awal bulan.
+    </div>
+  </div>
+
+  <script>
+    function formatNumber(value) {
+      if (value === null || value === undefined || value === "N/A") return "N/A";
+      const num = Number(String(value).replace(/,/g, ""));
+      if (Number.isNaN(num)) return value;
+      return num.toLocaleString("id-ID");
+    }
+
+    function formatChange(value, decimals = 1) {
+      if (value === null || value === undefined) {
+        return '<span class="change-flat">Belum ada pembanding</span>';
+      }
+
+      const num = Number(value);
+      if (Number.isNaN(num)) {
+        return '<span class="change-flat">Belum ada pembanding</span>';
+      }
+
+      const shown = decimals === 0 ? Math.round(num).toString() : num.toFixed(decimals);
+
+      if (num > 0) return `<span class="change-up">+${shown}</span>`;
+      if (num < 0) return `<span class="change-down">${shown}</span>`;
+      return `<span class="change-flat">0</span>`;
+    }
+
+    function formatPlatformName(name) {
+      if (name === "tripcom") return "Trip.com";
+      if (name === "tiket") return "Tiket.com";
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
+    function statusPill(status) {
+      const s = (status || "N/A").toUpperCase();
+      if (s === "AUTO") return '<span class="pill pill-auto">AUTO</span>';
+      if (s === "CACHED") return '<span class="pill pill-cached">CACHED</span>';
+      return '<span class="pill pill-error">ERROR</span>';
+    }
+
+    function computeHotelScore(hotel) {
+      const platforms = Object.values(hotel.platforms || {});
+      let validRatings = [];
+      let totalReviews = 0;
+      let autoCount = 0;
+
+      platforms.forEach(p => {
+        const rating = Number(p.rating);
+        const reviews = Number(p.reviews);
+        if (!Number.isNaN(rating)) validRatings.push(rating);
+        if (!Number.isNaN(reviews)) totalReviews += reviews;
+        if ((p.status || "").toUpperCase() === "AUTO") autoCount += 1;
+      });
+
+      const avgRating = validRatings.length
+        ? validRatings.reduce((a,b)=>a+b,0) / validRatings.length
+        : 0;
+
+      return {
+        avgRating,
+        totalReviews,
+        autoCount,
+        score: (avgRating * 1000) + totalReviews
+      };
+    }
+
+    function buildRanking(hotels) {
+      return hotels
+        .map(h => ({ hotel: h, meta: computeHotelScore(h) }))
+        .sort((a,b) => b.meta.score - a.meta.score);
+    }
+
+    function buildIssues(hotels) {
+      let issues = [];
+
+      hotels.forEach(hotel => {
+        Object.entries(hotel.platforms || {}).forEach(([platformName, p]) => {
+          const comp = hotel.comparison && hotel.comparison.platforms
+            ? hotel.comparison.platforms[platformName]
+            : null;
+
+          const ratingChange = comp ? comp.rating_change : null;
+          const reviewChange = comp ? comp.review_change : null;
+          const status = (p.status || "").toUpperCase();
+
+          if (status !== "AUTO") {
+            issues.push({
+              title: `${hotel.name} - ${formatPlatformName(platformName)}`,
+              sub: `Status ${status}. ${p.error_reason ? "Catatan: " + p.error_reason : "Perlu pengecekan data."}`,
+              priority: 3,
+              badge: statusPill(status)
+            });
+          } else if (ratingChange !== null && Number(ratingChange) < 0) {
+            issues.push({
+              title: `${hotel.name} - ${formatPlatformName(platformName)}`,
+              sub: `Rating turun ${Number(ratingChange).toFixed(1)} poin dibanding baseline awal bulan.`,
+              priority: 2,
+              badge: '<span class="pill pill-error">RATING TURUN</span>'
+            });
+          } else if (reviewChange !== null && Number(reviewChange) > 0) {
+            issues.push({
+              title: `${hotel.name} - ${formatPlatformName(platformName)}`,
+              sub: `Review bertambah +${Math.round(Number(reviewChange))} dari baseline bulan ini.`,
+              priority: 1,
+              badge: '<span class="pill pill-auto">REVIEW NAIK</span>'
+            });
+          }
+        });
+      });
+
+      issues.sort((a,b) => b.priority - a.priority);
+      return issues.slice(0, 8);
+    }
+
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        const hotels = data.hotels || [];
+
+        document.getElementById("lastUpdate").textContent = data.last_update || "-";
+        document.getElementById("platformScope").textContent = (data.platform_scope || []).map(formatPlatformName).join(", ");
+
+        document.getElementById("sumHotels").textContent = hotels.length;
+
+        let totalPlatforms = 0;
+        let totalAuto = 0;
+        let totalReviews = 0;
+
+        hotels.forEach(hotel => {
+          Object.values(hotel.platforms || {}).forEach(p => {
+            totalPlatforms += 1;
+            if ((p.status || "").toUpperCase() === "AUTO") totalAuto += 1;
+            const reviewNum = Number(p.reviews);
+            if (!Number.isNaN(reviewNum)) totalReviews += reviewNum;
+          });
+        });
+
+        document.getElementById("sumPlatforms").textContent = totalPlatforms;
+        document.getElementById("sumAuto").textContent = totalAuto;
+        document.getElementById("sumReviews").textContent = totalReviews.toLocaleString("id-ID");
+
+        // Ranking
+        const rankingData = buildRanking(hotels);
+        const rankingList = document.getElementById("rankingList");
+        rankingList.innerHTML = "";
+
+        rankingData.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.className = "rank-item";
+          div.innerHTML = `
+            <div class="rank-left">
+              <div class="rank-row">
+                <span class="rank-badge">${index + 1}</span>
+                <div>
+                  <div class="rank-name">${item.hotel.name}</div>
+                  <div class="rank-sub">Avg rating ${item.meta.avgRating.toFixed(2)} | Review ${item.meta.totalReviews.toLocaleString("id-ID")} | AUTO ${item.meta.autoCount}</div>
+                </div>
+              </div>
+            </div>
+            <div class="rank-score">
+              ${item.meta.avgRating.toFixed(2)}
+              <small>score hotel</small>
+            </div>
+          `;
+          rankingList.appendChild(div);
+        });
+
+        // Issues
+        const issueData = buildIssues(hotels);
+        const issueList = document.getElementById("issueList");
+        issueList.innerHTML = "";
+
+        if (!issueData.length) {
+          issueList.innerHTML = `
+            <div class="issue-item">
+              <div class="issue-left">
+                <div class="issue-title">Tidak ada isu utama</div>
+                <div class="issue-sub">Semua platform terlihat normal saat ini.</div>
+              </div>
+              <div>${statusPill("AUTO")}</div>
+            </div>
+          `;
+        } else {
+          issueData.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "issue-item";
+            div.innerHTML = `
+              <div class="issue-left">
+                <div class="issue-title">${item.title}</div>
+                <div class="issue-sub">${item.sub}</div>
+              </div>
+              <div>${item.badge}</div>
+            `;
+            issueList.appendChild(div);
+          });
+        }
+
+        // Hotel detail
+        const hotelList = document.getElementById("hotelList");
+        hotelList.innerHTML = "";
+
+        hotels.forEach(hotel => {
+          const meta = computeHotelScore(hotel);
+          const baselineDate = hotel.comparison && hotel.comparison.baseline_date
+            ? hotel.comparison.baseline_date
+            : "Belum ada data awal bulan";
+
+          let platformsHtml = "";
+
+          Object.entries(hotel.platforms || {}).forEach(([platformName, p]) => {
+            const comp = hotel.comparison && hotel.comparison.platforms
+              ? hotel.comparison.platforms[platformName]
+              : null;
+
+            const ratingChange = comp ? comp.rating_change : null;
+            const reviewChange = comp ? comp.review_change : null;
+            const rankingChange = comp ? comp.ranking_change : null;
+
+            platformsHtml += `
+              <div class="platform-card">
+                <div class="platform-head">
+                  <div class="platform-name">${formatPlatformName(platformName)}</div>
+                  ${statusPill(p.status)}
+                </div>
+
+                <div class="metric-grid">
+                  <div class="metric-box">
+                    <div class="metric-label">Rating Hari Ini</div>
+                    <div class="metric-value">${p.rating ?? "N/A"}</div>
+                    <div class="metric-change">Perubahan: ${formatChange(ratingChange, 1)}</div>
+                  </div>
+
+                  <div class="metric-box">
+                    <div class="metric-label">Total Review Hari Ini</div>
+                    <div class="metric-value">${formatNumber(p.reviews)}</div>
+                    <div class="metric-change">Perubahan: ${formatChange(reviewChange, 0)}</div>
+                  </div>
+                </div>
+
+                <div class="info-list">
+                  <div class="info-item">
+                    <span>Tanggal sumber data</span>
+                    <span>${p.source_date || "-"}</span>
+                  </div>
+                  <div class="info-item">
+                    <span>Tanggal pembanding</span>
+                    <span>${baselineDate}</span>
+                  </div>
+                  ${p.ranking && p.ranking !== "N/A" ? `
+                  <div class="info-item">
+                    <span>Ranking</span>
+                    <span>${p.ranking}</span>
+                  </div>
+                  <div class="info-item">
+                    <span>Perubahan ranking</span>
+                    <span>${formatChange(rankingChange, 0)}</span>
+                  </div>
+                  ` : ""}
+                </div>
+
+                ${p.error_reason ? `<div class="error-note">Catatan sistem: ${p.error_reason}</div>` : ""}
+              </div>
+            `;
+          });
+
+          const card = document.createElement("article");
+          card.className = "hotel-card";
+          card.innerHTML = `
+            <div class="hotel-header">
+              <div>
+                <h2 class="hotel-name">${hotel.name}</h2>
+                <div class="hotel-sub">Rata-rata rating ${meta.avgRating.toFixed(2)} | Total review ${meta.totalReviews.toLocaleString("id-ID")}</div>
+              </div>
+              <div class="hotel-score-chip">${Object.keys(hotel.platforms || {}).length} Platform</div>
+            </div>
+            <div class="platform-grid">
+              ${platformsHtml}
+            </div>
+          `;
+          hotelList.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById("hotelList").innerHTML = `
+          <div class="panel">Gagal memuat dashboard.</div>
+        `;
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
