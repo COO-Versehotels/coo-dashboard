@@ -2,11 +2,16 @@ from playwright.sync_api import sync_playwright
 import json
 import re
 import os
+import time
 from datetime import datetime
 
 DATA_FILE = "data.json"
 HISTORY_FILE = "history.json"
+LOG_FILE = "error_log.txt"
 TRAVELOKA_PROFILE_DIR = r"C:\coo-dashboard\traveloka_profile"
+
+MAX_RETRY = 3
+RETRY_DELAY_SECONDS = 4
 
 HOTELS = {
     "Verse Lite Gajah Mada": {
@@ -40,6 +45,14 @@ HOTELS = {
 }
 
 PLATFORM_SCOPE = ["agoda", "booking", "traveloka", "tripcom", "tiket"]
+
+
+def log_error(hotel_name, platform_name, message):
+    try:
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | {hotel_name} | {platform_name} | {message}\n")
+    except Exception:
+        pass
 
 
 def clean_number(text):
@@ -110,10 +123,7 @@ def load_current_data():
 
 def save_history_snapshot(history, hotels_data):
     today = datetime.now().strftime("%Y-%m-%d")
-    snapshot = {
-        "date": today,
-        "hotels": hotels_data
-    }
+    snapshot = {"date": today, "hotels": hotels_data}
 
     replaced = False
     for i, item in enumerate(history):
@@ -172,6 +182,7 @@ def finalize_platform_result(hotel_name, platform_name, fresh_data, previous_dat
 
     cached = get_last_valid_platform(previous_data, hotel_name, platform_name)
     if cached:
+        log_error(hotel_name, platform_name, f"CACHED_USED: {error_reason}")
         return make_result(
             rating=cached.get("rating", "N/A"),
             reviews=cached.get("reviews", "N/A"),
@@ -181,6 +192,7 @@ def finalize_platform_result(hotel_name, platform_name, fresh_data, previous_dat
             error_reason=error_reason
         )
 
+    log_error(hotel_name, platform_name, f"ERROR_NO_CACHE: {error_reason}")
     return make_result(
         rating="N/A",
         reviews="N/A",
@@ -216,9 +228,7 @@ def build_monthly_comparison(hotels_today, start_snapshot):
             start_values = start_platforms.get(platform_name)
             if start_values:
                 try:
-                    rating_change = round(
-                        float(current_values["rating"]) - float(start_values["rating"]), 1
-                    )
+                    rating_change = round(float(current_values["rating"]) - float(start_values["rating"]), 1)
                 except Exception:
                     rating_change = None
 
@@ -244,6 +254,18 @@ def build_monthly_comparison(hotels_today, start_snapshot):
         final_hotels.append(hotel)
 
     return final_hotels
+
+
+def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
+    last_error = None
+    for attempt in range(1, MAX_RETRY + 1):
+        try:
+            page.goto(url, timeout=timeout, wait_until=wait_until)
+            return True
+        except Exception as e:
+            last_error = e
+            time.sleep(RETRY_DELAY_SECONDS)
+    raise last_error
 
 
 def get_page_text(page, wait_ms=7000):
@@ -286,7 +308,7 @@ def parse_agoda(text):
         "reviews": reviews,
         "ranking": None,
         "match_ok": ok,
-        "error_reason": None if ok else "main_review_block_not_found"
+        "error_reason": None if ok else "agoda_pattern_not_found"
     }
 
 
@@ -296,21 +318,44 @@ def parse_booking(text):
 
     rating_patterns = [
         r"Scored\s+(\d\.\d)",
-        r"(\d\.\d)\s*(?:Very good|Wonderful|Exceptional|Good|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)"
+        r"(\d\.\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
+        r"(\d\.\d)\s*/\s*10",
     ]
+
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            rating = match.group(1)
-            break
+            candidate = clean_rating(match.group(1))
+            if is_valid_rating(candidate, 1, 10):
+                rating = candidate
+                break
 
-    review_match = re.search(r"([\d,\.]+)\s+reviews", text, re.IGNORECASE)
-    if review_match:
-        reviews = clean_number(review_match.group(1))
+    if rating == "N/A":
+        candidates = re.findall(r"\b(\d\.\d)\b", text)
+        for c in candidates:
+            if is_valid_rating(c, 5, 10):
+                rating = c
+                break
+
+    review_patterns = [
+        r"([\d,\.]+)\s+reviews",
+        r"([\d,\.]+)\s+review",
+        r"([\d,\.]+)\s+ulasan",
+        r"based on\s+([\d,\.]+)",
+        r"from\s+([\d,\.]+)\s+reviews",
+    ]
+
+    for pattern in review_patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            candidate = clean_number(match.group(1))
+            if is_valid_reviews(candidate, 5):
+                reviews = candidate
+                break
 
     if not is_valid_rating(rating, 1, 10):
         rating = "N/A"
-    if not is_valid_reviews(reviews):
+    if not is_valid_reviews(reviews, 5):
         reviews = "N/A"
 
     ok = (rating != "N/A" and reviews != "N/A")
@@ -319,7 +364,7 @@ def parse_booking(text):
         "reviews": reviews,
         "ranking": None,
         "match_ok": ok,
-        "error_reason": None if ok else "main_review_block_not_found"
+        "error_reason": None if ok else "booking_pattern_not_found"
     }
 
 
@@ -331,7 +376,10 @@ def parse_tripcom(text):
         r"\b(\d[.,]\d)\s*/\s*10\b",
         r"\b(\d[.,]\d)\s*/\s*5\b",
         r"\b(\d[.,]\d)\s*out of 5\b",
+        r"\b(\d[.,]\d)\s+Very good\b",
+        r"\b(\d[.,]\d)\s+Excellent\b",
     ]
+
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -343,6 +391,7 @@ def parse_tripcom(text):
         r"\b([\d,\.]+)\s+reviews\b",
         r"\b([\d,\.]+)\s+review\b",
     ]
+
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -356,14 +405,13 @@ def parse_tripcom(text):
         reviews = "N/A"
 
     match_ok = (rating != "N/A" and reviews != "N/A")
-    error_reason = None if match_ok else "main_review_block_not_found"
 
     return {
         "rating": rating,
         "reviews": reviews,
         "ranking": None,
         "match_ok": match_ok,
-        "error_reason": error_reason
+        "error_reason": None if match_ok else "tripcom_pattern_not_found"
     }
 
 
@@ -374,8 +422,10 @@ def parse_tiket(text):
     rating_patterns = [
         r"\b(\d[.,]\d)\s*/\s*5\b",
         r"\b(\d[.,]\d)\s*/\s*10\b",
-        r"Rating\s*(\d[.,]\d)"
+        r"Rating\s*(\d[.,]\d)",
+        r"\b(\d[.,]\d)\s+Good\b",
     ]
+
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -389,6 +439,7 @@ def parse_tiket(text):
         r"\b([\d,\.]+)\s+ulasan\b",
         r"\bfrom\s+([\d,\.]+)\s+reviews\b"
     ]
+
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -402,28 +453,20 @@ def parse_tiket(text):
         reviews = "N/A"
 
     match_ok = (rating != "N/A" and reviews != "N/A")
-    error_reason = None if match_ok else "main_review_block_not_found"
 
     return {
         "rating": rating,
         "reviews": reviews,
         "ranking": None,
         "match_ok": match_ok,
-        "error_reason": error_reason
+        "error_reason": None if match_ok else "tiket_pattern_not_found"
     }
 
 
 def traveloka_extract_from_main_page(text):
-    """
-    Target format utama yang terlihat di browser asli:
-    8,3/10
-    Mengesankan
-    6.458 ulasan
-    """
     rating = "N/A"
     reviews = "N/A"
 
-    # Cari pasangan rating /10 dan ulasan yang posisinya dekat
     rating_matches = list(re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", text, re.IGNORECASE))
     review_matches = list(re.finditer(r"([\d\.,]+)\s+ulasan\b", text, re.IGNORECASE))
 
@@ -468,34 +511,42 @@ def traveloka_extract_from_main_page(text):
         "reviews": reviews,
         "ranking": None,
         "match_ok": match_ok,
-        "error_reason": None if match_ok else "main_page_pattern_not_found"
+        "error_reason": None if match_ok else "traveloka_main_page_pattern_not_found"
     }
 
 
-def fetch_traveloka_with_real_browser(playwright, url):
-    os.makedirs(TRAVELOKA_PROFILE_DIR, exist_ok=True)
-
-    context = playwright.chromium.launch_persistent_context(
-        TRAVELOKA_PROFILE_DIR,
-        headless=False,
-        locale="id-ID",
-        viewport={"width": 1440, "height": 900},
-        user_agent=(
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        args=[
-            "--disable-blink-features=AutomationControlled"
-        ]
-    )
+def fetch_traveloka_background(playwright, url):
+    context = None
+    browser = None
 
     try:
-        page = context.pages[0] if context.pages else context.new_page()
-        page.goto(url, timeout=90000, wait_until="domcontentloaded")
+        browser = playwright.chromium.launch(
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-dev-shm-usage",
+                "--no-sandbox"
+            ]
+        )
+
+        context = browser.new_context(
+            locale="id-ID",
+            viewport={"width": 1440, "height": 900},
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/124.0.0.0 Safari/537.36"
+            )
+        )
+
+        page = context.new_page()
+        page.set_extra_http_headers({
+            "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"
+        })
+
+        safe_goto(page, url, timeout=90000, wait_until="domcontentloaded")
         page.wait_for_timeout(12000)
 
-        # coba tutup banner/popup kalau ada
         popup_selectors = [
             'button:has-text("Nanti saja")',
             'button:has-text("Tutup")',
@@ -503,18 +554,57 @@ def fetch_traveloka_with_real_browser(playwright, url):
             'button:has-text("Skip")',
             '[aria-label="Close"]'
         ]
+
         for selector in popup_selectors:
             try:
                 page.locator(selector).first.click(timeout=1000)
-                page.wait_for_timeout(1000)
+                page.wait_for_timeout(800)
             except Exception:
                 pass
 
         text = get_page_text(page, 6000)
-        result = traveloka_extract_from_main_page(text)
-        return result
+        return traveloka_extract_from_main_page(text)
+
     finally:
-        context.close()
+        try:
+            if context:
+                context.close()
+        except Exception:
+            pass
+        try:
+            if browser:
+                browser.close()
+        except Exception:
+            pass
+
+
+def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, wait_ms=7000):
+    last_error = None
+
+    for attempt in range(1, MAX_RETRY + 1):
+        try:
+            safe_goto(page, url, timeout=60000, wait_until="domcontentloaded")
+            text = get_page_text(page, wait_ms)
+            result = parser_func(text)
+
+            if result.get("match_ok"):
+                return result
+
+            last_error = result.get("error_reason", "pattern_not_found")
+            time.sleep(RETRY_DELAY_SECONDS)
+
+        except Exception as e:
+            last_error = str(e)
+            time.sleep(RETRY_DELAY_SECONDS)
+
+    log_error(hotel_name, platform_name, last_error)
+    return {
+        "rating": "N/A",
+        "reviews": "N/A",
+        "ranking": None,
+        "match_ok": False,
+        "error_reason": last_error or "scrape_failed"
+    }
 
 
 def main():
@@ -522,17 +612,29 @@ def main():
     hotels_today = []
 
     with sync_playwright() as p:
-        # browser normal untuk non-Traveloka
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-dev-shm-usage",
+                "--no-sandbox"
+            ]
+        )
+
         context = browser.new_context(
             locale="en-US",
+            viewport={"width": 1440, "height": 900},
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/124.0.0.0 Safari/537.36"
             )
         )
+
         page = context.new_page()
+        page.set_extra_http_headers({
+            "Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"
+        })
 
         for hotel_name, sources in HOTELS.items():
             print("Hotel:", hotel_name)
@@ -542,52 +644,40 @@ def main():
                 "platforms": {}
             }
 
-            print("  agoda")
-            try:
-                page.goto(sources["agoda"], timeout=60000, wait_until="domcontentloaded")
-                text = get_page_text(page, 6000)
-                fresh = parse_agoda(text)
-            except Exception:
-                fresh = {
-                    "rating": "N/A",
-                    "reviews": "N/A",
-                    "ranking": None,
-                    "match_ok": False,
-                    "error_reason": "page_load_failed"
-                }
-            parsed = finalize_platform_result(hotel_name, "agoda", fresh, previous_data)
-            print("     rating:", parsed["rating"])
-            print("     reviews:", parsed["reviews"])
-            print("     status:", parsed["status"])
-            if parsed.get("error_reason"):
-                print("     error:", parsed["error_reason"])
-            hotel_record["platforms"]["agoda"] = parsed
+            platform_jobs = [
+                ("agoda", parse_agoda, 6000),
+                ("booking", parse_booking, 9000),
+                ("tripcom", parse_tripcom, 9000),
+                ("tiket", parse_tiket, 9000),
+            ]
 
-            print("  booking")
-            try:
-                page.goto(sources["booking"], timeout=60000, wait_until="domcontentloaded")
-                text = get_page_text(page, 6000)
-                fresh = parse_booking(text)
-            except Exception:
-                fresh = {
-                    "rating": "N/A",
-                    "reviews": "N/A",
-                    "ranking": None,
-                    "match_ok": False,
-                    "error_reason": "page_load_failed"
-                }
-            parsed = finalize_platform_result(hotel_name, "booking", fresh, previous_data)
-            print("     rating:", parsed["rating"])
-            print("     reviews:", parsed["reviews"])
-            print("     status:", parsed["status"])
-            if parsed.get("error_reason"):
-                print("     error:", parsed["error_reason"])
-            hotel_record["platforms"]["booking"] = parsed
+            for platform_name, parser_func, wait_ms in platform_jobs:
+                print("  " + platform_name)
+
+                fresh = scrape_standard_platform(
+                    page=page,
+                    url=sources[platform_name],
+                    parser_func=parser_func,
+                    hotel_name=hotel_name,
+                    platform_name=platform_name,
+                    wait_ms=wait_ms
+                )
+
+                parsed = finalize_platform_result(hotel_name, platform_name, fresh, previous_data)
+
+                print("     rating:", parsed["rating"])
+                print("     reviews:", parsed["reviews"])
+                print("     status:", parsed["status"])
+                if parsed.get("error_reason"):
+                    print("     error:", parsed["error_reason"])
+
+                hotel_record["platforms"][platform_name] = parsed
 
             print("  traveloka")
             try:
-                fresh = fetch_traveloka_with_real_browser(p, sources["traveloka"])
-            except Exception:
+                fresh = fetch_traveloka_background(p, sources["traveloka"])
+            except Exception as e:
+                log_error(hotel_name, "traveloka", str(e))
                 fresh = {
                     "rating": "N/A",
                     "reviews": "N/A",
@@ -595,55 +685,16 @@ def main():
                     "match_ok": False,
                     "error_reason": "page_load_failed"
                 }
+
             parsed = finalize_platform_result(hotel_name, "traveloka", fresh, previous_data)
+
             print("     rating:", parsed["rating"])
             print("     reviews:", parsed["reviews"])
             print("     status:", parsed["status"])
             if parsed.get("error_reason"):
                 print("     error:", parsed["error_reason"])
+
             hotel_record["platforms"]["traveloka"] = parsed
-
-            print("  tripcom")
-            try:
-                page.goto(sources["tripcom"], timeout=60000, wait_until="domcontentloaded")
-                text = get_page_text(page, 9000)
-                fresh = parse_tripcom(text)
-            except Exception:
-                fresh = {
-                    "rating": "N/A",
-                    "reviews": "N/A",
-                    "ranking": None,
-                    "match_ok": False,
-                    "error_reason": "page_load_failed"
-                }
-            parsed = finalize_platform_result(hotel_name, "tripcom", fresh, previous_data)
-            print("     rating:", parsed["rating"])
-            print("     reviews:", parsed["reviews"])
-            print("     status:", parsed["status"])
-            if parsed.get("error_reason"):
-                print("     error:", parsed["error_reason"])
-            hotel_record["platforms"]["tripcom"] = parsed
-
-            print("  tiket")
-            try:
-                page.goto(sources["tiket"], timeout=60000, wait_until="domcontentloaded")
-                text = get_page_text(page, 9000)
-                fresh = parse_tiket(text)
-            except Exception:
-                fresh = {
-                    "rating": "N/A",
-                    "reviews": "N/A",
-                    "ranking": None,
-                    "match_ok": False,
-                    "error_reason": "page_load_failed"
-                }
-            parsed = finalize_platform_result(hotel_name, "tiket", fresh, previous_data)
-            print("     rating:", parsed["rating"])
-            print("     reviews:", parsed["reviews"])
-            print("     status:", parsed["status"])
-            if parsed.get("error_reason"):
-                print("     error:", parsed["error_reason"])
-            hotel_record["platforms"]["tiket"] = parsed
 
             hotels_today.append(hotel_record)
 
