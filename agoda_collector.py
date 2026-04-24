@@ -8,7 +8,6 @@ from datetime import datetime
 DATA_FILE = "data.json"
 HISTORY_FILE = "history.json"
 LOG_FILE = "error_log.txt"
-TRAVELOKA_PROFILE_DIR = r"C:\coo-dashboard\traveloka_profile"
 
 MAX_RETRY = 3
 RETRY_DELAY_SECONDS = 4
@@ -258,7 +257,7 @@ def build_monthly_comparison(hotels_today, start_snapshot):
 
 def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
     last_error = None
-    for attempt in range(1, MAX_RETRY + 1):
+    for _ in range(MAX_RETRY):
         try:
             page.goto(url, timeout=timeout, wait_until=wait_until)
             return True
@@ -463,12 +462,14 @@ def parse_tiket(text):
     }
 
 
-def traveloka_extract_from_main_page(text):
+def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
+    # Format utama halaman Info Umum:
+    # 8,1/10 Mengesankan 5.939 ulasan
     rating_matches = list(re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", text, re.IGNORECASE))
-    review_matches = list(re.finditer(r"([\d\.,]+)\s+ulasan\b", text, re.IGNORECASE))
+    review_matches = list(re.finditer(r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b", text, re.IGNORECASE))
 
     best_pair = None
     best_distance = None
@@ -491,19 +492,23 @@ def traveloka_extract_from_main_page(text):
     if best_pair:
         rating, reviews = best_pair
 
-    if rating == "N/A":
-        m = re.search(r"\b(\d[.,]\d)\s*/\s*10\b", text, re.IGNORECASE)
-        if m:
-            candidate_rating = clean_rating(m.group(1))
-            if is_valid_rating(candidate_rating, 5, 10):
-                rating = candidate_rating
-
+    # Format halaman Review:
+    # Dari 5.914 review
     if reviews == "N/A":
-        m = re.search(r"([\d\.,]+)\s+ulasan\b", text, re.IGNORECASE)
+        m = re.search(r"Dari\s+([\d\.,]+)\s+(?:review|ulasan|reviews)\b", text, re.IGNORECASE)
         if m:
             candidate_reviews = clean_number(m.group(1))
             if is_valid_reviews(candidate_reviews, 50):
                 reviews = candidate_reviews
+
+    # Rating besar kadang tampil tanpa /10 setelah text diproses
+    if rating == "N/A":
+        candidates = re.findall(r"\b(\d[.,]\d)\b", text)
+        for c in candidates:
+            candidate_rating = clean_rating(c)
+            if is_valid_rating(candidate_rating, 7, 10):
+                rating = candidate_rating
+                break
 
     match_ok = (rating != "N/A" and reviews != "N/A")
     return {
@@ -511,13 +516,70 @@ def traveloka_extract_from_main_page(text):
         "reviews": reviews,
         "ranking": None,
         "match_ok": match_ok,
-        "error_reason": None if match_ok else "traveloka_main_page_pattern_not_found"
+        "error_reason": None if match_ok else "traveloka_strong_pattern_not_found"
     }
 
 
-def fetch_traveloka_background(playwright, url):
-    context = None
+def collect_traveloka_text(page):
+    collected = []
+
+    def grab(wait_ms=1500):
+        try:
+            page.wait_for_timeout(wait_ms)
+            text = get_page_text(page, 1000)
+            if text:
+                collected.append(text)
+        except Exception:
+            pass
+
+    grab(3000)
+
+    # Scroll bertahap supaya elemen lazy-load muncul
+    for pos in [500, 1000, 1500, 2200, 3000, 3800, 4600]:
+        try:
+            page.evaluate(f"window.scrollTo(0, {pos})")
+            grab(1800)
+        except Exception:
+            pass
+
+    # Coba klik tab Review kalau ada
+    review_selectors = [
+        'text="Review"',
+        'a:has-text("Review")',
+        'button:has-text("Review")',
+        '[role="tab"]:has-text("Review")'
+    ]
+
+    for selector in review_selectors:
+        try:
+            page.locator(selector).first.click(timeout=2000)
+            grab(4000)
+            for pos in [500, 1000, 1500, 2200, 3000]:
+                try:
+                    page.evaluate(f"window.scrollTo(0, {pos})")
+                    grab(1500)
+                except Exception:
+                    pass
+            break
+        except Exception:
+            pass
+
+    # HTML fallback
+    try:
+        html = page.content()
+        plain = re.sub(r"<[^>]+>", " ", html)
+        plain = normalize_text(plain)
+        if plain:
+            collected.append(plain)
+    except Exception:
+        pass
+
+    return normalize_text(" ".join(collected))
+
+
+def fetch_traveloka_strong_background(playwright, url):
     browser = None
+    context = None
 
     try:
         browser = playwright.chromium.launch(
@@ -525,13 +587,15 @@ def fetch_traveloka_background(playwright, url):
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
-                "--no-sandbox"
+                "--no-sandbox",
+                "--disable-gpu",
+                "--disable-extensions"
             ]
         )
 
         context = browser.new_context(
             locale="id-ID",
-            viewport={"width": 1440, "height": 900},
+            viewport={"width": 1440, "height": 1200},
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -544,26 +608,54 @@ def fetch_traveloka_background(playwright, url):
             "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"
         })
 
-        safe_goto(page, url, timeout=90000, wait_until="domcontentloaded")
-        page.wait_for_timeout(12000)
+        last_result = None
 
-        popup_selectors = [
-            'button:has-text("Nanti saja")',
-            'button:has-text("Tutup")',
-            'button:has-text("Close")',
-            'button:has-text("Skip")',
-            '[aria-label="Close"]'
-        ]
-
-        for selector in popup_selectors:
+        for attempt in range(1, MAX_RETRY + 1):
             try:
-                page.locator(selector).first.click(timeout=1000)
-                page.wait_for_timeout(800)
-            except Exception:
-                pass
+                safe_goto(page, url, timeout=90000, wait_until="domcontentloaded")
+                page.wait_for_timeout(8000)
 
-        text = get_page_text(page, 6000)
-        return traveloka_extract_from_main_page(text)
+                popup_selectors = [
+                    'button:has-text("Nanti saja")',
+                    'button:has-text("Tutup")',
+                    'button:has-text("Close")',
+                    'button:has-text("Skip")',
+                    '[aria-label="Close"]'
+                ]
+
+                for selector in popup_selectors:
+                    try:
+                        page.locator(selector).first.click(timeout=1000)
+                        page.wait_for_timeout(800)
+                    except Exception:
+                        pass
+
+                text = collect_traveloka_text(page)
+                result = traveloka_extract_from_text(text)
+                last_result = result
+
+                if result.get("match_ok"):
+                    return result
+
+                time.sleep(RETRY_DELAY_SECONDS)
+
+            except Exception as e:
+                last_result = {
+                    "rating": "N/A",
+                    "reviews": "N/A",
+                    "ranking": None,
+                    "match_ok": False,
+                    "error_reason": f"traveloka_attempt_failed: {str(e)[:120]}"
+                }
+                time.sleep(RETRY_DELAY_SECONDS)
+
+        return last_result or {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": None,
+            "match_ok": False,
+            "error_reason": "traveloka_strong_failed"
+        }
 
     finally:
         try:
@@ -581,7 +673,7 @@ def fetch_traveloka_background(playwright, url):
 def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, wait_ms=7000):
     last_error = None
 
-    for attempt in range(1, MAX_RETRY + 1):
+    for _ in range(MAX_RETRY):
         try:
             safe_goto(page, url, timeout=60000, wait_until="domcontentloaded")
             text = get_page_text(page, wait_ms)
@@ -617,7 +709,8 @@ def main():
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
-                "--no-sandbox"
+                "--no-sandbox",
+                "--disable-gpu"
             ]
         )
 
@@ -639,10 +732,7 @@ def main():
         for hotel_name, sources in HOTELS.items():
             print("Hotel:", hotel_name)
 
-            hotel_record = {
-                "name": hotel_name,
-                "platforms": {}
-            }
+            hotel_record = {"name": hotel_name, "platforms": {}}
 
             platform_jobs = [
                 ("agoda", parse_agoda, 6000),
@@ -675,7 +765,7 @@ def main():
 
             print("  traveloka")
             try:
-                fresh = fetch_traveloka_background(p, sources["traveloka"])
+                fresh = fetch_traveloka_strong_background(p, sources["traveloka"])
             except Exception as e:
                 log_error(hotel_name, "traveloka", str(e))
                 fresh = {
@@ -683,7 +773,7 @@ def main():
                     "reviews": "N/A",
                     "ranking": None,
                     "match_ok": False,
-                    "error_reason": "page_load_failed"
+                    "error_reason": "traveloka_page_load_failed"
                 }
 
             parsed = finalize_platform_result(hotel_name, "traveloka", fresh, previous_data)
@@ -695,7 +785,6 @@ def main():
                 print("     error:", parsed["error_reason"])
 
             hotel_record["platforms"]["traveloka"] = parsed
-
             hotels_today.append(hotel_record)
 
         context.close()
