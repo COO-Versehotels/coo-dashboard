@@ -1,2 +1,4 @@
 2026-04-24 14:39:50.644766 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_main_page_pattern_not_found
 2026-04-24 14:41:58.838663 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_main_page_pattern_not_found
+2026-04-25 18:10:28.027050 | Verse Cirebon | traveloka | name 'RETRY_DELAY_SECONDS' is not defined
+2026-04-25 18:10:28.027969 | Verse Cirebon | traveloka | CACHED_USED: traveloka_page_load_failed

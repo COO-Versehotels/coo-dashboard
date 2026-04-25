@@ -9,8 +9,27 @@ DATA_FILE = "data.json"
 HISTORY_FILE = "history.json"
 LOG_FILE = "error_log.txt"
 
+# ============================================================
+# v2 RETRY CONFIG — exponential backoff untuk handle network drops
+# ============================================================
 MAX_RETRY = 3
-RETRY_DELAY_SECONDS = 4
+RETRY_DELAYS = [5, 15, 45]   # exponential backoff dalam detik
+
+# Kalau error network terjadi, tunggu lebih lama supaya WiFi/koneksi pulih
+NETWORK_ERROR_PATTERNS = [
+    "ERR_NETWORK_IO_SUSPENDED",
+    "ERR_INTERNET_DISCONNECTED",
+    "ERR_NAME_NOT_RESOLVED",
+    "ERR_CONNECTION_REFUSED",
+    "ERR_CONNECTION_RESET",
+    "ERR_CONNECTION_TIMED_OUT",
+    "ERR_PROXY_CONNECTION_FAILED",
+    "net::ERR_FAILED",
+]
+
+# Hotel-level cooldown: kalau >=3 platform berturut error, jeda lama
+HOTEL_FAILURE_THRESHOLD = 3
+HOTEL_COOLDOWN_SECONDS = 30
 
 HOTELS = {
     "Verse Lite Gajah Mada": {
@@ -255,15 +274,48 @@ def build_monthly_comparison(hotels_today, start_snapshot):
     return final_hotels
 
 
+def is_network_error(exc):
+    """Detect kalau exception ini network-related (bukan timeout pattern)."""
+    err_str = str(exc)
+    return any(pattern in err_str for pattern in NETWORK_ERROR_PATTERNS)
+
+
 def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
+    """
+    Navigate dengan exponential backoff retry.
+    
+    - Attempt 1: langsung
+    - Attempt 2: tunggu 5s lalu coba
+    - Attempt 3: tunggu 15s lalu coba
+    - Final attempt: tunggu 45s lalu coba (untuk network recovery)
+    
+    Network errors (ERR_NETWORK_IO_SUSPENDED dll) mendapat extra wait time
+    karena biasanya butuh waktu lebih lama untuk koneksi pulih.
+    """
     last_error = None
-    for _ in range(MAX_RETRY):
+    for attempt in range(MAX_RETRY + 1):
         try:
             page.goto(url, timeout=timeout, wait_until=wait_until)
+            if attempt > 0:
+                print(f"        ✓ recovered after {attempt} retry")
             return True
         except Exception as e:
             last_error = e
-            time.sleep(RETRY_DELAY_SECONDS)
+            if attempt >= MAX_RETRY:
+                break
+            
+            # Pilih delay berdasarkan attempt
+            delay = RETRY_DELAYS[min(attempt, len(RETRY_DELAYS) - 1)]
+            
+            # Kalau ini network error, double delay (recovery butuh waktu lebih)
+            if is_network_error(e):
+                delay = delay * 2
+                print(f"        ⚠ network error, retrying in {delay}s (attempt {attempt + 1}/{MAX_RETRY})")
+            else:
+                print(f"        ⚠ retry in {delay}s (attempt {attempt + 1}/{MAX_RETRY})")
+            
+            time.sleep(delay)
+    
     raise last_error
 
 
@@ -466,8 +518,6 @@ def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
-    # Format utama halaman Info Umum:
-    # 8,1/10 Mengesankan 5.939 ulasan
     rating_matches = list(re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", text, re.IGNORECASE))
     review_matches = list(re.finditer(r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b", text, re.IGNORECASE))
 
@@ -492,8 +542,6 @@ def traveloka_extract_from_text(text):
     if best_pair:
         rating, reviews = best_pair
 
-    # Format halaman Review:
-    # Dari 5.914 review
     if reviews == "N/A":
         m = re.search(r"Dari\s+([\d\.,]+)\s+(?:review|ulasan|reviews)\b", text, re.IGNORECASE)
         if m:
@@ -501,7 +549,6 @@ def traveloka_extract_from_text(text):
             if is_valid_reviews(candidate_reviews, 50):
                 reviews = candidate_reviews
 
-    # Rating besar kadang tampil tanpa /10 setelah text diproses
     if rating == "N/A":
         candidates = re.findall(r"\b(\d[.,]\d)\b", text)
         for c in candidates:
@@ -534,7 +581,6 @@ def collect_traveloka_text(page):
 
     grab(3000)
 
-    # Scroll bertahap supaya elemen lazy-load muncul
     for pos in [500, 1000, 1500, 2200, 3000, 3800, 4600]:
         try:
             page.evaluate(f"window.scrollTo(0, {pos})")
@@ -542,7 +588,6 @@ def collect_traveloka_text(page):
         except Exception:
             pass
 
-    # Coba klik tab Review kalau ada
     review_selectors = [
         'text="Review"',
         'a:has-text("Review")',
@@ -564,7 +609,6 @@ def collect_traveloka_text(page):
         except Exception:
             pass
 
-    # HTML fallback
     try:
         html = page.content()
         plain = re.sub(r"<[^>]+>", " ", html)
@@ -729,10 +773,15 @@ def main():
             "Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"
         })
 
-        for hotel_name, sources in HOTELS.items():
+        for hotel_index, (hotel_name, sources) in enumerate(HOTELS.items()):
             print("Hotel:", hotel_name)
 
+            # Inter-hotel jeda kecil (3 detik) — biar tidak hammer OTA
+            if hotel_index > 0:
+                time.sleep(3)
+
             hotel_record = {"name": hotel_name, "platforms": {}}
+            consecutive_failures = 0   # untuk deteksi network drop di hotel ini
 
             platform_jobs = [
                 ("agoda", parse_agoda, 6000),
@@ -754,6 +803,20 @@ def main():
                 )
 
                 parsed = finalize_platform_result(hotel_name, platform_name, fresh, previous_data)
+
+                # Track consecutive failures untuk hotel ini
+                if parsed["status"] == "ERROR":
+                    consecutive_failures += 1
+                    
+                    # Kalau >=3 platform berturut error, kemungkinan network mati total
+                    # Jeda 30 detik untuk kasih waktu network pulih
+                    if consecutive_failures >= HOTEL_FAILURE_THRESHOLD:
+                        print(f"     ⚠ {consecutive_failures} consecutive failures detected")
+                        print(f"     ⏸ cooling down {HOTEL_COOLDOWN_SECONDS}s for network recovery...")
+                        time.sleep(HOTEL_COOLDOWN_SECONDS)
+                        consecutive_failures = 0  # reset, kasih kesempatan platform berikut
+                else:
+                    consecutive_failures = 0  # reset counter kalau sukses
 
                 print("     rating:", parsed["rating"])
                 print("     reviews:", parsed["reviews"])
