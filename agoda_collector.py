@@ -681,7 +681,7 @@ def fetch_traveloka_strong_background(playwright, url):
                 if result.get("match_ok"):
                     return result
 
-                time.sleep(RETRY_DELAY_SECONDS)
+                time.sleep(15)  # network recovery delay
 
             except Exception as e:
                 last_result = {
@@ -691,7 +691,7 @@ def fetch_traveloka_strong_background(playwright, url):
                     "match_ok": False,
                     "error_reason": f"traveloka_attempt_failed: {str(e)[:120]}"
                 }
-                time.sleep(RETRY_DELAY_SECONDS)
+                time.sleep(15)  # network recovery delay
 
         return last_result or {
             "rating": "N/A",
@@ -727,11 +727,11 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
                 return result
 
             last_error = result.get("error_reason", "pattern_not_found")
-            time.sleep(RETRY_DELAY_SECONDS)
+            time.sleep(15)  # network recovery delay
 
         except Exception as e:
             last_error = str(e)
-            time.sleep(RETRY_DELAY_SECONDS)
+            time.sleep(15)  # network recovery delay
 
     log_error(hotel_name, platform_name, last_error)
     return {
