@@ -143,6 +143,15 @@
       backdrop-filter:blur(6px);
     }
 
+    .date-pill-time {
+      background: #fff7ed;
+      border-color: #fed7aa;
+    }
+
+    .date-pill-time b {
+      color: #c2410c;
+    }
+
     .date-pill b{ font-weight:700; color:var(--primary-dark); }
 
     /* ========== MATRIX COMPARISON TABLE ========== */
@@ -634,6 +643,7 @@
       <div class="header-dates">
         <div class="date-pill">Yesterday: <b id="dateYesterday">—</b></div>
         <div class="date-pill">Today: <b id="dateToday">—</b></div>
+        <div class="date-pill date-pill-time">Last scraped: <b id="lastScraped">—</b></div>
       </div>
     </div>
 
@@ -1265,6 +1275,27 @@
     // ============================================================
     // Init
     // ============================================================
+    function formatLastScraped(rawTimestamp) {
+      // Input: "2026-04-26 07:25:00.123456"
+      // Output: "26 Apr 2026, 07:25 WIB" (compact for header)
+      try {
+        const cleaned = String(rawTimestamp).split('.')[0]; // remove microseconds
+        const [datePart, timePart] = cleaned.split(' ');
+        if (!datePart || !timePart) return rawTimestamp;
+        
+        const [year, month, day] = datePart.split('-');
+        const [hour, minute] = timePart.split(':');
+        
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const monthName = monthNames[parseInt(month) - 1] || month;
+        
+        return `${day} ${monthName} ${year}, ${hour}:${minute} WIB`;
+      } catch (e) {
+        return rawTimestamp;
+      }
+    }
+
     async function init() {
       try {
         // Fetch live data from GitHub
@@ -1275,6 +1306,14 @@
         const { date: yesterdayDate, map: yesterdayMap } = buildYesterdayMap(history, todayDate);
         document.getElementById("dateToday").textContent     = todayDate || "—";
         document.getElementById("dateYesterday").textContent = yesterdayDate || "—";
+        
+        // Display last scraped timestamp
+        const lastScrapedEl = document.getElementById("lastScraped");
+        if (data.last_update) {
+          lastScrapedEl.textContent = formatLastScraped(data.last_update);
+        } else {
+          lastScrapedEl.textContent = "—";
+        }
         renderMatrix(data, yesterdayMap);
         renderCharts(data, history);
         renderHotels(data, yesterdayMap);
