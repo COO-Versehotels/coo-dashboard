@@ -603,7 +603,7 @@
         "platforms": {
           "agoda": {
             "rating": "8.6",
-            "reviews": "4931",
+            "reviews": "4926",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-26",
@@ -619,7 +619,7 @@
           },
           "tripcom": {
             "rating": "8.4",
-            "reviews": "172",
+            "reviews": "175",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-26",
@@ -648,7 +648,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "7801",
+            "reviews": "7800",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-26",
@@ -682,9 +682,9 @@
             "rating": "5.9",
             "reviews": "5942",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-04-26",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
@@ -727,9 +727,9 @@
             "rating": "7.8",
             "reviews": "9379",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-04-26",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
@@ -738,7 +738,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.7",
-            "reviews": "4410",
+            "reviews": "4411",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-26",
@@ -754,7 +754,7 @@
           },
           "tripcom": {
             "rating": "8.4",
-            "reviews": "103",
+            "reviews": "106",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-26",
@@ -772,9 +772,9 @@
             "rating": "7.8",
             "reviews": "5607",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-04-26",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       }
