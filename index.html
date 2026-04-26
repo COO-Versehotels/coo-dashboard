@@ -655,732 +655,37 @@
     // ============================================================
     // EMBEDDED DATA
     // ============================================================
-    const EMBEDDED_DATA = {
-  "last_update": "2026-04-24 20:53:49.140594",
-  "comparison_mode": "start_of_month_vs_today",
-  "platform_scope": [
-    "agoda",
-    "booking",
-    "traveloka",
-    "tripcom",
-    "tiket"
-  ],
-  "hotels": [
-    {
-      "name": "Verse Lite Gajah Mada",
-      "platforms": {
-        "agoda": {
-          "rating": "8.5",
-          "reviews": "4923",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "booking": {
-          "rating": "7.7",
-          "reviews": "543",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tripcom": {
-          "rating": "8.4",
-          "reviews": "172",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tiket": {
-          "rating": "4.2",
-          "reviews": "3028",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "traveloka": {
-          "rating": "N/A",
-          "reviews": "N/A",
-          "ranking": null,
-          "status": "ERROR",
-          "source_date": null,
-          "error_reason": "traveloka_strong_pattern_not_found"
+    // ============================================================
+    // DATA FETCHED LIVE FROM GITHUB (data.json + history.json)
+    // ============================================================
+    let EMBEDDED_DATA = null;
+    let EMBEDDED_HISTORY = null;
+
+    async function loadDataFromGitHub() {
+      try {
+        // Detect if running via file:// (won't work for fetch)
+        if (location.protocol === 'file:') {
+          throw new Error(
+            "Dashboard cannot be opened directly as a file. " +
+            "Please access via https://coo-versehotels.github.io/coo-dashboard/ " +
+            "or test locally with: python -m http.server 8080"
+          );
         }
-      },
-      "comparison": {
-        "baseline_date": "2026-04-22",
-        "platforms": {
-          "agoda": {
-            "rating_change": 0.0,
-            "review_change": 5,
-            "ranking_change": null
-          },
-          "booking": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tripcom": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tiket": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "traveloka": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          }
-        }
-      }
-    },
-    {
-      "name": "Verse Luxe Wahid Hasyim",
-      "platforms": {
-        "agoda": {
-          "rating": "7.9",
-          "reviews": "7790",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "booking": {
-          "rating": "6.5",
-          "reviews": "882",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tripcom": {
-          "rating": "7.3",
-          "reviews": "183",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tiket": {
-          "rating": "4.2",
-          "reviews": "5160",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "traveloka": {
-          "rating": "8.1",
-          "reviews": "5941",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        }
-      },
-      "comparison": {
-        "baseline_date": "2026-04-22",
-        "platforms": {
-          "agoda": {
-            "rating_change": 0.0,
-            "review_change": 3,
-            "ranking_change": null
-          },
-          "booking": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tripcom": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tiket": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "traveloka": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          }
-        }
-      }
-    },
-    {
-      "name": "Verse Cirebon",
-      "platforms": {
-        "agoda": {
-          "rating": "7.8",
-          "reviews": "6708",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "booking": {
-          "rating": "8.0",
-          "reviews": "47",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tripcom": {
-          "rating": "8.8",
-          "reviews": "124",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "tiket": {
-          "rating": "3.9",
-          "reviews": "2248",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        },
-        "traveloka": {
-          "rating": "7.8",
-          "reviews": "9379",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        }
-      },
-      "comparison": {
-        "baseline_date": "2026-04-22",
-        "platforms": {
-          "agoda": {
-            "rating_change": 0.0,
-            "review_change": 20,
-            "ranking_change": null
-          },
-          "booking": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tripcom": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tiket": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "traveloka": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          }
-        }
-      }
-    },
-    {
-      "name": "Oak Tree Mahakam Blok M",
-      "platforms": {
-        "agoda": {
-          "rating": "N/A",
-          "reviews": "N/A",
-          "ranking": null,
-          "status": "ERROR",
-          "source_date": null,
-          "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html\nCall log:\n  - navigating to \"https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html\", waiting until \"domcontentloaded\"\n"
-        },
-        "booking": {
-          "rating": "N/A",
-          "reviews": "N/A",
-          "ranking": null,
-          "status": "ERROR",
-          "source_date": null,
-          "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews\nCall log:\n  - navigating to \"https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews\", waiting until \"domcontentloaded\"\n"
-        },
-        "tripcom": {
-          "rating": "N/A",
-          "reviews": "N/A",
-          "ranking": null,
-          "status": "ERROR",
-          "source_date": null,
-          "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1\nCall log:\n  - navigating to \"https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1\", waiting until \"domcontentloaded\"\n"
-        },
-        "tiket": {
-          "rating": "N/A",
-          "reviews": "N/A",
-          "ranking": null,
-          "status": "ERROR",
-          "source_date": null,
-          "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=oak-tree-urban-jakarta-412001639976768183\nCall log:\n  - navigating to \"https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=oak-tree-urban-jakarta-412001639976768183\", waiting until \"domcontentloaded\"\n"
-        },
-        "traveloka": {
-          "rating": "7.8",
-          "reviews": "5606",
-          "ranking": null,
-          "status": "AUTO",
-          "source_date": "2026-04-24",
-          "error_reason": null
-        }
-      },
-      "comparison": {
-        "baseline_date": "2026-04-22",
-        "platforms": {
-          "agoda": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "booking": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tripcom": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "tiket": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          },
-          "traveloka": {
-            "rating_change": null,
-            "review_change": null,
-            "ranking_change": null
-          }
-        }
+        
+        // Use cache-busting timestamp to always get fresh data
+        const cacheBuster = `?t=${Date.now()}`;
+        const [dataResp, historyResp] = await Promise.all([
+          fetch(`./data.json${cacheBuster}`),
+          fetch(`./history.json${cacheBuster}`)
+        ]);
+        if (!dataResp.ok) throw new Error(`data.json: ${dataResp.status}`);
+        if (!historyResp.ok) throw new Error(`history.json: ${historyResp.status}`);
+        EMBEDDED_DATA = await dataResp.json();
+        EMBEDDED_HISTORY = await historyResp.json();
+      } catch (err) {
+        throw new Error(`Failed to load data: ${err.message}`);
       }
     }
-  ]
-};
-    const EMBEDDED_HISTORY = [
-  {
-    "date": "2026-04-22",
-    "hotels": [
-      {
-        "name": "Verse Lite Gajah Mada",
-        "platforms": {
-          "agoda": {
-            "rating": "8.5",
-            "reviews": "4918"
-          }
-        }
-      },
-      {
-        "name": "Verse Luxe Wahid Hasyim",
-        "platforms": {
-          "agoda": {
-            "rating": "7.9",
-            "reviews": "7787"
-          }
-        }
-      },
-      {
-        "name": "Verse Cirebon",
-        "platforms": {
-          "agoda": {
-            "rating": "7.8",
-            "reviews": "6688"
-          }
-        }
-      },
-      {
-        "name": "Oak Tree Mahakam Blok M",
-        "platforms": {
-          "agoda": {
-            "rating": "7.7",
-            "reviews": "4395"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "date": "2026-04-23",
-    "hotels": [
-      {
-        "name": "Verse Lite Gajah Mada",
-        "platforms": {
-          "agoda": {
-            "rating": "8.5",
-            "reviews": "4922",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "7.7",
-            "reviews": "543",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "8.3",
-            "reviews": "6458",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "8.4",
-            "reviews": "172",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "3028",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          }
-        }
-      },
-      {
-        "name": "Verse Luxe Wahid Hasyim",
-        "platforms": {
-          "agoda": {
-            "rating": "7.9",
-            "reviews": "7790",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "6.5",
-            "reviews": "881",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "8.1",
-            "reviews": "5940",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "7.3",
-            "reviews": "183",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "5160",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          }
-        }
-      },
-      {
-        "name": "Verse Cirebon",
-        "platforms": {
-          "agoda": {
-            "rating": "7.8",
-            "reviews": "6695",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "8.0",
-            "reviews": "47",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "7.8",
-            "reviews": "9377",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "8.8",
-            "reviews": "125",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "3.9",
-            "reviews": "2247",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          }
-        }
-      },
-      {
-        "name": "Oak Tree Mahakam Blok M",
-        "platforms": {
-          "agoda": {
-            "rating": "7.7",
-            "reviews": "4399",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "5.6",
-            "reviews": "68",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "7.8",
-            "reviews": "5603",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "8.4",
-            "reviews": "100",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "3.9",
-            "reviews": "2172",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-23",
-            "error_reason": null
-          }
-        }
-      }
-    ]
-  },
-  {
-    "date": "2026-04-24",
-    "hotels": [
-      {
-        "name": "Verse Lite Gajah Mada",
-        "platforms": {
-          "agoda": {
-            "rating": "8.5",
-            "reviews": "4923",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "7.7",
-            "reviews": "543",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "8.4",
-            "reviews": "172",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "3028",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": null,
-            "status": "ERROR",
-            "source_date": null,
-            "error_reason": "traveloka_strong_pattern_not_found"
-          }
-        }
-      },
-      {
-        "name": "Verse Luxe Wahid Hasyim",
-        "platforms": {
-          "agoda": {
-            "rating": "7.9",
-            "reviews": "7790",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "6.5",
-            "reviews": "882",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "7.3",
-            "reviews": "183",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "5160",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "8.1",
-            "reviews": "5941",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          }
-        }
-      },
-      {
-        "name": "Verse Cirebon",
-        "platforms": {
-          "agoda": {
-            "rating": "7.8",
-            "reviews": "6708",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "booking": {
-            "rating": "8.0",
-            "reviews": "47",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tripcom": {
-            "rating": "8.8",
-            "reviews": "124",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "tiket": {
-            "rating": "3.9",
-            "reviews": "2248",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          },
-          "traveloka": {
-            "rating": "7.8",
-            "reviews": "9379",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          }
-        }
-      },
-      {
-        "name": "Oak Tree Mahakam Blok M",
-        "platforms": {
-          "agoda": {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": null,
-            "status": "ERROR",
-            "source_date": null,
-            "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html\nCall log:\n  - navigating to \"https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html\", waiting until \"domcontentloaded\"\n"
-          },
-          "booking": {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": null,
-            "status": "ERROR",
-            "source_date": null,
-            "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews\nCall log:\n  - navigating to \"https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews\", waiting until \"domcontentloaded\"\n"
-          },
-          "tripcom": {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": null,
-            "status": "ERROR",
-            "source_date": null,
-            "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1\nCall log:\n  - navigating to \"https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1\", waiting until \"domcontentloaded\"\n"
-          },
-          "tiket": {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": null,
-            "status": "ERROR",
-            "source_date": null,
-            "error_reason": "Page.goto: net::ERR_NETWORK_IO_SUSPENDED at https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=oak-tree-urban-jakarta-412001639976768183\nCall log:\n  - navigating to \"https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=oak-tree-urban-jakarta-412001639976768183\", waiting until \"domcontentloaded\"\n"
-          },
-          "traveloka": {
-            "rating": "7.8",
-            "reviews": "5606",
-            "ranking": null,
-            "status": "AUTO",
-            "source_date": "2026-04-24",
-            "error_reason": null
-          }
-        }
-      }
-    ]
-  }
-];
 
     // ============================================================
     // HOTEL LOGOS (embedded base64 — tidak perlu internet)
@@ -1487,10 +792,37 @@
       return `<div class="compare-values">${yTxt} <span class="arrow">→</span> ${tTxt}</div>${deltaHtml}`;
     }
 
-    function buildYesterdayMap(history) {
-      if (!Array.isArray(history) || history.length < 2) return { date: null, map: {} };
+    function buildYesterdayMap(history, todayDate) {
+      // todayDate sudah ditentukan dari data.last_update (data.json)
+      // Yesterday adalah history entry yang date-nya < todayDate (yang paling baru)
+      // Strategy:
+      //   - Sort history by date ascending
+      //   - Find the LAST entry where date < todayDate
+      //   - Kalau todayDate tidak provide, fallback ke logic lama (entry kedua-terakhir)
+      if (!Array.isArray(history) || history.length === 0) return { date: null, map: {} };
       const sorted = [...history].sort((a, b) => a.date.localeCompare(b.date));
-      const yesterday = sorted[sorted.length - 2];
+      
+      let yesterday = null;
+      if (todayDate) {
+        // Cari entry terakhir yang date-nya < todayDate
+        for (let i = sorted.length - 1; i >= 0; i--) {
+          if (sorted[i].date < todayDate) {
+            yesterday = sorted[i];
+            break;
+          }
+        }
+      }
+      // Fallback: kalau todayDate tidak ada atau semua history >= todayDate
+      if (!yesterday) {
+        if (sorted.length >= 2) {
+          yesterday = sorted[sorted.length - 2];
+        } else if (sorted.length === 1) {
+          yesterday = sorted[0];
+        }
+      }
+      
+      if (!yesterday) return { date: null, map: {} };
+      
       const map = {};
       (yesterday.hotels || []).forEach(h => { map[h.name] = h.platforms || {}; });
       return { date: yesterday.date, map };
@@ -1933,12 +1265,14 @@
     // ============================================================
     // Init
     // ============================================================
-    function init() {
+    async function init() {
       try {
+        // Fetch live data from GitHub
+        await loadDataFromGitHub();
         const data    = EMBEDDED_DATA;
         const history = EMBEDDED_HISTORY;
-        const { date: yesterdayDate, map: yesterdayMap } = buildYesterdayMap(history);
         const todayDate = getTodayDate(data, history);
+        const { date: yesterdayDate, map: yesterdayMap } = buildYesterdayMap(history, todayDate);
         document.getElementById("dateToday").textContent     = todayDate || "—";
         document.getElementById("dateYesterday").textContent = yesterdayDate || "—";
         renderMatrix(data, yesterdayMap);
