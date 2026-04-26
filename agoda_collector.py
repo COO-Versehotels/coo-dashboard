@@ -37,28 +37,28 @@ HOTELS = {
         "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-3000010028056",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/?locale=en-ID&allianceid=14901&sid=1621541&ppcid=ckid-_adid-_akid-_adgid-&utm_source=google&utm_medium=cpc&utm_campaign=15838633181&gad_source=1&gad_campaignid=20414003930&gbraid=0AAAAABn2eFLKWLrN2-2WPDMNEjxdpOATE&gclid=Cj0KCQjw-pHPBhCdARIsAHXYWP8-IxMMwEn7v8dBYOar8l3aD7U3YLMJyawc4tgI_wy5cJr2nbOkf4saArAdEALw_wcB",
-        "tiket": "https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=verse-lite-hotel-gajah-mada-807001751612826254"
+        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
     },
     "Verse Luxe Wahid Hasyim": {
         "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html#tab-reviews",
-        "traveloka": "https://www.traveloka.com/id-id/hotel/detail?spec=17-05-2026.18-05-2026.1.1.HOTEL.3000010036666.Verse%20Luxe%20Hotel%20Wahid%20Hasyim.2",
+        "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-3000010036666",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/?locale=en-ID&allianceid=14901&sid=1621541&ppcid=ckid-_adid-_akid-_adgid-&utm_source=google&utm_medium=cpc&utm_campaign=15838633181&gad_source=1&gad_campaignid=20414003930&gbraid=0AAAAABn2eFLKWLrN2-2WPDMNEjxdpOATE&gclid=Cj0KCQjw-pHPBhCdARIsAHXYWP_SdUWp5jWpmisfXUGOgiURDpGP3pNiAMnCtMdhO_zZ7xD3ArQc47EaAv41EALw_wcB",
-        "tiket": "https://www.tiket.com/en-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=verse-luxe-hotel-wahid-hasyim-112001545304320268"
+        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
     },
     "Verse Cirebon": {
         "agoda": "https://www.agoda.com/verse-hotel-cirebon/reviews/cirebon-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-cirebon.html#tab-reviews",
-        "traveloka": "https://www.traveloka.com/id-id/hotel/detail?spec=17-05-2026.18-05-2026.1.1.HOTEL.3000010015654.Verse%20Hotel%20Cirebon.2",
+        "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-hotel-cirebon-3000010015654",
         "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1",
-        "tiket": "https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=verse-hotel-cirebon-108001534490349528"
+        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
     },
     "Oak Tree Mahakam Blok M": {
         "agoda": "https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews",
-        "traveloka": "https://www.traveloka.com/id-id/hotel/detail?spec=17-05-2026.18-05-2026.1.1.HOTEL.461895.Oak%20Tree%20Urban%20Hotel%20Jakarta.2",
+        "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/oak-tree-urban-hotel-jakarta-461895",
         "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1",
-        "tiket": "https://www.tiket.com/id-id/review?product_type=TIXHOTEL&searchType=INVENTORY&inventory_id=oak-tree-urban-jakarta-412001639976768183"
+        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
     }
 }
 
@@ -470,25 +470,56 @@ def parse_tiket(text):
     rating = "N/A"
     reviews = "N/A"
 
+    # v3 multi-pattern: handle berbagai format Tiket.com
     rating_patterns = [
+        # Specific: "8.4 / 10" or "4.2 / 5"
         r"\b(\d[.,]\d)\s*/\s*5\b",
         r"\b(\d[.,]\d)\s*/\s*10\b",
-        r"Rating\s*(\d[.,]\d)",
+        # Indonesian keywords
+        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)",
+        r"(\d[.,]\d)\s+(?:dari\s+)?(?:5|10)",
+        # English keywords
+        r"(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good)\s+(\d[.,]\d)",
+        # Generic: "Rating: 8.4"
+        r"[Rr]ating[:\s]+(\d[.,]\d)",
+        # JSON-LD variants
+        r'"rating"\s*:\s*"?(\d[.,]\d)"?',
+        r'"score"\s*:\s*"?(\d[.,]\d)"?',
+        r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
+        r'"ratingValue"\s*:\s*"?(\d[.,]\d)"?',
+        # Original v2 fallback
         r"\b(\d[.,]\d)\s+Good\b",
     ]
 
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            rating = clean_rating(match.group(1))
-            break
+            candidate = clean_rating(match.group(1))
+            try:
+                val = float(candidate)
+                if 1.0 <= val <= 10.0:
+                    rating = candidate
+                    break
+            except (ValueError, TypeError):
+                continue
 
     review_patterns = [
-        r"\(([\d,\.]+)\s+reviews\)",
-        r"\b([\d,\.]+)\s+reviews\b",
-        r"\b([\d,\.]+)\s+review\b",
+        # English variants
+        r"\(([\d,\.]+)\s+reviews?\)",
+        r"\b([\d,\.]+)\s+reviews?\b",
+        r"\bfrom\s+([\d,\.]+)\s+reviews?\b",
+        r"\bbased\s+on\s+([\d,\.]+)\s+reviews?\b",
+        # Indonesian variants
+        r"\(([\d,\.]+)\s+ulasan\)",
         r"\b([\d,\.]+)\s+ulasan\b",
-        r"\bfrom\s+([\d,\.]+)\s+reviews\b"
+        r"\bdari\s+([\d,\.]+)\s+ulasan\b",
+        r"\bberdasarkan\s+([\d,\.]+)\s+ulasan\b",
+        # JSON-LD variants
+        r'"reviewCount"\s*:\s*"?(\d+)"?',
+        r'"ratingCount"\s*:\s*"?(\d+)"?',
+        r'"totalReviews"\s*:\s*"?(\d+)"?',
+        # Original v2 fallback
+        r"\b([\d,\.]+)\s+review\b",
     ]
 
     for pattern in review_patterns:
@@ -512,14 +543,53 @@ def parse_tiket(text):
         "match_ok": match_ok,
         "error_reason": None if match_ok else "tiket_pattern_not_found"
     }
-
-
 def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
-    rating_matches = list(re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", text, re.IGNORECASE))
-    review_matches = list(re.finditer(r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b", text, re.IGNORECASE))
+    # v3 multi-pattern: handle berbagai format Traveloka
+    # Strategy: cari semua kandidat rating + review, lalu pair yang paling dekat secara posisi
+    
+    rating_patterns = [
+        # Original: "8.5/10"
+        r"\b(\d[.,]\d)\s*/\s*10\b",
+        # Indonesian
+        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)",
+        r"(\d[.,]\d)\s+(?:dari\s+)?10",
+        # English
+        r"(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good)\s+(\d[.,]\d)",
+        # JSON-LD
+        r'"rating"\s*:\s*"?(\d[.,]\d)"?',
+        r'"score"\s*:\s*"?(\d[.,]\d)"?',
+        r'"ratingValue"\s*:\s*"?(\d[.,]\d)"?',
+        r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
+    ]
+    
+    review_patterns = [
+        # Original v2
+        r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b",
+        # Variants
+        r"\b([\d,\.]+)\s+ulasan\b",
+        r"\b([\d,\.]+)\s+reviews?\b",
+        r"\bdari\s+([\d,\.]+)\s+ulasan\b",
+        r"\bbased\s+on\s+([\d,\.]+)\s+reviews?\b",
+        # JSON-LD
+        r'"reviewCount"\s*:\s*"?(\d+)"?',
+        r'"ratingCount"\s*:\s*"?(\d+)"?',
+        r'"totalReviews"\s*:\s*"?(\d+)"?',
+    ]
+
+    # Collect all rating matches across all patterns
+    rating_matches = []
+    for pat in rating_patterns:
+        for m in re.finditer(pat, text, re.IGNORECASE):
+            rating_matches.append(m)
+    
+    # Collect all review matches across all patterns
+    review_matches = []
+    for pat in review_patterns:
+        for m in re.finditer(pat, text, re.IGNORECASE):
+            review_matches.append(m)
 
     best_pair = None
     best_distance = None
@@ -542,22 +612,8 @@ def traveloka_extract_from_text(text):
     if best_pair:
         rating, reviews = best_pair
 
-    if reviews == "N/A":
-        m = re.search(r"Dari\s+([\d\.,]+)\s+(?:review|ulasan|reviews)\b", text, re.IGNORECASE)
-        if m:
-            candidate_reviews = clean_number(m.group(1))
-            if is_valid_reviews(candidate_reviews, 50):
-                reviews = candidate_reviews
-
-    if rating == "N/A":
-        candidates = re.findall(r"\b(\d[.,]\d)\b", text)
-        for c in candidates:
-            candidate_rating = clean_rating(c)
-            if is_valid_rating(candidate_rating, 7, 10):
-                rating = candidate_rating
-                break
-
     match_ok = (rating != "N/A" and reviews != "N/A")
+
     return {
         "rating": rating,
         "reviews": reviews,
@@ -565,8 +621,6 @@ def traveloka_extract_from_text(text):
         "match_ok": match_ok,
         "error_reason": None if match_ok else "traveloka_strong_pattern_not_found"
     }
-
-
 def collect_traveloka_text(page):
     collected = []
 
