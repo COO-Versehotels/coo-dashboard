@@ -137,3 +137,15 @@
 2026-04-26 18:24:35.209333 | Oak Tree Mahakam Blok M | tiket | tiket_pattern_not_found
 2026-04-26 18:24:35.209438 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_pattern_not_found
 2026-04-26 18:27:35.139749 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-26 20:04:53.453481 | Verse Lite Gajah Mada | tiket | tiket_pattern_not_found
+2026-04-26 20:04:53.453590 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_pattern_not_found
+2026-04-26 20:07:53.639607 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-26 20:09:37.804960 | Verse Luxe Wahid Hasyim | tiket | tiket_pattern_not_found
+2026-04-26 20:09:37.805069 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_pattern_not_found
+2026-04-26 20:12:37.773024 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-26 20:14:23.167512 | Verse Cirebon | tiket | tiket_pattern_not_found
+2026-04-26 20:14:23.167625 | Verse Cirebon | tiket | CACHED_USED: tiket_pattern_not_found
+2026-04-26 20:17:23.266069 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-26 20:19:07.224505 | Oak Tree Mahakam Blok M | tiket | tiket_pattern_not_found
+2026-04-26 20:19:07.224613 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_pattern_not_found
+2026-04-26 20:22:07.368512 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
