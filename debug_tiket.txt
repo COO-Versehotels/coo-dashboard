@@ -1,0 +1,478 @@
+# DEBUG TIKET LOG — Run started at 2026-04-27 09:11:26.465509
+
+================================================================================
+TIMESTAMP: 2026-04-27 09:13:06.744365
+HOTEL: Verse Lite Gajah Mada
+URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
+TEXT LENGTH: 158
+--------------------------------------------------------------------------------
+RAW TEXT (first 3000 chars):
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cb502dd0ad6cc Kami akan segera mengarahkan anda ke tiket.com
+--------------------------------------------------------------------------------
+RAW TEXT (last 1500 chars):
+
+--------------------------------------------------------------------------------
+ALL RATING CANDIDATES (X.Y / X,Y): []
+KEYWORD FOUND:
+  - 'robot': 1x
+
+--------------------------------------------------------------------------------
+HTML SNIPPET (first 2000 chars):
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Just a moment...</title>
+    <style>
+
+      /* Base Reset & Typography */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          TiketOdysseyText,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      * {
+        font: inherit;
+        line-height: 143%;
+      }
+
+      /* Header System */
+      .header_container {
+        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
+        padding: 20px 0;
+        display: none;
+      }
+
+      .header_wrapper {
+        box-sizing: content-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header_wrapper img {
+        display: flex;
+      }
+
+      /* Main Layout */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .image {
+        width: 320px;
+        height: 213px;
+      }
+
+      .content {
+        margin-top: 24px;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      /* Common Typography */
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 134%;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #303135;
+        line-height: 138%;
+      }
+
+      /* Common Ray ID Styles */
+      .ray_id {
+        text-align: center;
+        color: #71747d;
+        font-size: 12px;
+        margin: 0;
+        padding: 8px 0;
+      }
+
+  
+================================================================================
+
+================================================================================
+TIMESTAMP: 2026-04-27 09:15:38.108211
+HOTEL: Verse Luxe Wahid Hasyim
+URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
+TEXT LENGTH: 158
+--------------------------------------------------------------------------------
+RAW TEXT (first 3000 chars):
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cb8b4c870d6cc Kami akan segera mengarahkan anda ke tiket.com
+--------------------------------------------------------------------------------
+RAW TEXT (last 1500 chars):
+
+--------------------------------------------------------------------------------
+ALL RATING CANDIDATES (X.Y / X,Y): []
+KEYWORD FOUND:
+  - 'robot': 1x
+
+--------------------------------------------------------------------------------
+HTML SNIPPET (first 2000 chars):
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Just a moment...</title>
+    <style>
+
+      /* Base Reset & Typography */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          TiketOdysseyText,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      * {
+        font: inherit;
+        line-height: 143%;
+      }
+
+      /* Header System */
+      .header_container {
+        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
+        padding: 20px 0;
+        display: none;
+      }
+
+      .header_wrapper {
+        box-sizing: content-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header_wrapper img {
+        display: flex;
+      }
+
+      /* Main Layout */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .image {
+        width: 320px;
+        height: 213px;
+      }
+
+      .content {
+        margin-top: 24px;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      /* Common Typography */
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 134%;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #303135;
+        line-height: 138%;
+      }
+
+      /* Common Ray ID Styles */
+      .ray_id {
+        text-align: center;
+        color: #71747d;
+        font-size: 12px;
+        margin: 0;
+        padding: 8px 0;
+      }
+
+  
+================================================================================
+
+================================================================================
+TIMESTAMP: 2026-04-27 09:18:15.681655
+HOTEL: Verse Cirebon
+URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
+TEXT LENGTH: 158
+--------------------------------------------------------------------------------
+RAW TEXT (first 3000 chars):
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cbc8dbc26d6cc Kami akan segera mengarahkan anda ke tiket.com
+--------------------------------------------------------------------------------
+RAW TEXT (last 1500 chars):
+
+--------------------------------------------------------------------------------
+ALL RATING CANDIDATES (X.Y / X,Y): []
+KEYWORD FOUND:
+  - 'robot': 1x
+
+--------------------------------------------------------------------------------
+HTML SNIPPET (first 2000 chars):
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Just a moment...</title>
+    <style>
+
+      /* Base Reset & Typography */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          TiketOdysseyText,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      * {
+        font: inherit;
+        line-height: 143%;
+      }
+
+      /* Header System */
+      .header_container {
+        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
+        padding: 20px 0;
+        display: none;
+      }
+
+      .header_wrapper {
+        box-sizing: content-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header_wrapper img {
+        display: flex;
+      }
+
+      /* Main Layout */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .image {
+        width: 320px;
+        height: 213px;
+      }
+
+      .content {
+        margin-top: 24px;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      /* Common Typography */
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 134%;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #303135;
+        line-height: 138%;
+      }
+
+      /* Common Ray ID Styles */
+      .ray_id {
+        text-align: center;
+        color: #71747d;
+        font-size: 12px;
+        margin: 0;
+        padding: 8px 0;
+      }
+
+  
+================================================================================
+
+================================================================================
+TIMESTAMP: 2026-04-27 09:20:59.289727
+HOTEL: Oak Tree Mahakam Blok M
+URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
+TEXT LENGTH: 158
+--------------------------------------------------------------------------------
+RAW TEXT (first 3000 chars):
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cc08c2cbcd6cc Kami akan segera mengarahkan anda ke tiket.com
+--------------------------------------------------------------------------------
+RAW TEXT (last 1500 chars):
+
+--------------------------------------------------------------------------------
+ALL RATING CANDIDATES (X.Y / X,Y): []
+KEYWORD FOUND:
+  - 'robot': 1x
+
+--------------------------------------------------------------------------------
+HTML SNIPPET (first 2000 chars):
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Just a moment...</title>
+    <style>
+
+      /* Base Reset & Typography */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          TiketOdysseyText,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      * {
+        font: inherit;
+        line-height: 143%;
+      }
+
+      /* Header System */
+      .header_container {
+        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
+        padding: 20px 0;
+        display: none;
+      }
+
+      .header_wrapper {
+        box-sizing: content-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header_wrapper img {
+        display: flex;
+      }
+
+      /* Main Layout */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .image {
+        width: 320px;
+        height: 213px;
+      }
+
+      .content {
+        margin-top: 24px;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      /* Common Typography */
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 134%;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #303135;
+        line-height: 138%;
+      }
+
+      /* Common Ray ID Styles */
+      .ray_id {
+        text-align: center;
+        color: #71747d;
+        font-size: 12px;
+        margin: 0;
+        padding: 8px 0;
+      }
+
+  
+================================================================================
+
