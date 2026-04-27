@@ -1,13 +1,13 @@
-# DEBUG TIKET LOG — Run started at 2026-04-27 16:12:33.291613
+# DEBUG TIKET LOG — Run started at 2026-04-27 20:18:36.345645
 
 ================================================================================
-TIMESTAMP: 2026-04-27 16:14:14.048592
+TIMESTAMP: 2026-04-27 20:20:17.024077
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f1de378fe8467 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f3086500bbcc960 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -120,13 +120,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 16:18:57.742755
+TIMESTAMP: 2026-04-27 20:25:00.227714
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f24d09a7c8467 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f308d3a1b95c960 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -239,13 +239,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 16:23:41.499067
+TIMESTAMP: 2026-04-27 20:29:44.119003
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f2bbe0d1c8467 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f3094286da4c960 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -358,13 +358,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 16:28:25.610023
+TIMESTAMP: 2026-04-27 20:34:28.140410
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f32adc9478467 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f309b160c34c960 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -379,7 +379,7 @@ HTML SNIPPET (first 2000 chars):
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Just a moment...</title>
+    <title data-i18n="title">Robot atau manusia?</title>
     <style>
 
       /* Base Reset & Typography */
@@ -473,6 +473,5 @@ HTML SNIPPET (first 2000 chars):
         padding: 8px 0;
       }
 
-  
 ================================================================================
 
