@@ -8,11 +8,11 @@ from datetime import datetime
 DATA_FILE = "data.json"
 HISTORY_FILE = "history.json"
 LOG_FILE = "error_log.txt"
+DEBUG_TIKET_FILE = "debug_tiket.txt"   # v3.2: dump teks Tiket untuk analisa
 
 # ============================================================
-# v3.1 — Fix parse_tiket & traveloka_extract_from_text
-# Bug v3: Pattern "label diikuti angka" SALAH ARAH untuk format Indonesia.
-# Format aktual: "8,4 Sangat Bagus 3.028 ulasan" (angka DULU, baru label).
+# v3.2 — Tambah debug logging untuk Tiket
+# Tujuan: lihat apa yang Playwright dapat dari Tiket di GitHub Actions
 # ============================================================
 
 MAX_RETRY = 3
@@ -72,6 +72,56 @@ def log_error(hotel_name, platform_name, message):
             f.write(f"{datetime.now()} | {hotel_name} | {platform_name} | {message}\n")
     except Exception:
         pass
+
+
+# ============================================================
+# v3.2 — Debug logging untuk Tiket
+# ============================================================
+def debug_dump_tiket(hotel_name, url, raw_text, html_snippet=None):
+    """
+    Dump teks yang didapat Playwright dari Tiket ke file debug.
+    Akan dipakai untuk analisa: apakah halaman blocked / kosong / format beda.
+    """
+    try:
+        with open(DEBUG_TIKET_FILE, "a", encoding="utf-8") as f:
+            f.write("=" * 80 + "\n")
+            f.write(f"TIMESTAMP: {datetime.now()}\n")
+            f.write(f"HOTEL: {hotel_name}\n")
+            f.write(f"URL: {url}\n")
+            f.write(f"TEXT LENGTH: {len(raw_text) if raw_text else 0}\n")
+            f.write("-" * 80 + "\n")
+            f.write("RAW TEXT (first 3000 chars):\n")
+            f.write(raw_text[:3000] if raw_text else "(EMPTY)")
+            f.write("\n" + "-" * 80 + "\n")
+            f.write("RAW TEXT (last 1500 chars):\n")
+            if raw_text and len(raw_text) > 3000:
+                f.write(raw_text[-1500:])
+            f.write("\n" + "-" * 80 + "\n")
+            
+            # Cari semua angka format X,Y atau X.Y di teks
+            if raw_text:
+                rating_candidates = re.findall(r"\b\d[.,]\d\b", raw_text)
+                f.write(f"ALL RATING CANDIDATES (X.Y / X,Y): {rating_candidates[:30]}\n")
+                
+                # Cari kata kunci penting
+                keywords = ["Sangat Bagus", "Mengesankan", "Luar Biasa", "Menyenangkan",
+                           "ulasan", "review", "rating", "Excellent", "Very Good",
+                           "blocked", "Access Denied", "denied", "captcha", "robot",
+                           "Cloudflare", "DataDome", "403", "Forbidden"]
+                f.write("KEYWORD FOUND:\n")
+                for kw in keywords:
+                    count = len(re.findall(re.escape(kw), raw_text, re.IGNORECASE))
+                    if count > 0:
+                        f.write(f"  - '{kw}': {count}x\n")
+            
+            if html_snippet:
+                f.write("\n" + "-" * 80 + "\n")
+                f.write("HTML SNIPPET (first 2000 chars):\n")
+                f.write(html_snippet[:2000])
+            
+            f.write("\n" + "=" * 80 + "\n\n")
+    except Exception as e:
+        print(f"     debug dump failed: {e}")
 
 
 def clean_number(text):
@@ -453,37 +503,21 @@ def parse_tripcom(text):
     }
 
 
-# ============================================================
-# v3.1 — parse_tiket (FIXED: angka SEBELUM label)
-# ============================================================
 def parse_tiket(text):
     rating = "N/A"
     reviews = "N/A"
 
     rating_patterns = [
-        # FORMAT 1: Eksplisit "X,Y/10" atau "X,Y / 10"
         r"\b(\d[.,]\d)\s*/\s*10\b",
-
-        # FORMAT 2 (KRITIS): Indonesia "<angka> <label>" — angka MUNCUL DULU
         r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan|Cukup\s+Bagus)\b",
-
-        # FORMAT 3 (KRITIS): English "<angka> <label>"
         r"\b(\d[.,]\d)\s+(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good|Fabulous|Superb)\b",
-
-        # FORMAT 4: JSON-LD structured data
         r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"rating"\s*:\s*"?(\d[.,]\d)"?',
         r'"score"\s*:\s*"?(\d[.,]\d)"?',
         r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
-
-        # FORMAT 5: Skala lama 1-5 (safety)
         r"\b(\d[.,]\d)\s*/\s*5\b",
-
-        # FORMAT 6: "Rating: X.Y"
         r"[Rr]ating[:\s]+(\d[.,]\d)",
-
-        # FORMAT 7 (LAST RESORT): label DIIKUTI angka
         r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)\b",
     ]
 
@@ -544,32 +578,20 @@ def parse_tiket(text):
     }
 
 
-# ============================================================
-# v3.1 — traveloka_extract_from_text (FIXED)
-# ============================================================
 def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
     rating_patterns = [
-        # FORMAT 1: "X,Y /10" — paling reliable di Traveloka
         r"\b(\d[.,]\d)\s*/\s*10\b",
-
-        # FORMAT 2 (KRITIS): "<angka> <label>" — angka DULU
         r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan)\b",
         r"\b(\d[.,]\d)\s+(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good|Fabulous|Superb)\b",
-
-        # FORMAT 3: JSON-LD
         r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"rating"\s*:\s*"?(\d[.,]\d)"?',
         r'"score"\s*:\s*"?(\d[.,]\d)"?',
         r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
-
-        # FORMAT 4: "X,Y dari 10"
         r"\b(\d[.,]\d)\s+dari\s+10\b",
-
-        # FORMAT 5 (LAST RESORT): label diikuti angka
         r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)\b",
     ]
 
@@ -586,7 +608,6 @@ def traveloka_extract_from_text(text):
         r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b",
     ]
 
-    # Strategy: Pakai pattern paling spesifik DULU (FORMAT 1-4)
     primary_rating = None
     for pattern in rating_patterns[:4]:
         match = re.search(pattern, text, re.IGNORECASE)
@@ -611,7 +632,6 @@ def traveloka_extract_from_text(text):
         if all_review_counts:
             reviews = str(max(all_review_counts))
     else:
-        # FALLBACK: proximity pairing
         rating_matches = []
         for pat in rating_patterns:
             for m in re.finditer(pat, text, re.IGNORECASE):
@@ -803,14 +823,28 @@ def fetch_traveloka_strong_background(playwright, url):
 
 def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, wait_ms=7000):
     last_error = None
+    last_text = ""
+    last_html = None
 
     for _ in range(MAX_RETRY):
         try:
             safe_goto(page, url, timeout=60000, wait_until="domcontentloaded")
             text = get_page_text(page, wait_ms)
+            last_text = text
+            
+            # v3.2: capture HTML untuk debug Tiket
+            if platform_name == "tiket":
+                try:
+                    last_html = page.content()
+                except Exception:
+                    pass
+            
             result = parser_func(text)
 
             if result.get("match_ok"):
+                # v3.2: dump debug walaupun sukses (untuk reference)
+                if platform_name == "tiket":
+                    debug_dump_tiket(hotel_name, url, text, last_html)
                 return result
 
             last_error = result.get("error_reason", "pattern_not_found")
@@ -819,6 +853,10 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
         except Exception as e:
             last_error = str(e)
             time.sleep(15)
+
+    # v3.2: dump debug saat gagal (ini yang penting!)
+    if platform_name == "tiket":
+        debug_dump_tiket(hotel_name, url, last_text, last_html)
 
     log_error(hotel_name, platform_name, last_error)
     return {
@@ -831,6 +869,13 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
 
 
 def main():
+    # v3.2: clear debug file di awal run supaya hanya berisi run terbaru
+    try:
+        with open(DEBUG_TIKET_FILE, "w", encoding="utf-8") as f:
+            f.write(f"# DEBUG TIKET LOG — Run started at {datetime.now()}\n\n")
+    except Exception:
+        pass
+
     previous_data = load_current_data()
     hotels_today = []
 
