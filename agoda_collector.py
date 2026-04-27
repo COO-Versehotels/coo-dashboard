@@ -10,12 +10,14 @@ HISTORY_FILE = "history.json"
 LOG_FILE = "error_log.txt"
 
 # ============================================================
-# v2 RETRY CONFIG — exponential backoff untuk handle network drops
+# v3.1 — Fix parse_tiket & traveloka_extract_from_text
+# Bug v3: Pattern "label diikuti angka" SALAH ARAH untuk format Indonesia.
+# Format aktual: "8,4 Sangat Bagus 3.028 ulasan" (angka DULU, baru label).
 # ============================================================
-MAX_RETRY = 3
-RETRY_DELAYS = [5, 15, 45]   # exponential backoff dalam detik
 
-# Kalau error network terjadi, tunggu lebih lama supaya WiFi/koneksi pulih
+MAX_RETRY = 3
+RETRY_DELAYS = [5, 15, 45]
+
 NETWORK_ERROR_PATTERNS = [
     "ERR_NETWORK_IO_SUSPENDED",
     "ERR_INTERNET_DISCONNECTED",
@@ -27,7 +29,6 @@ NETWORK_ERROR_PATTERNS = [
     "net::ERR_FAILED",
 ]
 
-# Hotel-level cooldown: kalau >=3 platform berturut error, jeda lama
 HOTEL_FAILURE_THRESHOLD = 3
 HOTEL_COOLDOWN_SECONDS = 30
 
@@ -275,23 +276,11 @@ def build_monthly_comparison(hotels_today, start_snapshot):
 
 
 def is_network_error(exc):
-    """Detect kalau exception ini network-related (bukan timeout pattern)."""
     err_str = str(exc)
     return any(pattern in err_str for pattern in NETWORK_ERROR_PATTERNS)
 
 
 def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
-    """
-    Navigate dengan exponential backoff retry.
-    
-    - Attempt 1: langsung
-    - Attempt 2: tunggu 5s lalu coba
-    - Attempt 3: tunggu 15s lalu coba
-    - Final attempt: tunggu 45s lalu coba (untuk network recovery)
-    
-    Network errors (ERR_NETWORK_IO_SUSPENDED dll) mendapat extra wait time
-    karena biasanya butuh waktu lebih lama untuk koneksi pulih.
-    """
     last_error = None
     for attempt in range(MAX_RETRY + 1):
         try:
@@ -303,19 +292,17 @@ def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
             last_error = e
             if attempt >= MAX_RETRY:
                 break
-            
-            # Pilih delay berdasarkan attempt
+
             delay = RETRY_DELAYS[min(attempt, len(RETRY_DELAYS) - 1)]
-            
-            # Kalau ini network error, double delay (recovery butuh waktu lebih)
+
             if is_network_error(e):
                 delay = delay * 2
                 print(f"        ⚠ network error, retrying in {delay}s (attempt {attempt + 1}/{MAX_RETRY})")
             else:
                 print(f"        ⚠ retry in {delay}s (attempt {attempt + 1}/{MAX_RETRY})")
-            
+
             time.sleep(delay)
-    
+
     raise last_error
 
 
@@ -466,29 +453,38 @@ def parse_tripcom(text):
     }
 
 
+# ============================================================
+# v3.1 — parse_tiket (FIXED: angka SEBELUM label)
+# ============================================================
 def parse_tiket(text):
     rating = "N/A"
     reviews = "N/A"
 
-    # v3 multi-pattern: handle berbagai format Tiket.com
     rating_patterns = [
-        # Specific: "8.4 / 10" or "4.2 / 5"
-        r"\b(\d[.,]\d)\s*/\s*5\b",
+        # FORMAT 1: Eksplisit "X,Y/10" atau "X,Y / 10"
         r"\b(\d[.,]\d)\s*/\s*10\b",
-        # Indonesian keywords
-        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)",
-        r"(\d[.,]\d)\s+(?:dari\s+)?(?:5|10)",
-        # English keywords
-        r"(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good)\s+(\d[.,]\d)",
-        # Generic: "Rating: 8.4"
-        r"[Rr]ating[:\s]+(\d[.,]\d)",
-        # JSON-LD variants
+
+        # FORMAT 2 (KRITIS): Indonesia "<angka> <label>" — angka MUNCUL DULU
+        r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan|Cukup\s+Bagus)\b",
+
+        # FORMAT 3 (KRITIS): English "<angka> <label>"
+        r"\b(\d[.,]\d)\s+(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good|Fabulous|Superb)\b",
+
+        # FORMAT 4: JSON-LD structured data
+        r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"rating"\s*:\s*"?(\d[.,]\d)"?',
         r'"score"\s*:\s*"?(\d[.,]\d)"?',
         r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
-        r'"ratingValue"\s*:\s*"?(\d[.,]\d)"?',
-        # Original v2 fallback
-        r"\b(\d[.,]\d)\s+Good\b",
+
+        # FORMAT 5: Skala lama 1-5 (safety)
+        r"\b(\d[.,]\d)\s*/\s*5\b",
+
+        # FORMAT 6: "Rating: X.Y"
+        r"[Rr]ating[:\s]+(\d[.,]\d)",
+
+        # FORMAT 7 (LAST RESORT): label DIIKUTI angka
+        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)\b",
     ]
 
     for pattern in rating_patterns:
@@ -504,34 +500,37 @@ def parse_tiket(text):
                 continue
 
     review_patterns = [
-        # English variants
-        r"\(([\d,\.]+)\s+reviews?\)",
-        r"\b([\d,\.]+)\s+reviews?\b",
-        r"\bfrom\s+([\d,\.]+)\s+reviews?\b",
-        r"\bbased\s+on\s+([\d,\.]+)\s+reviews?\b",
-        # Indonesian variants
         r"\(([\d,\.]+)\s+ulasan\)",
         r"\b([\d,\.]+)\s+ulasan\b",
         r"\bdari\s+([\d,\.]+)\s+ulasan\b",
         r"\bberdasarkan\s+([\d,\.]+)\s+ulasan\b",
-        # JSON-LD variants
+        r"\(([\d,\.]+)\s+reviews?\)",
+        r"\b([\d,\.]+)\s+reviews?\b",
+        r"\bfrom\s+([\d,\.]+)\s+reviews?\b",
+        r"\bbased\s+on\s+([\d,\.]+)\s+reviews?\b",
         r'"reviewCount"\s*:\s*"?(\d+)"?',
         r'"ratingCount"\s*:\s*"?(\d+)"?',
         r'"totalReviews"\s*:\s*"?(\d+)"?',
-        # Original v2 fallback
         r"\b([\d,\.]+)\s+review\b",
     ]
 
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            reviews = clean_number(match.group(1))
-            break
+            candidate = clean_number(match.group(1))
+            if is_valid_reviews(candidate, 10):
+                reviews = candidate
+                break
 
-    rating_ok = is_valid_rating(rating, 1, 5) or is_valid_rating(rating, 1, 10)
-    if rating != "N/A" and not rating_ok:
-        rating = "N/A"
-    if not is_valid_reviews(reviews, 5):
+    if rating != "N/A":
+        try:
+            val = float(rating)
+            if not (1.0 <= val <= 10.0):
+                rating = "N/A"
+        except (ValueError, TypeError):
+            rating = "N/A"
+
+    if not is_valid_reviews(reviews, 10):
         reviews = "N/A"
 
     match_ok = (rating != "N/A" and reviews != "N/A")
@@ -543,74 +542,106 @@ def parse_tiket(text):
         "match_ok": match_ok,
         "error_reason": None if match_ok else "tiket_pattern_not_found"
     }
+
+
+# ============================================================
+# v3.1 — traveloka_extract_from_text (FIXED)
+# ============================================================
 def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
-    # v3 multi-pattern: handle berbagai format Traveloka
-    # Strategy: cari semua kandidat rating + review, lalu pair yang paling dekat secara posisi
-    
     rating_patterns = [
-        # Original: "8.5/10"
+        # FORMAT 1: "X,Y /10" — paling reliable di Traveloka
         r"\b(\d[.,]\d)\s*/\s*10\b",
-        # Indonesian
-        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)",
-        r"(\d[.,]\d)\s+(?:dari\s+)?10",
-        # English
-        r"(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good)\s+(\d[.,]\d)",
-        # JSON-LD
+
+        # FORMAT 2 (KRITIS): "<angka> <label>" — angka DULU
+        r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan)\b",
+        r"\b(\d[.,]\d)\s+(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good|Fabulous|Superb)\b",
+
+        # FORMAT 3: JSON-LD
+        r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r'"rating"\s*:\s*"?(\d[.,]\d)"?',
         r'"score"\s*:\s*"?(\d[.,]\d)"?',
-        r'"ratingValue"\s*:\s*"?(\d[.,]\d)"?',
         r'"reviewScore"\s*:\s*"?(\d[.,]\d)"?',
+
+        # FORMAT 4: "X,Y dari 10"
+        r"\b(\d[.,]\d)\s+dari\s+10\b",
+
+        # FORMAT 5 (LAST RESORT): label diikuti angka
+        r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)\b",
     ]
-    
+
     review_patterns = [
-        # Original v2
-        r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b",
-        # Variants
+        r"\(([\d,\.]+)\s+ulasan\)",
+        r"\bDari\s+([\d,\.]+)\s+(?:ulasan|review|reviews)\b",
         r"\b([\d,\.]+)\s+ulasan\b",
         r"\b([\d,\.]+)\s+reviews?\b",
         r"\bdari\s+([\d,\.]+)\s+ulasan\b",
         r"\bbased\s+on\s+([\d,\.]+)\s+reviews?\b",
-        # JSON-LD
         r'"reviewCount"\s*:\s*"?(\d+)"?',
         r'"ratingCount"\s*:\s*"?(\d+)"?',
         r'"totalReviews"\s*:\s*"?(\d+)"?',
+        r"([\d\.,]+)\s+(?:ulasan|review|reviews)\b",
     ]
 
-    # Collect all rating matches across all patterns
-    rating_matches = []
-    for pat in rating_patterns:
-        for m in re.finditer(pat, text, re.IGNORECASE):
-            rating_matches.append(m)
-    
-    # Collect all review matches across all patterns
-    review_matches = []
-    for pat in review_patterns:
-        for m in re.finditer(pat, text, re.IGNORECASE):
-            review_matches.append(m)
+    # Strategy: Pakai pattern paling spesifik DULU (FORMAT 1-4)
+    primary_rating = None
+    for pattern in rating_patterns[:4]:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            candidate = clean_rating(match.group(1))
+            if is_valid_rating(candidate, 5, 10):
+                primary_rating = candidate
+                break
 
-    best_pair = None
-    best_distance = None
+    if primary_rating:
+        rating = primary_rating
+        all_review_counts = []
+        for pattern in review_patterns:
+            for m in re.finditer(pattern, text, re.IGNORECASE):
+                candidate = clean_number(m.group(1))
+                if is_valid_reviews(candidate, 50):
+                    try:
+                        all_review_counts.append(int(candidate))
+                    except (ValueError, TypeError):
+                        pass
 
-    for rm in rating_matches:
-        candidate_rating = clean_rating(rm.group(1))
-        if not is_valid_rating(candidate_rating, 5, 10):
-            continue
+        if all_review_counts:
+            reviews = str(max(all_review_counts))
+    else:
+        # FALLBACK: proximity pairing
+        rating_matches = []
+        for pat in rating_patterns:
+            for m in re.finditer(pat, text, re.IGNORECASE):
+                rating_matches.append(m)
 
-        for rv in review_matches:
-            candidate_reviews = clean_number(rv.group(1))
-            if not is_valid_reviews(candidate_reviews, 50):
+        review_matches = []
+        for pat in review_patterns:
+            for m in re.finditer(pat, text, re.IGNORECASE):
+                review_matches.append(m)
+
+        best_pair = None
+        best_distance = None
+
+        for rm in rating_matches:
+            candidate_rating = clean_rating(rm.group(1))
+            if not is_valid_rating(candidate_rating, 5, 10):
                 continue
 
-            distance = abs(rv.start() - rm.start())
-            if best_distance is None or distance < best_distance:
-                best_distance = distance
-                best_pair = (candidate_rating, candidate_reviews)
+            for rv in review_matches:
+                candidate_reviews = clean_number(rv.group(1))
+                if not is_valid_reviews(candidate_reviews, 50):
+                    continue
 
-    if best_pair:
-        rating, reviews = best_pair
+                distance = abs(rv.start() - rm.start())
+                if best_distance is None or distance < best_distance:
+                    best_distance = distance
+                    best_pair = (candidate_rating, candidate_reviews)
+
+        if best_pair:
+            rating, reviews = best_pair
 
     match_ok = (rating != "N/A" and reviews != "N/A")
 
@@ -621,6 +652,8 @@ def traveloka_extract_from_text(text):
         "match_ok": match_ok,
         "error_reason": None if match_ok else "traveloka_strong_pattern_not_found"
     }
+
+
 def collect_traveloka_text(page):
     collected = []
 
@@ -735,7 +768,7 @@ def fetch_traveloka_strong_background(playwright, url):
                 if result.get("match_ok"):
                     return result
 
-                time.sleep(15)  # network recovery delay
+                time.sleep(15)
 
             except Exception as e:
                 last_result = {
@@ -745,7 +778,7 @@ def fetch_traveloka_strong_background(playwright, url):
                     "match_ok": False,
                     "error_reason": f"traveloka_attempt_failed: {str(e)[:120]}"
                 }
-                time.sleep(15)  # network recovery delay
+                time.sleep(15)
 
         return last_result or {
             "rating": "N/A",
@@ -781,11 +814,11 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
                 return result
 
             last_error = result.get("error_reason", "pattern_not_found")
-            time.sleep(15)  # network recovery delay
+            time.sleep(15)
 
         except Exception as e:
             last_error = str(e)
-            time.sleep(15)  # network recovery delay
+            time.sleep(15)
 
     log_error(hotel_name, platform_name, last_error)
     return {
@@ -830,12 +863,11 @@ def main():
         for hotel_index, (hotel_name, sources) in enumerate(HOTELS.items()):
             print("Hotel:", hotel_name)
 
-            # Inter-hotel jeda kecil (3 detik) — biar tidak hammer OTA
             if hotel_index > 0:
                 time.sleep(3)
 
             hotel_record = {"name": hotel_name, "platforms": {}}
-            consecutive_failures = 0   # untuk deteksi network drop di hotel ini
+            consecutive_failures = 0
 
             platform_jobs = [
                 ("agoda", parse_agoda, 6000),
@@ -858,19 +890,16 @@ def main():
 
                 parsed = finalize_platform_result(hotel_name, platform_name, fresh, previous_data)
 
-                # Track consecutive failures untuk hotel ini
                 if parsed["status"] == "ERROR":
                     consecutive_failures += 1
-                    
-                    # Kalau >=3 platform berturut error, kemungkinan network mati total
-                    # Jeda 30 detik untuk kasih waktu network pulih
+
                     if consecutive_failures >= HOTEL_FAILURE_THRESHOLD:
                         print(f"     ⚠ {consecutive_failures} consecutive failures detected")
                         print(f"     ⏸ cooling down {HOTEL_COOLDOWN_SECONDS}s for network recovery...")
                         time.sleep(HOTEL_COOLDOWN_SECONDS)
-                        consecutive_failures = 0  # reset, kasih kesempatan platform berikut
+                        consecutive_failures = 0
                 else:
-                    consecutive_failures = 0  # reset counter kalau sukses
+                    consecutive_failures = 0
 
                 print("     rating:", parsed["rating"])
                 print("     reviews:", parsed["reviews"])
