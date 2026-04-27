@@ -1,13 +1,13 @@
-# DEBUG TIKET LOG — Run started at 2026-04-27 09:11:26.465509
+# DEBUG TIKET LOG — Run started at 2026-04-27 16:12:33.291613
 
 ================================================================================
-TIMESTAMP: 2026-04-27 09:13:06.744365
+TIMESTAMP: 2026-04-27 16:14:14.048592
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cb502dd0ad6cc Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f1de378fe8467 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -120,13 +120,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 09:15:38.108211
+TIMESTAMP: 2026-04-27 16:18:57.742755
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cb8b4c870d6cc Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f24d09a7c8467 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -239,13 +239,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 09:18:15.681655
+TIMESTAMP: 2026-04-27 16:23:41.499067
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cbc8dbc26d6cc Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f2bbe0d1c8467 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
@@ -358,13 +358,13 @@ HTML SNIPPET (first 2000 chars):
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-04-27 09:20:59.289727
+TIMESTAMP: 2026-04-27 16:28:25.610023
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
 RAW TEXT (first 3000 chars):
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2cc08c2cbcd6cc Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f2f32adc9478467 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 RAW TEXT (last 1500 chars):
 
