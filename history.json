@@ -781,6 +781,7 @@
     ]
   },
   {
+<<<<<<< HEAD
     "date": "2026-04-27",
     "hotels": [
       {
@@ -966,6 +967,8 @@
     ]
   },
   {
+=======
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
     "date": "2026-04-28",
     "hotels": [
       {
@@ -988,6 +991,7 @@
             "error_reason": null
           },
           "tripcom": {
+<<<<<<< HEAD
             "rating": "8.4",
             "reviews": "178",
             "ranking": null,
@@ -1001,6 +1005,21 @@
             "ranking": null,
             "status": "CACHED",
             "source_date": "2026-04-25",
+=======
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+            "error_reason": "tripcom_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "error_reason": "tiket_pattern_not_found"
           },
           "traveloka": {
@@ -1033,6 +1052,7 @@
             "error_reason": null
           },
           "tripcom": {
+<<<<<<< HEAD
             "rating": "7.3",
             "reviews": "184",
             "ranking": null,
@@ -1046,6 +1066,21 @@
             "ranking": null,
             "status": "CACHED",
             "source_date": "2026-04-25",
+=======
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+            "error_reason": "tripcom_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "error_reason": "tiket_pattern_not_found"
           },
           "traveloka": {
@@ -1063,7 +1098,11 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
+<<<<<<< HEAD
             "reviews": "6726",
+=======
+            "reviews": "6725",
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-28",
@@ -1078,6 +1117,7 @@
             "error_reason": null
           },
           "tripcom": {
+<<<<<<< HEAD
             "rating": "8.8",
             "reviews": "123",
             "ranking": null,
@@ -1091,6 +1131,21 @@
             "ranking": null,
             "status": "CACHED",
             "source_date": "2026-04-25",
+=======
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+            "error_reason": "tripcom_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "error_reason": "tiket_pattern_not_found"
           },
           "traveloka": {
@@ -1123,6 +1178,7 @@
             "error_reason": null
           },
           "tripcom": {
+<<<<<<< HEAD
             "rating": "8.4",
             "reviews": "109",
             "ranking": null,
@@ -1136,11 +1192,30 @@
             "ranking": null,
             "status": "CACHED",
             "source_date": "2026-04-25",
+=======
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+            "error_reason": "tripcom_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": null,
+            "status": "ERROR",
+            "source_date": null,
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "error_reason": "tiket_pattern_not_found"
           },
           "traveloka": {
             "rating": "7.8",
+<<<<<<< HEAD
             "reviews": "5618",
+=======
+            "reviews": "5617",
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-28",
@@ -1182,6 +1257,7 @@
           },
           "tiket": {
             "rating": "4.2",
+<<<<<<< HEAD
             "reviews": "3028",
             "ranking": null,
             "status": "CACHED",
@@ -1195,6 +1271,21 @@
             "status": "CACHED",
             "source_date": "2026-04-28",
             "error_reason": "traveloka_strong_pattern_not_found"
+=======
+            "reviews": "3029",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+          },
+          "traveloka": {
+            "rating": "8.3",
+            "reviews": "6471",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
           }
         }
       },
@@ -1227,11 +1318,19 @@
           },
           "tiket": {
             "rating": "4.2",
+<<<<<<< HEAD
             "reviews": "5161",
             "ranking": null,
             "status": "CACHED",
             "source_date": "2026-04-25",
             "error_reason": "tiket_pattern_not_found"
+=======
+            "reviews": "5164",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
           },
           "traveloka": {
             "rating": "8.1",
@@ -1248,7 +1347,11 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
+<<<<<<< HEAD
             "reviews": "6728",
+=======
+            "reviews": "6729",
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-29",
@@ -1274,17 +1377,29 @@
             "rating": "3.9",
             "reviews": "2249",
             "ranking": null,
+<<<<<<< HEAD
             "status": "CACHED",
             "source_date": "2026-04-25",
             "error_reason": "tiket_pattern_not_found"
+=======
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
           },
           "traveloka": {
             "rating": "7.8",
             "reviews": "9379",
             "ranking": null,
+<<<<<<< HEAD
             "status": "CACHED",
             "source_date": "2026-04-28",
             "error_reason": "traveloka_strong_pattern_not_found"
+=======
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
           }
         }
       },
@@ -1293,7 +1408,11 @@
         "platforms": {
           "agoda": {
             "rating": "7.7",
+<<<<<<< HEAD
             "reviews": "4428",
+=======
+            "reviews": "4431",
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-29",
@@ -1317,6 +1436,7 @@
           },
           "tiket": {
             "rating": "3.9",
+<<<<<<< HEAD
             "reviews": "2175",
             "ranking": null,
             "status": "CACHED",
@@ -1326,6 +1446,17 @@
           "traveloka": {
             "rating": "7.8",
             "reviews": "5624",
+=======
+            "reviews": "2176",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-29",
+            "error_reason": null
+          },
+          "traveloka": {
+            "rating": "7.9",
+            "reviews": "5625",
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-04-29",

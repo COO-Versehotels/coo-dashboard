@@ -8,6 +8,7 @@ from datetime import datetime
 DATA_FILE = "data.json"
 HISTORY_FILE = "history.json"
 LOG_FILE = "error_log.txt"
+<<<<<<< HEAD
 DEBUG_TIKET_FILE = "debug_tiket.txt"   # v3.2: dump teks Tiket untuk analisa
 
 # ============================================================
@@ -31,34 +32,41 @@ NETWORK_ERROR_PATTERNS = [
 
 HOTEL_FAILURE_THRESHOLD = 3
 HOTEL_COOLDOWN_SECONDS = 30
+=======
+DEBUG_TIKET_FILE = "debug_tiket.txt"
+DEBUG_TRIP_FILE = "debug_trip.txt"
+
+MAX_RETRY = 3
+RETRY_DELAY_SECONDS = 6
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
 HOTELS = {
     "Verse Lite Gajah Mada": {
         "agoda": "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-3000010028056",
-        "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/?locale=en-ID&allianceid=14901&sid=1621541&ppcid=ckid-_adid-_akid-_adgid-&utm_source=google&utm_medium=cpc&utm_campaign=15838633181&gad_source=1&gad_campaignid=20414003930&gbraid=0AAAAABn2eFLKWLrN2-2WPDMNEjxdpOATE&gclid=Cj0KCQjw-pHPBhCdARIsAHXYWP8-IxMMwEn7v8dBYOar8l3aD7U3YLMJyawc4tgI_wy5cJr2nbOkf4saArAdEALw_wcB",
+        "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/",
         "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
     },
     "Verse Luxe Wahid Hasyim": {
         "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-3000010036666",
-        "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/?locale=en-ID&allianceid=14901&sid=1621541&ppcid=ckid-_adid-_akid-_adgid-&utm_source=google&utm_medium=cpc&utm_campaign=15838633181&gad_source=1&gad_campaignid=20414003930&gbraid=0AAAAABn2eFLKWLrN2-2WPDMNEjxdpOATE&gclid=Cj0KCQjw-pHPBhCdARIsAHXYWP_SdUWp5jWpmisfXUGOgiURDpGP3pNiAMnCtMdhO_zZ7xD3ArQc47EaAv41EALw_wcB",
+        "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/",
         "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
     },
     "Verse Cirebon": {
         "agoda": "https://www.agoda.com/verse-hotel-cirebon/reviews/cirebon-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-cirebon.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-hotel-cirebon-3000010015654",
-        "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1",
+        "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/",
         "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
     },
     "Oak Tree Mahakam Blok M": {
         "agoda": "https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/oak-tree-urban-hotel-jakarta-461895",
-        "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/?locale=en-ID&allianceid=14901&sid=4232505&ppcid=adid-794102872705_akid-dsa-1465719063011_adgid-191379360665&utm_source=google&utm_medium=cpc&utm_campaign=23491399628&gad_source=1",
+        "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/",
         "tiket": "https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
     }
 }
@@ -74,6 +82,7 @@ def log_error(hotel_name, platform_name, message):
         pass
 
 
+<<<<<<< HEAD
 # ============================================================
 # v3.2 — Debug logging untuk Tiket
 # ============================================================
@@ -122,6 +131,25 @@ def debug_dump_tiket(hotel_name, url, raw_text, html_snippet=None):
             f.write("\n" + "=" * 80 + "\n\n")
     except Exception as e:
         print(f"     debug dump failed: {e}")
+=======
+def debug_write(path, hotel_name, url, text, html=""):
+    try:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write("=" * 80 + "\n")
+            f.write(f"TIME: {datetime.now()}\n")
+            f.write(f"HOTEL: {hotel_name}\n")
+            f.write(f"URL: {url}\n")
+            f.write(f"TEXT LENGTH: {len(text or '')}\n")
+            f.write("-" * 80 + "\n")
+            f.write((text or "(EMPTY)")[:7000])
+            f.write("\n" + "-" * 80 + "\n")
+            if html:
+                f.write("HTML SNIPPET:\n")
+                f.write(html[:2500])
+            f.write("\n\n")
+    except Exception:
+        pass
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
 
 def clean_number(text):
@@ -142,7 +170,7 @@ def clean_rating(text):
 def normalize_text(text):
     if not text:
         return ""
-    return re.sub(r"\s+", " ", text).strip()
+    return re.sub(r"\s+", " ", str(text)).strip()
 
 
 def is_valid_rating(value, minimum, maximum):
@@ -190,34 +218,6 @@ def load_current_data():
     return load_json_file(DATA_FILE, {})
 
 
-def save_history_snapshot(history, hotels_data):
-    today = datetime.now().strftime("%Y-%m-%d")
-    snapshot = {"date": today, "hotels": hotels_data}
-
-    replaced = False
-    for i, item in enumerate(history):
-        if item.get("date") == today:
-            history[i] = snapshot
-            replaced = True
-            break
-
-    if not replaced:
-        history.append(snapshot)
-
-    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2, ensure_ascii=False)
-
-
-def get_start_of_month_snapshot(history):
-    now = datetime.now()
-    month_prefix = now.strftime("%Y-%m-")
-    month_data = [x for x in history if x.get("date", "").startswith(month_prefix)]
-    if not month_data:
-        return None
-    month_data.sort(key=lambda x: x["date"])
-    return month_data[0]
-
-
 def get_last_valid_platform(previous_data, hotel_name, platform_name):
     try:
         for hotel in previous_data.get("hotels", []):
@@ -235,7 +235,7 @@ def get_last_valid_platform(previous_data, hotel_name, platform_name):
 
 def finalize_platform_result(hotel_name, platform_name, fresh_data, previous_data):
     today = datetime.now().strftime("%Y-%m-%d")
-    has_fresh = (fresh_data.get("rating") != "N/A" or fresh_data.get("reviews") != "N/A")
+    has_fresh = fresh_data.get("rating") != "N/A" and fresh_data.get("reviews") != "N/A"
     match_ok = fresh_data.get("match_ok", False)
     error_reason = fresh_data.get("error_reason")
 
@@ -265,11 +265,39 @@ def finalize_platform_result(hotel_name, platform_name, fresh_data, previous_dat
     return make_result(
         rating="N/A",
         reviews="N/A",
-        ranking=fresh_data.get("ranking"),
+        ranking=None,
         status="ERROR",
         source_date=None,
         error_reason=error_reason or "selector_mismatch"
     )
+
+
+def save_history_snapshot(history, hotels_data):
+    today = datetime.now().strftime("%Y-%m-%d")
+    snapshot = {"date": today, "hotels": hotels_data}
+
+    replaced = False
+    for i, item in enumerate(history):
+        if item.get("date") == today:
+            history[i] = snapshot
+            replaced = True
+            break
+
+    if not replaced:
+        history.append(snapshot)
+
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+
+
+def get_start_of_month_snapshot(history):
+    now = datetime.now()
+    month_prefix = now.strftime("%Y-%m-")
+    month_data = [x for x in history if x.get("date", "").startswith(month_prefix)]
+    if not month_data:
+        return None
+    month_data.sort(key=lambda x: x["date"])
+    return month_data[0]
 
 
 def build_monthly_comparison(hotels_today, start_snapshot):
@@ -306,14 +334,6 @@ def build_monthly_comparison(hotels_today, start_snapshot):
                 except Exception:
                     review_change = None
 
-                try:
-                    current_rank_match = re.search(r"#(\d+)", str(current_values.get("ranking", "")))
-                    start_rank_match = re.search(r"#(\d+)", str(start_values.get("ranking", "")))
-                    if current_rank_match and start_rank_match:
-                        ranking_change = int(start_rank_match.group(1)) - int(current_rank_match.group(1))
-                except Exception:
-                    ranking_change = None
-
             hotel["comparison"]["platforms"][platform_name] = {
                 "rating_change": rating_change,
                 "review_change": review_change,
@@ -325,21 +345,24 @@ def build_monthly_comparison(hotels_today, start_snapshot):
     return final_hotels
 
 
+<<<<<<< HEAD
 def is_network_error(exc):
     err_str = str(exc)
     return any(pattern in err_str for pattern in NETWORK_ERROR_PATTERNS)
 
 
 def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
+=======
+def safe_goto(page, url, timeout=80000, wait_until="domcontentloaded"):
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
     last_error = None
-    for attempt in range(MAX_RETRY + 1):
+    for attempt in range(1, MAX_RETRY + 1):
         try:
             page.goto(url, timeout=timeout, wait_until=wait_until)
-            if attempt > 0:
-                print(f"        ✓ recovered after {attempt} retry")
             return True
         except Exception as e:
             last_error = e
+<<<<<<< HEAD
             if attempt >= MAX_RETRY:
                 break
 
@@ -353,6 +376,9 @@ def safe_goto(page, url, timeout=60000, wait_until="domcontentloaded"):
 
             time.sleep(delay)
 
+=======
+            time.sleep(RETRY_DELAY_SECONDS * attempt)
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
     raise last_error
 
 
@@ -377,23 +403,18 @@ def parse_agoda(text):
     rating = "N/A"
     reviews = "N/A"
 
-    rating_match = re.search(r"\b(\d\.\d)\b", text)
+    rating_match = re.search(r"\b(\d[.,]\d)\b", text)
     if rating_match:
-        rating = rating_match.group(1)
+        rating = clean_rating(rating_match.group(1))
 
     review_match = re.search(r"([\d,\.]+)\s+reviews", text, re.IGNORECASE)
     if review_match:
         reviews = clean_number(review_match.group(1))
 
-    if not is_valid_rating(rating, 1, 10):
-        rating = "N/A"
-    if not is_valid_reviews(reviews):
-        reviews = "N/A"
-
-    ok = (rating != "N/A" and reviews != "N/A")
+    ok = is_valid_rating(rating, 1, 10) and is_valid_reviews(reviews, 1)
     return {
-        "rating": rating,
-        "reviews": reviews,
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
         "ranking": None,
         "match_ok": ok,
         "error_reason": None if ok else "agoda_pattern_not_found"
@@ -405,9 +426,9 @@ def parse_booking(text):
     reviews = "N/A"
 
     rating_patterns = [
-        r"Scored\s+(\d\.\d)",
-        r"(\d\.\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
-        r"(\d\.\d)\s*/\s*10",
+        r"Scored\s+(\d[.,]\d)",
+        r"\b(\d[.,]\d)\s*/\s*10\b",
+        r"\b(\d[.,]\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
     ]
 
     for pattern in rating_patterns:
@@ -416,13 +437,6 @@ def parse_booking(text):
             candidate = clean_rating(match.group(1))
             if is_valid_rating(candidate, 1, 10):
                 rating = candidate
-                break
-
-    if rating == "N/A":
-        candidates = re.findall(r"\b(\d\.\d)\b", text)
-        for c in candidates:
-            if is_valid_rating(c, 5, 10):
-                rating = c
                 break
 
     review_patterns = [
@@ -441,15 +455,10 @@ def parse_booking(text):
                 reviews = candidate
                 break
 
-    if not is_valid_rating(rating, 1, 10):
-        rating = "N/A"
-    if not is_valid_reviews(reviews, 5):
-        reviews = "N/A"
-
-    ok = (rating != "N/A" and reviews != "N/A")
+    ok = is_valid_rating(rating, 1, 10) and is_valid_reviews(reviews, 5)
     return {
-        "rating": rating,
-        "reviews": reviews,
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
         "ranking": None,
         "match_ok": ok,
         "error_reason": None if ok else "booking_pattern_not_found"
@@ -460,55 +469,163 @@ def parse_tripcom(text):
     rating = "N/A"
     reviews = "N/A"
 
-    rating_patterns = [
-        r"\b(\d[.,]\d)\s*/\s*10\b",
-        r"\b(\d[.,]\d)\s*/\s*5\b",
-        r"\b(\d[.,]\d)\s*out of 5\b",
-        r"\b(\d[.,]\d)\s+Very good\b",
-        r"\b(\d[.,]\d)\s+Excellent\b",
+    focused_text = text
+
+    focus_markers = [
+        "Ulasan Tamu",
+        "Ulasan tamu",
+        "Guest Reviews",
+        "Guest reviews",
+        "Hotel Reviews",
+        "Reviews",
+        "review.html"
     ]
 
-    for pattern in rating_patterns:
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            rating = clean_rating(match.group(1))
-            break
+    focus_slices = []
+    for marker in focus_markers:
+        idx = focused_text.lower().find(marker.lower())
+        if idx >= 0:
+            focus_slices.append(focused_text[idx:idx + 2200])
 
-    review_patterns = [
-        r"\bAll\s+([\d,\.]+)\s+reviews\b",
-        r"\b([\d,\.]+)\s+reviews\b",
-        r"\b([\d,\.]+)\s+review\b",
+    focus_slices.append(focused_text[:5000])
+
+    strict_patterns = [
+        r"(?:Ulasan\s+Tamu|Guest\s+Reviews?|Hotel\s+Reviews?|Reviews?)\D{0,300}(\d[.,]\d)\s*/\s*10\D{0,600}([\d,\.]+)\s+(?:ulasan|reviews?)",
+        r"(\d[.,]\d)\s*/\s*10\D{0,500}([\d,\.]+)\s+(?:ulasan|reviews?)",
+        r"(\d[.,]\d)\s+(?:Luar\s+Biasa|Sangat\s+Baik|Mengesankan|Baik|Excellent|Very\s+Good|Wonderful|Good|Fabulous|Superb)\D{0,500}([\d,\.]+)\s+(?:ulasan|reviews?)",
     ]
 
-    for pattern in review_patterns:
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            reviews = clean_number(match.group(1))
+    for chunk in focus_slices:
+        for pattern in strict_patterns:
+            match = re.search(pattern, chunk, re.IGNORECASE | re.DOTALL)
+            if match:
+                candidate_rating = clean_rating(match.group(1))
+                candidate_reviews = clean_number(match.group(2))
+
+                # Trip.com hotel score should be on 10-scale and normally not below 6 for these hotels.
+                # This prevents random numbers such as 1.9 / 3.5 / 4.8 from page distance/location blocks.
+                if is_valid_rating(candidate_rating, 6, 10) and is_valid_reviews(candidate_reviews, 5):
+                    rating = candidate_rating
+                    reviews = candidate_reviews
+                    break
+        if rating != "N/A":
             break
 
-    rating_ok = is_valid_rating(rating, 1, 10) or is_valid_rating(rating, 1, 5)
-    if rating != "N/A" and not rating_ok:
-        rating = "N/A"
-    if not is_valid_reviews(reviews, 5):
-        reviews = "N/A"
+    if rating == "N/A" or reviews == "N/A":
+        # Fallback: find all /10 candidates, choose the first realistic hotel score.
+        rating_candidates = []
+        for m in re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", focused_text, re.IGNORECASE):
+            candidate = clean_rating(m.group(1))
+            if is_valid_rating(candidate, 6, 10):
+                rating_candidates.append((m.start(), candidate))
 
-    match_ok = (rating != "N/A" and reviews != "N/A")
+        review_candidates = []
+        for m in re.finditer(r"\b([\d,\.]+)\s+(?:ulasan|reviews?)\b", focused_text, re.IGNORECASE):
+            candidate = clean_number(m.group(1))
+            if is_valid_reviews(candidate, 5):
+                review_candidates.append((m.start(), candidate))
 
+        best_pair = None
+        best_distance = None
+        for rs, rv in rating_candidates:
+            for vs, vv in review_candidates:
+                dist = abs(vs - rs)
+                if dist < 900:
+                    if best_distance is None or dist < best_distance:
+                        best_distance = dist
+                        best_pair = (rv, vv)
+
+        if best_pair:
+            rating, reviews = best_pair
+
+    ok = is_valid_rating(rating, 6, 10) and is_valid_reviews(reviews, 5)
     return {
-        "rating": rating,
-        "reviews": reviews,
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
         "ranking": None,
-        "match_ok": match_ok,
-        "error_reason": None if match_ok else "tripcom_pattern_not_found"
+        "match_ok": ok,
+        "error_reason": None if ok else "tripcom_pattern_not_found"
     }
 
 
 def parse_tiket(text):
+    if re.search(r"Robot atau manusia|Centang kotak|Ray ID|captcha|Cloudflare|Access Denied|Forbidden", text, re.IGNORECASE):
+        return {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": None,
+            "match_ok": False,
+            "error_reason": "tiket_bot_challenge"
+        }
+
+    rating = "N/A"
+    reviews = "N/A"
+
+    combined_patterns = [
+        r"Review\s+Lihat\s+semua\s+(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
+        r"(\d[.,]\d)\s*/\s*5\s*(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan)?\s*Dari\s+([\d,\.]+)\s+review",
+        r"(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
+        r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+review",
+        r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+ulasan",
+    ]
+
+    for pattern in combined_patterns:
+        match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
+        if match:
+            candidate_rating = clean_rating(match.group(1))
+            candidate_reviews = clean_number(match.group(2))
+            if is_valid_rating(candidate_rating, 1, 5) and is_valid_reviews(candidate_reviews, 10):
+                rating = candidate_rating
+                reviews = candidate_reviews
+                break
+
+    if rating == "N/A":
+        rating_patterns = [
+            r"\b(\d[.,]\d)\s*/\s*5\b",
+            r"\b(\d[.,]\d)\s+(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan|Cukup\s+Bagus)\b",
+            r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        ]
+        for pattern in rating_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                candidate = clean_rating(match.group(1))
+                if is_valid_rating(candidate, 1, 5):
+                    rating = candidate
+                    break
+
+    if reviews == "N/A":
+        review_patterns = [
+            r"\bDari\s+([\d,\.]+)\s+review\b",
+            r"\bDari\s+([\d,\.]+)\s+ulasan\b",
+            r"\b([\d,\.]+)\s+review\b",
+            r"\b([\d,\.]+)\s+ulasan\b",
+            r'"reviewCount"\s*:\s*"?(\d+)"?',
+        ]
+        for pattern in review_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                candidate = clean_number(match.group(1))
+                if is_valid_reviews(candidate, 10):
+                    reviews = candidate
+                    break
+
+    ok = is_valid_rating(rating, 1, 5) and is_valid_reviews(reviews, 10)
+    return {
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
+        "ranking": None,
+        "match_ok": ok,
+        "error_reason": None if ok else "tiket_pattern_not_found"
+    }
+
+
+def traveloka_extract_from_text(text):
     rating = "N/A"
     reviews = "N/A"
 
     rating_patterns = [
         r"\b(\d[.,]\d)\s*/\s*10\b",
+<<<<<<< HEAD
         r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan|Cukup\s+Bagus)\b",
         r"\b(\d[.,]\d)\s+(?:Excellent|Very\s+Good|Wonderful|Pleasant|Good|Fabulous|Superb)\b",
         r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
@@ -519,21 +636,23 @@ def parse_tiket(text):
         r"\b(\d[.,]\d)\s*/\s*5\b",
         r"[Rr]ating[:\s]+(\d[.,]\d)",
         r"(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan)\s+(\d[.,]\d)\b",
+=======
+        r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan)\b",
+        r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
     ]
 
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             candidate = clean_rating(match.group(1))
-            try:
-                val = float(candidate)
-                if 1.0 <= val <= 10.0:
-                    rating = candidate
-                    break
-            except (ValueError, TypeError):
-                continue
+            if is_valid_rating(candidate, 5, 10):
+                rating = candidate
+                break
 
     review_patterns = [
+<<<<<<< HEAD
         r"\(([\d,\.]+)\s+ulasan\)",
         r"\b([\d,\.]+)\s+ulasan\b",
         r"\bdari\s+([\d,\.]+)\s+ulasan\b",
@@ -546,9 +665,19 @@ def parse_tiket(text):
         r'"ratingCount"\s*:\s*"?(\d+)"?',
         r'"totalReviews"\s*:\s*"?(\d+)"?',
         r"\b([\d,\.]+)\s+review\b",
+=======
+        r"\bDari\s+([\d,\.]+)\s+(?:ulasan|review|reviews)\b",
+        r"\b([\d,\.]+)\s+ulasan\b",
+        r"\b([\d,\.]+)\s+reviews?\b",
+        r'"reviewCount"\s*:\s*"?(\d+)"?',
+        r'"ratingCount"\s*:\s*"?(\d+)"?',
+        r'"totalReviews"\s*:\s*"?(\d+)"?',
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
     ]
 
+    review_candidates = []
     for pattern in review_patterns:
+<<<<<<< HEAD
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             candidate = clean_number(match.group(1))
@@ -568,14 +697,28 @@ def parse_tiket(text):
         reviews = "N/A"
 
     match_ok = (rating != "N/A" and reviews != "N/A")
+=======
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            candidate = clean_number(match.group(1))
+            if is_valid_reviews(candidate, 50):
+                try:
+                    review_candidates.append(int(candidate))
+                except Exception:
+                    pass
 
+    if review_candidates:
+        reviews = str(max(review_candidates))
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
+
+    ok = is_valid_rating(rating, 5, 10) and is_valid_reviews(reviews, 50)
     return {
-        "rating": rating,
-        "reviews": reviews,
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
         "ranking": None,
-        "match_ok": match_ok,
-        "error_reason": None if match_ok else "tiket_pattern_not_found"
+        "match_ok": ok,
+        "error_reason": None if ok else "traveloka_strong_pattern_not_found"
     }
+<<<<<<< HEAD
 
 
 def traveloka_extract_from_text(text):
@@ -674,6 +817,10 @@ def traveloka_extract_from_text(text):
     }
 
 
+=======
+
+
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 def collect_traveloka_text(page):
     collected = []
 
@@ -688,79 +835,54 @@ def collect_traveloka_text(page):
 
     grab(3000)
 
-    for pos in [500, 1000, 1500, 2200, 3000, 3800, 4600]:
+    for pos in [500, 1000, 1500, 2200, 3000, 3800, 4600, 5600]:
         try:
             page.evaluate(f"window.scrollTo(0, {pos})")
             grab(1800)
         except Exception:
             pass
 
-    review_selectors = [
-        'text="Review"',
-        'a:has-text("Review")',
-        'button:has-text("Review")',
-        '[role="tab"]:has-text("Review")'
-    ]
-
-    for selector in review_selectors:
-        try:
-            page.locator(selector).first.click(timeout=2000)
-            grab(4000)
-            for pos in [500, 1000, 1500, 2200, 3000]:
-                try:
-                    page.evaluate(f"window.scrollTo(0, {pos})")
-                    grab(1500)
-                except Exception:
-                    pass
-            break
-        except Exception:
-            pass
-
     try:
         html = page.content()
         plain = re.sub(r"<[^>]+>", " ", html)
-        plain = normalize_text(plain)
-        if plain:
-            collected.append(plain)
+        collected.append(normalize_text(plain))
     except Exception:
         pass
 
     return normalize_text(" ".join(collected))
 
 
-def fetch_traveloka_strong_background(playwright, url):
+def fetch_traveloka(playwright, url):
     browser = None
     context = None
-
     try:
-        browser = playwright.chromium.launch(
-            headless=True,
-            args=[
-                "--disable-blink-features=AutomationControlled",
-                "--disable-dev-shm-usage",
-                "--no-sandbox",
-                "--disable-gpu",
-                "--disable-extensions"
-            ]
-        )
-
+        browser = playwright.chromium.launch(headless=True, args=[
+            "--disable-blink-features=AutomationControlled",
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+            "--disable-gpu",
+            "--disable-extensions"
+        ])
         context = browser.new_context(
             locale="id-ID",
             viewport={"width": 1440, "height": 1200},
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            )
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
         )
-
         page = context.new_page()
-        page.set_extra_http_headers({
-            "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"
-        })
+        page.set_extra_http_headers({"Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
 
-        last_result = None
+        last = None
+        for _ in range(MAX_RETRY):
+            safe_goto(page, url, timeout=90000)
+            page.wait_for_timeout(8000)
+            text = collect_traveloka_text(page)
+            result = traveloka_extract_from_text(text)
+            last = result
+            if result.get("match_ok"):
+                return result
+            time.sleep(10)
 
+<<<<<<< HEAD
         for attempt in range(1, MAX_RETRY + 1):
             try:
                 safe_goto(page, url, timeout=90000, wait_until="domcontentloaded")
@@ -801,20 +923,28 @@ def fetch_traveloka_strong_background(playwright, url):
                 time.sleep(15)
 
         return last_result or {
+=======
+        return last or {
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             "rating": "N/A",
             "reviews": "N/A",
             "ranking": None,
             "match_ok": False,
-            "error_reason": "traveloka_strong_failed"
+            "error_reason": "traveloka_failed"
         }
 
+    except Exception as e:
+        return {
+            "rating": "N/A",
+            "reviews": "N/A",
+            "ranking": None,
+            "match_ok": False,
+            "error_reason": f"traveloka_error: {str(e)[:80]}"
+        }
     finally:
         try:
             if context:
                 context.close()
-        except Exception:
-            pass
-        try:
             if browser:
                 browser.close()
         except Exception:
@@ -824,13 +954,18 @@ def fetch_traveloka_strong_background(playwright, url):
 def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, wait_ms=7000):
     last_error = None
     last_text = ""
+<<<<<<< HEAD
     last_html = None
+=======
+    last_html = ""
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
     for _ in range(MAX_RETRY):
         try:
-            safe_goto(page, url, timeout=60000, wait_until="domcontentloaded")
+            safe_goto(page, url, timeout=80000)
             text = get_page_text(page, wait_ms)
             last_text = text
+<<<<<<< HEAD
             
             # v3.2: capture HTML untuk debug Tiket
             if platform_name == "tiket":
@@ -839,6 +974,20 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
                 except Exception:
                     pass
             
+=======
+
+            try:
+                last_html = page.content()
+            except Exception:
+                last_html = ""
+
+            if platform_name == "tiket":
+                debug_write(DEBUG_TIKET_FILE, hotel_name, url, text, last_html)
+
+            if platform_name == "tripcom":
+                debug_write(DEBUG_TRIP_FILE, hotel_name, url, text, last_html)
+
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
             result = parser_func(text)
 
             if result.get("match_ok"):
@@ -848,6 +997,7 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
                 return result
 
             last_error = result.get("error_reason", "pattern_not_found")
+<<<<<<< HEAD
             time.sleep(15)
 
         except Exception as e:
@@ -857,6 +1007,19 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
     # v3.2: dump debug saat gagal (ini yang penting!)
     if platform_name == "tiket":
         debug_dump_tiket(hotel_name, url, last_text, last_html)
+=======
+            time.sleep(10)
+
+        except Exception as e:
+            last_error = str(e)
+            time.sleep(10)
+
+    if platform_name == "tiket":
+        debug_write(DEBUG_TIKET_FILE, hotel_name, url, last_text, last_html)
+
+    if platform_name == "tripcom":
+        debug_write(DEBUG_TRIP_FILE, hotel_name, url, last_text, last_html)
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
     log_error(hotel_name, platform_name, last_error)
     return {
@@ -869,56 +1032,60 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
 
 
 def main():
+<<<<<<< HEAD
     # v3.2: clear debug file di awal run supaya hanya berisi run terbaru
     try:
         with open(DEBUG_TIKET_FILE, "w", encoding="utf-8") as f:
             f.write(f"# DEBUG TIKET LOG — Run started at {datetime.now()}\n\n")
     except Exception:
         pass
+=======
+    for file in [DEBUG_TIKET_FILE, DEBUG_TRIP_FILE]:
+        try:
+            with open(file, "w", encoding="utf-8") as f:
+                f.write(f"# DEBUG LOG — {datetime.now()}\n\n")
+        except Exception:
+            pass
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
     previous_data = load_current_data()
     hotels_today = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=[
-                "--disable-blink-features=AutomationControlled",
-                "--disable-dev-shm-usage",
-                "--no-sandbox",
-                "--disable-gpu"
-            ]
-        )
+        browser = p.chromium.launch(headless=True, args=[
+            "--disable-blink-features=AutomationControlled",
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+            "--disable-gpu"
+        ])
 
         context = browser.new_context(
             locale="en-US",
             viewport={"width": 1440, "height": 900},
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/124.0.0.0 Safari/537.36"
-            )
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
         )
 
         page = context.new_page()
-        page.set_extra_http_headers({
-            "Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"
-        })
+        page.set_extra_http_headers({"Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"})
 
-        for hotel_index, (hotel_name, sources) in enumerate(HOTELS.items()):
+        for hotel_name, sources in HOTELS.items():
             print("Hotel:", hotel_name)
+<<<<<<< HEAD
 
             if hotel_index > 0:
                 time.sleep(3)
 
             hotel_record = {"name": hotel_name, "platforms": {}}
             consecutive_failures = 0
+=======
+            hotel_record = {"name": hotel_name, "platforms": {}}
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
 
             platform_jobs = [
                 ("agoda", parse_agoda, 6000),
                 ("booking", parse_booking, 9000),
-                ("tripcom", parse_tripcom, 9000),
-                ("tiket", parse_tiket, 9000),
+                ("tripcom", parse_tripcom, 12000),
+                ("tiket", parse_tiket, 12000),
             ]
 
             for platform_name, parser_func, wait_ms in platform_jobs:
@@ -935,6 +1102,7 @@ def main():
 
                 parsed = finalize_platform_result(hotel_name, platform_name, fresh, previous_data)
 
+<<<<<<< HEAD
                 if parsed["status"] == "ERROR":
                     consecutive_failures += 1
 
@@ -946,6 +1114,8 @@ def main():
                 else:
                     consecutive_failures = 0
 
+=======
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
                 print("     rating:", parsed["rating"])
                 print("     reviews:", parsed["reviews"])
                 print("     status:", parsed["status"])
@@ -955,18 +1125,7 @@ def main():
                 hotel_record["platforms"][platform_name] = parsed
 
             print("  traveloka")
-            try:
-                fresh = fetch_traveloka_strong_background(p, sources["traveloka"])
-            except Exception as e:
-                log_error(hotel_name, "traveloka", str(e))
-                fresh = {
-                    "rating": "N/A",
-                    "reviews": "N/A",
-                    "ranking": None,
-                    "match_ok": False,
-                    "error_reason": "traveloka_page_load_failed"
-                }
-
+            fresh = fetch_traveloka(p, sources["traveloka"])
             parsed = finalize_platform_result(hotel_name, "traveloka", fresh, previous_data)
 
             print("     rating:", parsed["rating"])

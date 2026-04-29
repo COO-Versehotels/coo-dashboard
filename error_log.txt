@@ -80,6 +80,7 @@
 2026-04-26 00:53:30.768500 | Oak Tree Mahakam Blok M | tiket | tiket_pattern_not_found
 2026-04-26 00:53:30.768613 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_pattern_not_found
 2026-04-26 00:56:30.515054 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+<<<<<<< HEAD
 2026-04-26 02:27:19.046532 | Verse Lite Gajah Mada | tiket | tiket_pattern_not_found
 2026-04-26 02:27:19.046641 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_pattern_not_found
 2026-04-26 02:30:19.323217 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
@@ -251,3 +252,22 @@
 2026-04-29 07:27:56.381655 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
 2026-04-29 07:29:40.705988 | Oak Tree Mahakam Blok M | tiket | tiket_pattern_not_found
 2026-04-29 07:29:40.706045 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_pattern_not_found
+=======
+2026-04-28 22:16:28.206001 | Verse Lite Gajah Mada | tripcom | tripcom_pattern_not_found
+2026-04-28 22:16:28.206918 | Verse Lite Gajah Mada | tripcom | ERROR_NO_CACHE: tripcom_pattern_not_found
+2026-04-28 22:17:44.999492 | Verse Lite Gajah Mada | tiket | tiket_pattern_not_found
+2026-04-28 22:17:44.999857 | Verse Lite Gajah Mada | tiket | ERROR_NO_CACHE: tiket_pattern_not_found
+2026-04-28 22:20:58.520780 | Verse Luxe Wahid Hasyim | tripcom | tripcom_pattern_not_found
+2026-04-28 22:20:58.521586 | Verse Luxe Wahid Hasyim | tripcom | ERROR_NO_CACHE: tripcom_pattern_not_found
+2026-04-28 22:22:19.144713 | Verse Luxe Wahid Hasyim | tiket | tiket_pattern_not_found
+2026-04-28 22:22:19.144892 | Verse Luxe Wahid Hasyim | tiket | ERROR_NO_CACHE: tiket_pattern_not_found
+2026-04-28 22:24:37.538526 | Verse Cirebon | tripcom | tripcom_pattern_not_found
+2026-04-28 22:24:37.538892 | Verse Cirebon | tripcom | ERROR_NO_CACHE: tripcom_pattern_not_found
+2026-04-28 22:26:06.930429 | Verse Cirebon | tiket | tiket_pattern_not_found
+2026-04-28 22:26:06.930937 | Verse Cirebon | tiket | ERROR_NO_CACHE: tiket_pattern_not_found
+2026-04-28 22:28:57.452714 | Oak Tree Mahakam Blok M | tripcom | tripcom_pattern_not_found
+2026-04-28 22:28:57.453500 | Oak Tree Mahakam Blok M | tripcom | ERROR_NO_CACHE: tripcom_pattern_not_found
+2026-04-28 22:31:18.755823 | Oak Tree Mahakam Blok M | tiket | tiket_pattern_not_found
+2026-04-28 22:31:18.756035 | Oak Tree Mahakam Blok M | tiket | ERROR_NO_CACHE: tiket_pattern_not_found
+2026-04-29 10:35:51.578354 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+>>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
