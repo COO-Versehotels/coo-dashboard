@@ -280,3 +280,4 @@ Call log:
   - navigating to "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html", waiting until "domcontentloaded"
 
 2026-04-29 17:57:43.232165 | Verse Lite Gajah Mada | traveloka | ERROR_NO_CACHE: traveloka_strong_pattern_not_found
+2026-04-29 20:11:37.929431 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
