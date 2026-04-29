@@ -41,9 +41,9 @@
             "rating": "8.3",
             "reviews": "6471",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-04-29",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "error_reason": null
           }
         }
       },
@@ -86,9 +86,9 @@
             "rating": "8.1",
             "reviews": "5946",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-04-29",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "error_reason": null
           }
         }
       },
@@ -131,9 +131,9 @@
             "rating": "7.8",
             "reviews": "9379",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-04-29",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "error_reason": null
           }
         }
       },
@@ -174,11 +174,11 @@
           },
           "traveloka": {
             "rating": "7.9",
-            "reviews": "5626",
+            "reviews": "5627",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-04-29",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "error_reason": null
           }
         }
       }
