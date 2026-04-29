@@ -271,3 +271,12 @@
 2026-04-28 22:31:18.756035 | Oak Tree Mahakam Blok M | tiket | ERROR_NO_CACHE: tiket_pattern_not_found
 2026-04-29 10:35:51.578354 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
 >>>>>>> 65709b9 (fix final scraper v7 all platforms auto)
+2026-04-29 17:52:58.297185 | Verse Lite Gajah Mada | agoda | Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html
+Call log:
+  - navigating to "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html", waiting until "domcontentloaded"
+
+2026-04-29 17:52:58.300539 | Verse Lite Gajah Mada | agoda | ERROR_NO_CACHE: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html
+Call log:
+  - navigating to "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html", waiting until "domcontentloaded"
+
+2026-04-29 17:57:43.232165 | Verse Lite Gajah Mada | traveloka | ERROR_NO_CACHE: traveloka_strong_pattern_not_found
