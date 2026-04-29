@@ -281,3 +281,15 @@ Call log:
 
 2026-04-29 17:57:43.232165 | Verse Lite Gajah Mada | traveloka | ERROR_NO_CACHE: traveloka_strong_pattern_not_found
 2026-04-29 20:11:37.929431 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-29 19:02:29.137305 | Verse Lite Gajah Mada | tiket | tiket_bot_challenge
+2026-04-29 19:02:29.137366 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_bot_challenge
+2026-04-29 19:04:43.297208 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-29 19:06:23.037135 | Verse Luxe Wahid Hasyim | tiket | tiket_bot_challenge
+2026-04-29 19:06:23.037199 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_bot_challenge
+2026-04-29 19:08:37.173173 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-29 19:10:15.201838 | Verse Cirebon | tiket | tiket_bot_challenge
+2026-04-29 19:10:15.201896 | Verse Cirebon | tiket | CACHED_USED: tiket_bot_challenge
+2026-04-29 19:12:29.322407 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-04-29 19:14:07.417468 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
+2026-04-29 19:14:07.417526 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
+2026-04-29 19:16:21.564135 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
