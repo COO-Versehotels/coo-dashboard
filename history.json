@@ -183,5 +183,190 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-30",
+    "hotels": [
+      {
+        "name": "Verse Lite Gajah Mada",
+        "platforms": {
+          "agoda": {
+            "rating": "8.6",
+            "reviews": "4946",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "booking": {
+            "rating": "7.7",
+            "reviews": "546",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tripcom": {
+            "rating": "8.4",
+            "reviews": "180",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tiket": {
+            "rating": "4.2",
+            "reviews": "3029",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_bot_challenge"
+          },
+          "traveloka": {
+            "rating": "8.3",
+            "reviews": "6471",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "traveloka_strong_pattern_not_found"
+          }
+        }
+      },
+      {
+        "name": "Verse Luxe Wahid Hasyim",
+        "platforms": {
+          "agoda": {
+            "rating": "7.9",
+            "reviews": "7817",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "booking": {
+            "rating": "6.5",
+            "reviews": "881",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tripcom": {
+            "rating": "7.3",
+            "reviews": "184",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tiket": {
+            "rating": "4.2",
+            "reviews": "5164",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_bot_challenge"
+          },
+          "traveloka": {
+            "rating": "8.1",
+            "reviews": "5946",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "traveloka_strong_pattern_not_found"
+          }
+        }
+      },
+      {
+        "name": "Verse Cirebon",
+        "platforms": {
+          "agoda": {
+            "rating": "7.9",
+            "reviews": "6730",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "booking": {
+            "rating": "8.0",
+            "reviews": "48",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tripcom": {
+            "rating": "8.8",
+            "reviews": "122",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tiket": {
+            "rating": "3.9",
+            "reviews": "2249",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_bot_challenge"
+          },
+          "traveloka": {
+            "rating": "7.8",
+            "reviews": "9379",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "traveloka_strong_pattern_not_found"
+          }
+        }
+      },
+      {
+        "name": "Oak Tree Mahakam Blok M",
+        "platforms": {
+          "agoda": {
+            "rating": "7.7",
+            "reviews": "4432",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "booking": {
+            "rating": "5.7",
+            "reviews": "69",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tripcom": {
+            "rating": "8.4",
+            "reviews": "110",
+            "ranking": null,
+            "status": "AUTO",
+            "source_date": "2026-04-30",
+            "error_reason": null
+          },
+          "tiket": {
+            "rating": "3.9",
+            "reviews": "2176",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_bot_challenge"
+          },
+          "traveloka": {
+            "rating": "7.9",
+            "reviews": "5627",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "traveloka_strong_pattern_not_found"
+          }
+        }
+      }
+    ]
   }
 ]
