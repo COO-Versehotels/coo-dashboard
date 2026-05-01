@@ -371,3 +371,13 @@ Call log:
 2026-05-01 11:57:23.912132 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
 2026-05-01 11:57:23.912207 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
 2026-05-01 11:59:38.398305 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-01 15:39:20.651210 | Verse Lite Gajah Mada | tiket | tiket_bot_challenge
+2026-05-01 15:39:20.651264 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-01 15:41:42.626243 | Verse Luxe Wahid Hasyim | tiket | tiket_bot_challenge
+2026-05-01 15:41:42.626299 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-01 15:43:57.324466 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-01 15:45:34.794385 | Verse Cirebon | tiket | tiket_bot_challenge
+2026-05-01 15:45:34.794441 | Verse Cirebon | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-01 15:47:49.595339 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-01 15:49:27.618531 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
+2026-05-01 15:49:27.618587 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
