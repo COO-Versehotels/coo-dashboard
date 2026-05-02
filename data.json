@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-02 15:18:24.623940",
+  "last_update": "2026-05-02 19:59:10.440603",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -89,7 +89,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.9",
-          "reviews": "7831",
+          "reviews": "7839",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -123,9 +123,9 @@
           "rating": "8.1",
           "reviews": "5952",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-02",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -133,7 +133,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 0,
+            "review_change": 8,
             "ranking_change": null
           },
           "booking": {
@@ -164,7 +164,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.9",
-          "reviews": "6736",
+          "reviews": "6739",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -198,9 +198,9 @@
           "rating": "7.8",
           "reviews": "9379",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-02",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -208,7 +208,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 6,
+            "review_change": 9,
             "ranking_change": null
           },
           "booking": {
@@ -273,9 +273,9 @@
           "rating": "7.9",
           "reviews": "5636",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-02",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
