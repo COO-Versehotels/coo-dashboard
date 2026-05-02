@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-02 19:59:10.440603",
+  "last_update": "2026-05-02 22:24:56.547635",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -14,7 +14,7 @@
       "platforms": {
         "agoda": {
           "rating": "8.6",
-          "reviews": "4956",
+          "reviews": "4957",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -29,8 +29,8 @@
           "error_reason": null
         },
         "tripcom": {
-          "rating": "8.4",
-          "reviews": "184",
+          "rating": "8.5",
+          "reviews": "183",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -58,7 +58,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 4,
+            "review_change": 5,
             "ranking_change": null
           },
           "booking": {
@@ -67,8 +67,8 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.0,
-            "review_change": 2,
+            "rating_change": 0.1,
+            "review_change": 1,
             "ranking_change": null
           },
           "tiket": {
@@ -89,7 +89,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.9",
-          "reviews": "7839",
+          "reviews": "7836",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -133,7 +133,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 8,
+            "review_change": 5,
             "ranking_change": null
           },
           "booking": {
@@ -239,7 +239,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.7",
-          "reviews": "4446",
+          "reviews": "4445",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-02",
@@ -283,7 +283,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 3,
+            "review_change": 2,
             "ranking_change": null
           },
           "booking": {
