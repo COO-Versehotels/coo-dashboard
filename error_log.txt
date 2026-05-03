@@ -488,3 +488,12 @@ Call log:
 2026-05-03 15:17:48.602695 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
 2026-05-03 15:19:26.334079 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
 2026-05-03 15:19:26.334160 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-03 19:43:23.378102 | Verse Lite Gajah Mada | tiket | tiket_bot_challenge
+2026-05-03 19:43:23.378155 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-03 19:45:38.433775 | Verse Luxe Wahid Hasyim | tiket | tiket_bot_challenge
+2026-05-03 19:45:38.433872 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-03 19:47:53.301086 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-03 19:49:30.447427 | Verse Cirebon | tiket | tiket_bot_challenge
+2026-05-03 19:49:30.447483 | Verse Cirebon | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-03 19:51:45.653673 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
+2026-05-03 19:51:45.653737 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
