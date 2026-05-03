@@ -1,12 +1,12 @@
-# DEBUG LOG — 2026-05-03 19:41:45.793931
+# DEBUG LOG — 2026-05-03 22:10:14.391772
 
 ================================================================================
-TIME: 2026-05-03 19:42:29.269098
+TIME: 2026-05-03 22:10:59.369567
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61bf7d6ac20f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f6299058bf25788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -135,12 +135,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:42:51.317626
+TIME: 2026-05-03 22:11:21.424560
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c007794a0f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62998f99825788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -269,12 +269,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:43:13.377628
+TIME: 2026-05-03 22:11:43.488051
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c0914f510f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629a196c7f5788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -403,12 +403,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:43:23.378014
+TIME: 2026-05-03 22:11:53.488271
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c0914f510f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629a196c7f5788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -537,12 +537,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:44:44.334361
+TIME: 2026-05-03 22:14:51.596808
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c2c978e20f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629eb0f9e45788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -671,12 +671,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:45:06.382412
+TIME: 2026-05-03 22:15:13.657337
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c3539abc0f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629f3b0b9b5788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -805,12 +805,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:45:28.433418
+TIME: 2026-05-03 22:15:35.723971
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c3dd68280f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629fc4e8f95788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -939,12 +939,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:45:38.433680
+TIME: 2026-05-03 22:15:45.724259
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c3dd68280f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f629fc4e8f95788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1073,12 +1073,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:48:36.339387
+TIME: 2026-05-03 22:18:44.765251
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c873a8de0f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62a4624ba95788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1207,12 +1207,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:48:58.391022
+TIME: 2026-05-03 22:19:06.817914
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c8fda9e80f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62a4ec4f965788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1341,12 +1341,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:49:20.447130
+TIME: 2026-05-03 22:19:28.898938
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c9877b300f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62a5762a665788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1475,12 +1475,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:49:30.447347
+TIME: 2026-05-03 22:19:38.899194
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61c9877b300f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62a5762a665788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1609,12 +1609,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:50:51.547415
+TIME: 2026-05-03 22:22:37.450212
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61cbc098690f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62aa1088c65788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1743,12 +1743,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:51:13.600000
+TIME: 2026-05-03 22:22:59.511160
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61cc4abfaa0f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62aa9a9dc95788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1877,12 +1877,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:51:35.653326
+TIME: 2026-05-03 22:23:21.581613
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61ccd48fe50f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62ab247e0f5788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -2011,12 +2011,12 @@ HTML SNIPPET:
     
 
 ================================================================================
-TIME: 2026-05-03 19:51:45.653570
+TIME: 2026-05-03 22:23:31.581880
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f61ccd48fe50f1d Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: 9f62ab247e0f5788 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>

@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-03 19:52:22.557329",
+  "last_update": "2026-05-03 22:25:46.092489",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -29,7 +29,7 @@
           "error_reason": null
         },
         "tripcom": {
-          "rating": "8.5",
+          "rating": "8.4",
           "reviews": "185",
           "ranking": null,
           "status": "AUTO",
@@ -48,9 +48,9 @@
           "rating": "8.3",
           "reviews": "6477",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-03",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -67,7 +67,7 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.1,
+            "rating_change": 0.0,
             "review_change": 3,
             "ranking_change": null
           },
@@ -104,7 +104,7 @@
           "error_reason": null
         },
         "tripcom": {
-          "rating": "7.3",
+          "rating": "7.4",
           "reviews": "189",
           "ranking": null,
           "status": "AUTO",
@@ -142,7 +142,7 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.0,
+            "rating_change": 0.1,
             "review_change": 4,
             "ranking_change": null
           },
@@ -198,9 +198,9 @@
           "rating": "7.8",
           "reviews": "9379",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-03",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -273,9 +273,9 @@
           "rating": "7.9",
           "reviews": "5639",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-03",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {

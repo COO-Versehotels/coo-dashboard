@@ -762,7 +762,7 @@
             "error_reason": null
           },
           "tripcom": {
-            "rating": "8.5",
+            "rating": "8.4",
             "reviews": "185",
             "ranking": null,
             "status": "AUTO",
@@ -781,9 +781,9 @@
             "rating": "8.3",
             "reviews": "6477",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-03",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
@@ -807,7 +807,7 @@
             "error_reason": null
           },
           "tripcom": {
-            "rating": "7.3",
+            "rating": "7.4",
             "reviews": "189",
             "ranking": null,
             "status": "AUTO",
@@ -871,9 +871,9 @@
             "rating": "7.8",
             "reviews": "9379",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-03",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
@@ -916,9 +916,9 @@
             "rating": "7.9",
             "reviews": "5639",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-03",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       }
