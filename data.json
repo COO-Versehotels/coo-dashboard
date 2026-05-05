@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-05 12:09:40.412202",
+  "last_update": "2026-05-05 17:21:49.874567",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -46,11 +46,11 @@
         },
         "traveloka": {
           "rating": "8.3",
-          "reviews": "6478",
+          "reviews": "6480",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-05-04",
-          "error_reason": "traveloka_strong_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-05-05",
+          "error_reason": null
         }
       },
       "comparison": {
@@ -78,7 +78,7 @@
           },
           "traveloka": {
             "rating_change": 0.0,
-            "review_change": 7,
+            "review_change": 9,
             "ranking_change": null
           }
         }
@@ -89,7 +89,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.9",
-          "reviews": "7846",
+          "reviews": "7849",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-05",
@@ -123,9 +123,9 @@
           "rating": "8.1",
           "reviews": "5957",
           "ranking": null,
-          "status": "CACHED",
+          "status": "AUTO",
           "source_date": "2026-05-05",
-          "error_reason": "traveloka_strong_pattern_not_found"
+          "error_reason": null
         }
       },
       "comparison": {
@@ -133,7 +133,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 15,
+            "review_change": 18,
             "ranking_change": null
           },
           "booking": {
@@ -255,7 +255,7 @@
         },
         "tripcom": {
           "rating": "8.4",
-          "reviews": "118",
+          "reviews": "119",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-05",
@@ -273,9 +273,9 @@
           "rating": "7.9",
           "reviews": "5645",
           "ranking": null,
-          "status": "CACHED",
+          "status": "AUTO",
           "source_date": "2026-05-05",
-          "error_reason": "traveloka_strong_pattern_not_found"
+          "error_reason": null
         }
       },
       "comparison": {
@@ -293,7 +293,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 6,
+            "review_change": 7,
             "ranking_change": null
           },
           "tiket": {
