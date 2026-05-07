@@ -20,28 +20,28 @@ HOTELS = {
         "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-3000010028056",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/",
-        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
+        "tiket": "https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
     },
     "Verse Luxe Wahid Hasyim": {
         "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-3000010036666",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/",
-        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
+        "tiket": "https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
     },
     "Verse Cirebon": {
         "agoda": "https://www.agoda.com/verse-hotel-cirebon/reviews/cirebon-id.html",
         "booking": "https://www.booking.com/hotel/id/verse-cirebon.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-hotel-cirebon-3000010015654",
         "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/",
-        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
+        "tiket": "https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
     },
     "Oak Tree Mahakam Blok M": {
         "agoda": "https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html",
         "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/oak-tree-urban-hotel-jakarta-461895",
         "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/",
-        "tiket": "https://www.tiket.com/id-id/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
+        "tiket": "https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
     }
 }
 
@@ -447,41 +447,56 @@ def parse_tripcom(text):
 
 
 def parse_tiket(text):
-    if re.search(r"Robot atau manusia|Centang kotak|Ray ID|captcha|Cloudflare|Access Denied|Forbidden", text, re.IGNORECASE):
+    # Deteksi bot challenge / captcha
+    if re.search(
+        r"Robot atau manusia|Centang kotak|Ray ID|captcha|Cloudflare|Access Denied|Forbidden|verify you are human|DDoS protection|checking your browser",
+        text, re.IGNORECASE
+    ):
         return {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": None,
-            "match_ok": False,
-            "error_reason": "tiket_bot_challenge"
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": "tiket_bot_challenge"
         }
 
-    rating = "N/A"
+    rating  = "N/A"
     reviews = "N/A"
 
+    # --- JSON-LD / structured data (paling reliable) ---
+    json_patterns = [
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"reviewCount"\s*:\s*"?(\d+)"?',
+    ]
+
+    # Combined patterns (rating + review dalam satu blok)
     combined_patterns = [
         r"Review\s+Lihat\s+semua\s+(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5\s*(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan)?\s*Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+ulasan",
+        # Pola baru: format API/JSON Tiket
+        r'"score"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"total"\s*:\s*(\d+)',
+        r'"averageScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"totalReview"\s*:\s*(\d+)',
+        r'"rating"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"reviewCount"\s*:\s*(\d+)',
     ]
 
     for pattern in combined_patterns:
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
-            candidate_rating = clean_rating(match.group(1))
+            candidate_rating  = clean_rating(match.group(1))
             candidate_reviews = clean_number(match.group(2))
             if is_valid_rating(candidate_rating, 1, 5) and is_valid_reviews(candidate_reviews, 10):
-                rating = candidate_rating
+                rating  = candidate_rating
                 reviews = candidate_reviews
                 break
 
     if rating == "N/A":
         rating_patterns = [
-            r"\b(\d[.,]\d)\s*/\s*5\b",
-            r"\b(\d[.,]\d)\s+(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan|Cukup\s+Bagus)\b",
+            r"(\d[.,]\d)\s*/\s*5",
+            r"(\d[.,]\d)\s+(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan|Cukup\s+Bagus)",
             r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+            r'"score"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+            r'"averageScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+            r'"hotelScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         ]
         for pattern in rating_patterns:
             match = re.search(pattern, text, re.IGNORECASE)
@@ -493,11 +508,13 @@ def parse_tiket(text):
 
     if reviews == "N/A":
         review_patterns = [
-            r"\bDari\s+([\d,\.]+)\s+review\b",
-            r"\bDari\s+([\d,\.]+)\s+ulasan\b",
-            r"\b([\d,\.]+)\s+review\b",
-            r"\b([\d,\.]+)\s+ulasan\b",
+            r"Dari\s+([\d,\.]+)\s+review",
+            r"Dari\s+([\d,\.]+)\s+ulasan",
+            r"([\d,\.]+)\s+review",
+            r"([\d,\.]+)\s+ulasan",
             r'"reviewCount"\s*:\s*"?(\d+)"?',
+            r'"totalReview"\s*:\s*"?(\d+)"?',
+            r'"total"\s*:\s*(\d+)',
         ]
         for pattern in review_patterns:
             match = re.search(pattern, text, re.IGNORECASE)
@@ -509,10 +526,10 @@ def parse_tiket(text):
 
     ok = is_valid_rating(rating, 1, 5) and is_valid_reviews(reviews, 10)
     return {
-        "rating": rating if ok else "N/A",
-        "reviews": reviews if ok else "N/A",
-        "ranking": None,
-        "match_ok": ok,
+        "rating":       rating   if ok else "N/A",
+        "reviews":      reviews  if ok else "N/A",
+        "ranking":      None,
+        "match_ok":     ok,
         "error_reason": None if ok else "tiket_pattern_not_found"
     }
 
@@ -793,13 +810,28 @@ def main():
         ])
 
         context = browser.new_context(
-            locale="en-US",
-            viewport={"width": 1440, "height": 900},
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+            locale="id-ID",
+            viewport={"width": 1366, "height": 768},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            java_script_enabled=True,
+            bypass_csp=True,
         )
 
         page = context.new_page()
-        page.set_extra_http_headers({"Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"})
+        # Stealth: sembunyikan tanda-tanda Playwright/automation
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            Object.defineProperty(navigator, 'plugins', {get: () => [1,2,3,4,5]});
+            Object.defineProperty(navigator, 'languages', {get: () => ['id-ID','id','en-US','en']});
+            window.chrome = {runtime: {}};
+        """)
+        page.set_extra_http_headers({
+            "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Windows"',
+        })
 
         for hotel_name, sources in HOTELS.items():
             print("Hotel:", hotel_name)
