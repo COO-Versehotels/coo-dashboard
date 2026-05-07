@@ -522,10 +522,16 @@ def traveloka_extract_from_text(text):
     reviews = "N/A"
 
     rating_patterns = [
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"starRating"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"guestRating"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"hotelRating"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"score"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
         r"\b(\d[.,]\d)\s*/\s*10\b",
         r"\b(\d[.,]\d)\s+(?:Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Bagus|Memuaskan)\b",
-        r'"aggregateRating"[^}]*?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r"(\d[.,]\d)\s*(?:out of|\/|/)\s*10",
+        r'rating["\s:]+(\d[.,]\d)',
     ]
 
     for pattern in rating_patterns:
@@ -537,19 +543,23 @@ def traveloka_extract_from_text(text):
                 break
 
     review_patterns = [
-        r"\bDari\s+([\d,\.]+)\s+(?:ulasan|review|reviews)\b",
-        r"\b([\d,\.]+)\s+ulasan\b",
-        r"\b([\d,\.]+)\s+reviews?\b",
         r'"reviewCount"\s*:\s*"?(\d+)"?',
         r'"ratingCount"\s*:\s*"?(\d+)"?',
         r'"totalReviews"\s*:\s*"?(\d+)"?',
+        r'"totalRatings"\s*:\s*"?(\d+)"?',
+        r'"numReviews"\s*:\s*"?(\d+)"?',
+        r'"reviewTotal"\s*:\s*"?(\d+)"?',
+        r"\bDari\s+([\d,.]+)\s+(?:ulasan|review|reviews)\b",
+        r"\b([\d,.]+)\s+ulasan\b",
+        r"\b([\d,.]+)\s+reviews?\b",
+        r"\b([\d,.]+)\s+Ulasan\b",
     ]
 
     review_candidates = []
     for pattern in review_patterns:
         for match in re.finditer(pattern, text, re.IGNORECASE):
             candidate = clean_number(match.group(1))
-            if is_valid_reviews(candidate, 50):
+            if is_valid_reviews(candidate, 10):
                 try:
                     review_candidates.append(int(candidate))
                 except Exception:
@@ -558,7 +568,7 @@ def traveloka_extract_from_text(text):
     if review_candidates:
         reviews = str(max(review_candidates))
 
-    ok = is_valid_rating(rating, 5, 10) and is_valid_reviews(reviews, 50)
+    ok = is_valid_rating(rating, 5, 10) and is_valid_reviews(reviews, 10)
     return {
         "rating": rating if ok else "N/A",
         "reviews": reviews if ok else "N/A",
@@ -580,19 +590,77 @@ def collect_traveloka_text(page):
         except Exception:
             pass
 
-    grab(3000)
+    grab(4000)
 
     for pos in [500, 1000, 1500, 2200, 3000, 3800, 4600, 5600]:
         try:
             page.evaluate(f"window.scrollTo(0, {pos})")
-            grab(1800)
+            grab(2000)
         except Exception:
             pass
 
+    # Strategi 1: Raw HTML
     try:
         html = page.content()
         plain = re.sub(r"<[^>]+>", " ", html)
         collected.append(normalize_text(plain))
+        collected.append(html)
+    except Exception:
+        pass
+
+    # Strategi 2: JSON-LD structured data
+    try:
+        json_ld_texts = page.evaluate("""
+            () => {
+                const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+                return Array.from(scripts).map(s => s.textContent).join(' ');
+            }
+        """)
+        if json_ld_texts:
+            collected.append(json_ld_texts)
+    except Exception:
+        pass
+
+    # Strategi 3: Script tags berisi rating data
+    try:
+        script_texts = page.evaluate("""
+            () => {
+                const scripts = document.querySelectorAll('script:not([src])');
+                return Array.from(scripts)
+                    .map(s => s.textContent)
+                    .filter(t => t && (
+                        t.includes('ratingValue') ||
+                        t.includes('reviewCount') ||
+                        t.includes('aggregateRating') ||
+                        t.includes('totalReviews') ||
+                        t.includes('hotelReview') ||
+                        t.includes('guestReview') ||
+                        t.includes('starRating')
+                    ))
+                    .join(' ');
+            }
+        """)
+        if script_texts:
+            collected.append(script_texts)
+    except Exception:
+        pass
+
+    # Strategi 4: Window JS state
+    try:
+        api_text = page.evaluate("""
+            () => {
+                const keys = ['__INITIAL_STATE__', '__NEXT_DATA__', '__NUXT__',
+                              'TvlkGlobal', '__APP_STATE__', '__DATA__'];
+                for (const key of keys) {
+                    if (window[key]) {
+                        try { return JSON.stringify(window[key]); } catch(e) {}
+                    }
+                }
+                return '';
+            }
+        """)
+        if api_text:
+            collected.append(api_text)
     except Exception:
         pass
 
