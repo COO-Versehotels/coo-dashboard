@@ -1577,7 +1577,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "6769",
+            "reviews": "6772",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-05-07",
@@ -1609,11 +1609,11 @@
           },
           "traveloka": {
             "rating": "7.8",
-            "reviews": "9379",
+            "reviews": "9383",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-05-04",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-05-07",
+            "error_reason": null
           }
         }
       },
