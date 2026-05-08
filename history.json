@@ -1706,9 +1706,9 @@
             "rating": "8.3",
             "reviews": "6483",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-08",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
@@ -1751,9 +1751,9 @@
             "rating": "8.1",
             "reviews": "5965",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-08",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
