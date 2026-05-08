@@ -1725,7 +1725,7 @@
           },
           "booking": {
             "rating": "6.5",
-            "reviews": "885",
+            "reviews": "883",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-05-08",
@@ -1749,11 +1749,11 @@
           },
           "traveloka": {
             "rating": "8.1",
-            "reviews": "5957",
+            "reviews": "5965",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-05-05",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-05-08",
+            "error_reason": null
           }
         }
       },
@@ -1796,9 +1796,9 @@
             "rating": "7.8",
             "reviews": "9384",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-08",
-            "error_reason": null
+            "error_reason": "traveloka_strong_pattern_not_found"
           }
         }
       },
