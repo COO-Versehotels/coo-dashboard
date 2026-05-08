@@ -1704,11 +1704,11 @@
           },
           "traveloka": {
             "rating": "8.3",
-            "reviews": "6480",
+            "reviews": "6483",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-05-05",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-05-08",
+            "error_reason": null
           }
         }
       },
@@ -1794,11 +1794,11 @@
           },
           "traveloka": {
             "rating": "7.8",
-            "reviews": "9383",
+            "reviews": "9384",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-05-07",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-05-08",
+            "error_reason": null
           }
         }
       },

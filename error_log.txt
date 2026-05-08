@@ -674,3 +674,21 @@ Call log:
 2026-05-08 06:05:41.602419 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
 2026-05-08 06:05:41.602468 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
 2026-05-08 06:08:03.420543 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-08 10:56:58.709467 | Verse Lite Gajah Mada | agoda | agoda_pattern_not_found
+2026-05-08 10:56:58.709581 | Verse Lite Gajah Mada | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-08 10:58:27.774426 | Verse Lite Gajah Mada | tiket | tiket_bot_challenge
+2026-05-08 10:58:27.774483 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-08 10:59:59.351773 | Verse Luxe Wahid Hasyim | agoda | agoda_pattern_not_found
+2026-05-08 10:59:59.351881 | Verse Luxe Wahid Hasyim | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-08 11:01:29.557404 | Verse Luxe Wahid Hasyim | tiket | tiket_bot_challenge
+2026-05-08 11:01:29.557464 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-08 11:03:52.112414 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-08 11:04:42.879653 | Verse Cirebon | agoda | agoda_pattern_not_found
+2026-05-08 11:04:42.879790 | Verse Cirebon | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-08 11:06:13.114104 | Verse Cirebon | tiket | tiket_bot_challenge
+2026-05-08 11:06:13.114159 | Verse Cirebon | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-08 11:07:46.450315 | Oak Tree Mahakam Blok M | agoda | agoda_pattern_not_found
+2026-05-08 11:07:46.450420 | Oak Tree Mahakam Blok M | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-08 11:09:16.540610 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
+2026-05-08 11:09:16.540693 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-08 11:11:39.237390 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
