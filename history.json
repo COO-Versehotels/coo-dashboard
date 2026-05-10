@@ -2166,9 +2166,9 @@
             "rating": "7.8",
             "reviews": "9385",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-05-10",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "error_reason": null
           }
         }
       },
@@ -2192,7 +2192,7 @@
             "error_reason": null
           },
           "tripcom": {
-            "rating": "8.5",
+            "rating": "8.4",
             "reviews": "122",
             "ranking": null,
             "status": "AUTO",
