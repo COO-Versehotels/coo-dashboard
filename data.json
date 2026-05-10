@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-10 08:03:20.271326",
+  "last_update": "2026-05-10 11:48:02.474318",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -48,9 +48,9 @@
           "rating": "8.3",
           "reviews": "6484",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-10",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -123,9 +123,9 @@
           "rating": "8.1",
           "reviews": "5970",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-10",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -198,9 +198,9 @@
           "rating": "7.8",
           "reviews": "9385",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-10",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
@@ -273,9 +273,9 @@
           "rating": "7.9",
           "reviews": "5663",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-10",
-          "error_reason": null
+          "error_reason": "traveloka_strong_pattern_not_found"
         }
       },
       "comparison": {
