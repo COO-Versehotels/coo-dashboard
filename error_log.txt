@@ -963,3 +963,23 @@ Call log:
 2026-05-11 23:32:45.752159 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
 2026-05-11 23:32:45.752219 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
 2026-05-11 23:35:07.911214 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-12 17:37:40.675963 | Verse Lite Gajah Mada | agoda | agoda_pattern_not_found
+2026-05-12 17:37:40.676051 | Verse Lite Gajah Mada | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-12 17:39:10.359024 | Verse Lite Gajah Mada | tiket | tiket_bot_challenge
+2026-05-12 17:39:10.359067 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-12 17:41:32.537715 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-12 17:42:24.140593 | Verse Luxe Wahid Hasyim | agoda | agoda_pattern_not_found
+2026-05-12 17:42:24.140678 | Verse Luxe Wahid Hasyim | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-12 17:43:54.305297 | Verse Luxe Wahid Hasyim | tiket | tiket_bot_challenge
+2026-05-12 17:43:54.305339 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-12 17:46:16.659271 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-12 17:47:08.039118 | Verse Cirebon | agoda | agoda_pattern_not_found
+2026-05-12 17:47:08.039198 | Verse Cirebon | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-12 17:48:38.815379 | Verse Cirebon | tiket | tiket_bot_challenge
+2026-05-12 17:48:38.815419 | Verse Cirebon | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-12 17:51:01.113313 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-05-12 17:51:53.266645 | Oak Tree Mahakam Blok M | agoda | agoda_pattern_not_found
+2026-05-12 17:51:53.266728 | Oak Tree Mahakam Blok M | agoda | CACHED_USED: agoda_pattern_not_found
+2026-05-12 17:53:24.390131 | Oak Tree Mahakam Blok M | tiket | tiket_bot_challenge
+2026-05-12 17:53:24.390171 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_bot_challenge
+2026-05-12 17:55:46.520893 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
