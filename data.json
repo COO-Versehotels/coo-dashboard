@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-18 10:59:13.910427",
+  "last_update": "2026-05-29 03:29:56.827409",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -21,20 +21,20 @@
           "error_reason": "agoda_pattern_not_found"
         },
         "booking": {
-          "rating": "7.7",
-          "reviews": "560",
+          "rating": "7.8",
+          "reviews": "569",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-05-18",
+          "source_date": "2026-05-29",
           "error_reason": null
         },
         "tripcom": {
           "rating": "8.4",
           "reviews": "205",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-18",
-          "error_reason": null
+          "error_reason": "tripcom_pattern_not_found"
         },
         "tiket": {
           "rating": "4.2",
@@ -62,8 +62,8 @@
             "ranking_change": null
           },
           "booking": {
-            "rating_change": 0.0,
-            "review_change": 13,
+            "rating_change": 0.1,
+            "review_change": 22,
             "ranking_change": null
           },
           "tripcom": {
@@ -100,16 +100,16 @@
           "reviews": "889",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-05-18",
+          "source_date": "2026-05-29",
           "error_reason": null
         },
         "tripcom": {
           "rating": "7.3",
           "reviews": "189",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-18",
-          "error_reason": null
+          "error_reason": "tripcom_pattern_not_found"
         },
         "tiket": {
           "rating": "4.2",
@@ -171,20 +171,20 @@
           "error_reason": "agoda_pattern_not_found"
         },
         "booking": {
-          "rating": "7.8",
-          "reviews": "49",
+          "rating": "7.9",
+          "reviews": "52",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-05-18",
+          "source_date": "2026-05-29",
           "error_reason": null
         },
         "tripcom": {
           "rating": "8.8",
           "reviews": "120",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-18",
-          "error_reason": null
+          "error_reason": "tripcom_pattern_not_found"
         },
         "tiket": {
           "rating": "3.9",
@@ -212,8 +212,8 @@
             "ranking_change": null
           },
           "booking": {
-            "rating_change": -0.2,
-            "review_change": 1,
+            "rating_change": -0.1,
+            "review_change": 4,
             "ranking_change": null
           },
           "tripcom": {
@@ -250,16 +250,16 @@
           "reviews": "70",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-05-18",
+          "source_date": "2026-05-29",
           "error_reason": null
         },
         "tripcom": {
           "rating": "8.5",
           "reviews": "132",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-05-18",
-          "error_reason": null
+          "error_reason": "tripcom_pattern_not_found"
         },
         "tiket": {
           "rating": "3.9",
