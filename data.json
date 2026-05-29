@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-05-29 05:03:29.804007",
+  "last_update": "2026-05-29 07:56:19.196007",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -22,7 +22,7 @@
         },
         "booking": {
           "rating": "7.8",
-          "reviews": "569",
+          "reviews": "570",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-05-29",
@@ -36,14 +36,6 @@
           "source_date": "2026-05-18",
           "error_reason": "tripcom_pattern_not_found"
         },
-        "tiket": {
-          "rating": "4.2",
-          "reviews": "3029",
-          "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-04-29",
-          "error_reason": "tiket_bot_challenge"
-        },
         "traveloka": {
           "rating": "8.3",
           "reviews": "6484",
@@ -51,6 +43,14 @@
           "status": "CACHED",
           "source_date": "2026-05-10",
           "error_reason": "traveloka_strong_pattern_not_found"
+        },
+        "tiket": {
+          "rating": "4.2",
+          "reviews": "3029",
+          "ranking": null,
+          "status": "CACHED",
+          "source_date": "2026-04-29",
+          "error_reason": "tiket_cloudflare_captcha"
         }
       },
       "comparison": {
@@ -63,7 +63,7 @@
           },
           "booking": {
             "rating_change": 0.1,
-            "review_change": 22,
+            "review_change": 23,
             "ranking_change": null
           },
           "tripcom": {
@@ -71,14 +71,14 @@
             "review_change": 23,
             "ranking_change": null
           },
-          "tiket": {
-            "rating_change": 0.0,
-            "review_change": 0,
-            "ranking_change": null
-          },
           "traveloka": {
             "rating_change": 0.0,
             "review_change": 13,
+            "ranking_change": null
+          },
+          "tiket": {
+            "rating_change": 0.0,
+            "review_change": 0,
             "ranking_change": null
           }
         }
@@ -111,14 +111,6 @@
           "source_date": "2026-05-18",
           "error_reason": "tripcom_pattern_not_found"
         },
-        "tiket": {
-          "rating": "4.2",
-          "reviews": "5164",
-          "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-04-29",
-          "error_reason": "tiket_bot_challenge"
-        },
         "traveloka": {
           "rating": "8.1",
           "reviews": "5970",
@@ -126,6 +118,14 @@
           "status": "CACHED",
           "source_date": "2026-05-10",
           "error_reason": "traveloka_strong_pattern_not_found"
+        },
+        "tiket": {
+          "rating": "4.2",
+          "reviews": "5164",
+          "ranking": null,
+          "status": "CACHED",
+          "source_date": "2026-04-29",
+          "error_reason": "tiket_cloudflare_captcha"
         }
       },
       "comparison": {
@@ -146,14 +146,14 @@
             "review_change": 4,
             "ranking_change": null
           },
-          "tiket": {
-            "rating_change": 0.0,
-            "review_change": 0,
-            "ranking_change": null
-          },
           "traveloka": {
             "rating_change": 0.0,
             "review_change": 24,
+            "ranking_change": null
+          },
+          "tiket": {
+            "rating_change": 0.0,
+            "review_change": 0,
             "ranking_change": null
           }
         }
@@ -186,14 +186,6 @@
           "source_date": "2026-05-18",
           "error_reason": "tripcom_pattern_not_found"
         },
-        "tiket": {
-          "rating": "3.9",
-          "reviews": "2249",
-          "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-04-29",
-          "error_reason": "tiket_bot_challenge"
-        },
         "traveloka": {
           "rating": "7.8",
           "reviews": "9385",
@@ -201,6 +193,14 @@
           "status": "CACHED",
           "source_date": "2026-05-10",
           "error_reason": "traveloka_strong_pattern_not_found"
+        },
+        "tiket": {
+          "rating": "3.9",
+          "reviews": "2249",
+          "ranking": null,
+          "status": "CACHED",
+          "source_date": "2026-04-29",
+          "error_reason": "tiket_cloudflare_captcha"
         }
       },
       "comparison": {
@@ -221,14 +221,14 @@
             "review_change": -1,
             "ranking_change": null
           },
-          "tiket": {
-            "rating_change": 0.0,
-            "review_change": 0,
-            "ranking_change": null
-          },
           "traveloka": {
             "rating_change": 0.0,
             "review_change": 6,
+            "ranking_change": null
+          },
+          "tiket": {
+            "rating_change": 0.0,
+            "review_change": 0,
             "ranking_change": null
           }
         }
@@ -261,14 +261,6 @@
           "source_date": "2026-05-18",
           "error_reason": "tripcom_pattern_not_found"
         },
-        "tiket": {
-          "rating": "3.9",
-          "reviews": "2176",
-          "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-04-29",
-          "error_reason": "tiket_bot_challenge"
-        },
         "traveloka": {
           "rating": "7.9",
           "reviews": "5663",
@@ -276,6 +268,14 @@
           "status": "CACHED",
           "source_date": "2026-05-10",
           "error_reason": "traveloka_strong_pattern_not_found"
+        },
+        "tiket": {
+          "rating": "3.9",
+          "reviews": "2176",
+          "ranking": null,
+          "status": "CACHED",
+          "source_date": "2026-04-29",
+          "error_reason": "tiket_cloudflare_captcha"
         }
       },
       "comparison": {
@@ -296,14 +296,14 @@
             "review_change": 20,
             "ranking_change": null
           },
-          "tiket": {
-            "rating_change": 0.0,
-            "review_change": 0,
-            "ranking_change": null
-          },
           "traveloka": {
             "rating_change": 0.0,
             "review_change": 32,
+            "ranking_change": null
+          },
+          "tiket": {
+            "rating_change": 0.0,
+            "review_change": 0,
             "ranking_change": null
           }
         }

@@ -3715,7 +3715,7 @@
           },
           "booking": {
             "rating": "7.8",
-            "reviews": "569",
+            "reviews": "570",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-05-29",
@@ -3729,14 +3729,6 @@
             "source_date": "2026-05-18",
             "error_reason": "tripcom_pattern_not_found"
           },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "3029",
-            "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-04-29",
-            "error_reason": "tiket_bot_challenge"
-          },
           "traveloka": {
             "rating": "8.3",
             "reviews": "6484",
@@ -3744,6 +3736,14 @@
             "status": "CACHED",
             "source_date": "2026-05-10",
             "error_reason": "traveloka_strong_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "4.2",
+            "reviews": "3029",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_cloudflare_captcha"
           }
         }
       },
@@ -3774,14 +3774,6 @@
             "source_date": "2026-05-18",
             "error_reason": "tripcom_pattern_not_found"
           },
-          "tiket": {
-            "rating": "4.2",
-            "reviews": "5164",
-            "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-04-29",
-            "error_reason": "tiket_bot_challenge"
-          },
           "traveloka": {
             "rating": "8.1",
             "reviews": "5970",
@@ -3789,6 +3781,14 @@
             "status": "CACHED",
             "source_date": "2026-05-10",
             "error_reason": "traveloka_strong_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "4.2",
+            "reviews": "5164",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_cloudflare_captcha"
           }
         }
       },
@@ -3819,14 +3819,6 @@
             "source_date": "2026-05-18",
             "error_reason": "tripcom_pattern_not_found"
           },
-          "tiket": {
-            "rating": "3.9",
-            "reviews": "2249",
-            "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-04-29",
-            "error_reason": "tiket_bot_challenge"
-          },
           "traveloka": {
             "rating": "7.8",
             "reviews": "9385",
@@ -3834,6 +3826,14 @@
             "status": "CACHED",
             "source_date": "2026-05-10",
             "error_reason": "traveloka_strong_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "3.9",
+            "reviews": "2249",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_cloudflare_captcha"
           }
         }
       },
@@ -3864,14 +3864,6 @@
             "source_date": "2026-05-18",
             "error_reason": "tripcom_pattern_not_found"
           },
-          "tiket": {
-            "rating": "3.9",
-            "reviews": "2176",
-            "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-04-29",
-            "error_reason": "tiket_bot_challenge"
-          },
           "traveloka": {
             "rating": "7.9",
             "reviews": "5663",
@@ -3879,6 +3871,14 @@
             "status": "CACHED",
             "source_date": "2026-05-10",
             "error_reason": "traveloka_strong_pattern_not_found"
+          },
+          "tiket": {
+            "rating": "3.9",
+            "reviews": "2176",
+            "ranking": null,
+            "status": "CACHED",
+            "source_date": "2026-04-29",
+            "error_reason": "tiket_cloudflare_captcha"
           }
         }
       }
