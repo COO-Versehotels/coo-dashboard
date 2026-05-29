@@ -3,6 +3,7 @@ import json
 import re
 import os
 import time
+import random
 from datetime import datetime
 
 DATA_FILE = "data.json"
@@ -46,6 +47,22 @@ HOTELS = {
 }
 
 PLATFORM_SCOPE = ["agoda", "booking", "traveloka", "tripcom", "tiket"]
+
+# Tiket hotel ID map (dari URL slug terakhir sebelum angka panjang)
+TIKET_HOTEL_IDS = {
+    "Verse Lite Gajah Mada":    "807001751612826254",
+    "Verse Luxe Wahid Hasyim":  "112001545304320268",
+    "Verse Cirebon":             "108001534490349528",
+    "Oak Tree Mahakam Blok M":  "412001639976768183"
+}
+
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+]
 
 
 def log_error(hotel_name, platform_name, message):
@@ -370,13 +387,8 @@ def parse_tripcom(text):
     focused_text = text
 
     focus_markers = [
-        "Ulasan Tamu",
-        "Ulasan tamu",
-        "Guest Reviews",
-        "Guest reviews",
-        "Hotel Reviews",
-        "Reviews",
-        "review.html"
+        "Ulasan Tamu", "Ulasan tamu", "Guest Reviews",
+        "Guest reviews", "Hotel Reviews", "Reviews", "review.html"
     ]
 
     focus_slices = []
@@ -399,9 +411,6 @@ def parse_tripcom(text):
             if match:
                 candidate_rating = clean_rating(match.group(1))
                 candidate_reviews = clean_number(match.group(2))
-
-                # Trip.com hotel score should be on 10-scale and normally not below 6 for these hotels.
-                # This prevents random numbers such as 1.9 / 3.5 / 4.8 from page distance/location blocks.
                 if is_valid_rating(candidate_rating, 6, 10) and is_valid_reviews(candidate_reviews, 5):
                     rating = candidate_rating
                     reviews = candidate_reviews
@@ -410,7 +419,6 @@ def parse_tripcom(text):
             break
 
     if rating == "N/A" or reviews == "N/A":
-        # Fallback: find all /10 candidates, choose the first realistic hotel score.
         rating_candidates = []
         for m in re.finditer(r"\b(\d[.,]\d)\s*/\s*10\b", focused_text, re.IGNORECASE):
             candidate = clean_rating(m.group(1))
@@ -446,34 +454,17 @@ def parse_tripcom(text):
     }
 
 
-def parse_tiket(text):
-    # Deteksi bot challenge / captcha
-    if re.search(
-        r"Robot atau manusia|Centang kotak|Ray ID|captcha|Cloudflare|Access Denied|Forbidden|verify you are human|DDoS protection|checking your browser",
-        text, re.IGNORECASE
-    ):
-        return {
-            "rating": "N/A", "reviews": "N/A", "ranking": None,
-            "match_ok": False, "error_reason": "tiket_bot_challenge"
-        }
-
-    rating  = "N/A"
+def parse_tiket_text(text):
+    """Parse teks halaman Tiket setelah berhasil di-load (bukan captcha)."""
+    rating = "N/A"
     reviews = "N/A"
 
-    # --- JSON-LD / structured data (paling reliable) ---
-    json_patterns = [
-        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-        r'"reviewCount"\s*:\s*"?(\d+)"?',
-    ]
-
-    # Combined patterns (rating + review dalam satu blok)
     combined_patterns = [
         r"Review\s+Lihat\s+semua\s+(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5\s*(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan)?\s*Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?Dari\s+([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+review",
         r"(\d[.,]\d)\s*/\s*5.*?([\d,\.]+)\s+ulasan",
-        # Pola baru: format API/JSON Tiket
         r'"score"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"total"\s*:\s*(\d+)',
         r'"averageScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"totalReview"\s*:\s*(\d+)',
         r'"rating"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.*?"reviewCount"\s*:\s*(\d+)',
@@ -482,23 +473,19 @@ def parse_tiket(text):
     for pattern in combined_patterns:
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
-            candidate_rating  = clean_rating(match.group(1))
+            candidate_rating = clean_rating(match.group(1))
             candidate_reviews = clean_number(match.group(2))
             if is_valid_rating(candidate_rating, 1, 5) and is_valid_reviews(candidate_reviews, 10):
-                rating  = candidate_rating
+                rating = candidate_rating
                 reviews = candidate_reviews
                 break
 
     if rating == "N/A":
-        rating_patterns = [
-            r"(\d[.,]\d)\s*/\s*5",
-            r"(\d[.,]\d)\s+(?:Bagus|Sangat\s+Bagus|Luar\s+Biasa|Mengesankan|Menyenangkan|Memuaskan|Cukup\s+Bagus)",
+        for pattern in [
+            r"(\d[.,]\d)\s*/\s*5",
             r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
             r'"score"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-            r'"averageScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-            r'"hotelScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-        ]
-        for pattern in rating_patterns:
+        ]:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
                 candidate = clean_rating(match.group(1))
@@ -507,16 +494,14 @@ def parse_tiket(text):
                     break
 
     if reviews == "N/A":
-        review_patterns = [
-            r"Dari\s+([\d,\.]+)\s+review",
-            r"Dari\s+([\d,\.]+)\s+ulasan",
-            r"([\d,\.]+)\s+review",
-            r"([\d,\.]+)\s+ulasan",
+        for pattern in [
+            r"Dari\s+([\d,\.]+)\s+revie",
+            r"Dari\s+([\d,\.]+)\s+ulasa",
+            r"([\d,\.]+)\s+revie",
+            r"([\d,\.]+)\s+ulasa",
             r'"reviewCount"\s*:\s*"?(\d+)"?',
             r'"totalReview"\s*:\s*"?(\d+)"?',
-            r'"total"\s*:\s*(\d+)',
-        ]
-        for pattern in review_patterns:
+        ]:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
                 candidate = clean_number(match.group(1))
@@ -526,12 +511,173 @@ def parse_tiket(text):
 
     ok = is_valid_rating(rating, 1, 5) and is_valid_reviews(reviews, 10)
     return {
-        "rating":       rating   if ok else "N/A",
-        "reviews":      reviews  if ok else "N/A",
-        "ranking":      None,
-        "match_ok":     ok,
+        "rating": rating if ok else "N/A",
+        "reviews": reviews if ok else "N/A",
+        "ranking": None,
+        "match_ok": ok,
         "error_reason": None if ok else "tiket_pattern_not_found"
     }
+
+
+def fetch_tiket(playwright, hotel_name, url):
+    """
+    Scrape Tiket.com dengan browser stealth tersendiri per hotel.
+    Setiap hotel pakai user-agent berbeda + random delay untuk menghindari Cloudflare.
+    """
+    ua = random.choice(USER_AGENTS)
+
+    # Random delay antar hotel: 15-40 detik
+    delay = random.randint(15, 40)
+    print(f"    [tiket] Menunggu {delay}s sebelum scrape...")
+    time.sleep(delay)
+
+    browser = None
+    context = None
+    try:
+        browser = playwright.chromium.launch(
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--disable-dev-shm-usage",
+                "--no-sandbox",
+                "--disable-gpu",
+                "--disable-extensions",
+                "--disable-plugins",
+                "--disable-images",          # hemat bandwidth
+                "--blink-settings=imagesEnabled=false",
+                f"--user-agent={ua}",
+            ]
+        )
+
+        context = browser.new_context(
+            locale="id-ID",
+            viewport={"width": 1440, "height": 900},
+            user_agent=ua,
+            java_script_enabled=True,
+            bypass_csp=True,
+            extra_http_headers={
+                "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": '"Windows"',
+                "Upgrade-Insecure-Requests": "1",
+                "Cache-Control": "max-age=0",
+            }
+        )
+
+        page = context.new_page()
+
+        # Stealth patches
+        page.add_init_script("""
+            // Sembunyikan tanda-tanda automation
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            Object.defineProperty(navigator, 'plugins', {
+                get: () => [
+                    {name:'Chrome PDF Plugin', filename:'internal-pdf-viewer'},
+                    {name:'Chrome PDF Viewer', filename:'mhjfbmdgcfjbbpaeojofohoefgiehjai'},
+                    {name:'Native Client', filename:'internal-nacl-plugin'}
+                ]
+            });
+            Object.defineProperty(navigator, 'languages', {get: () => ['id-ID','id','en-US','en']});
+            Object.defineProperty(navigator, 'hardwareConcurrency', {get: () => 4});
+            Object.defineProperty(navigator, 'deviceMemory', {get: () => 8});
+            window.chrome = {
+                runtime: {},
+                loadTimes: function(){},
+                csi: function(){},
+                app: {}
+            };
+            // Patch permission query
+            const origQuery = window.navigator.permissions.query;
+            window.navigator.permissions.query = (parameters) => (
+                parameters.name === 'notifications' ?
+                    Promise.resolve({ state: Notification.permission }) :
+                    origQuery(parameters)
+            );
+        """)
+
+        last_result = None
+        for attempt in range(1, MAX_RETRY + 1):
+            try:
+                print(f"    [tiket] Attempt {attempt}/{MAX_RETRY}...")
+                page.goto(url, timeout=90000, wait_until="domcontentloaded")
+
+                # Tunggu lebih lama agar JS load
+                page.wait_for_timeout(12000)
+
+                # Simulasi scroll manusia
+                for scroll_pos in [300, 600, 900, 1200]:
+                    page.evaluate(f"window.scrollTo(0, {scroll_pos})")
+                    page.wait_for_timeout(random.randint(800, 1500))
+
+                # Ambil teks
+                text = get_page_text(page, 2000)
+
+                # Ambil HTML untuk debug
+                try:
+                    html = page.content()
+                except Exception:
+                    html = ""
+
+                debug_write(DEBUG_TIKET_FILE, hotel_name, url, text, html)
+
+                # Cek apakah masih captcha
+                if re.search(
+                    r"Robot atau manusia|Centang kotak|Ray ID|Turnstile|verify you are human",
+                    text, re.IGNORECASE
+                ):
+                    print(f"    [tiket] Cloudflare captcha terdeteksi, attempt {attempt}")
+                    log_error(hotel_name, "tiket", f"cloudflare_captcha_attempt_{attempt}")
+                    last_result = {
+                        "rating": "N/A", "reviews": "N/A", "ranking": None,
+                        "match_ok": False, "error_reason": "tiket_cloudflare_captcha"
+                    }
+                    if attempt < MAX_RETRY:
+                        wait = random.randint(20, 35)
+                        print(f"    [tiket] Tunggu {wait}s sebelum retry...")
+                        time.sleep(wait)
+                    continue
+
+                # Parse
+                result = parse_tiket_text(text)
+                last_result = result
+
+                if result.get("match_ok"):
+                    print(f"    [tiket] Berhasil: rating={result['rating']}, reviews={result['reviews']}")
+                    return result
+
+                print(f"    [tiket] Pattern tidak match, attempt {attempt}")
+                if attempt < MAX_RETRY:
+                    time.sleep(random.randint(10, 20))
+
+            except Exception as e:
+                last_result = {
+                    "rating": "N/A", "reviews": "N/A", "ranking": None,
+                    "match_ok": False, "error_reason": f"tiket_error: {str(e)[:80]}"
+                }
+                print(f"    [tiket] Error: {str(e)[:60]}")
+                if attempt < MAX_RETRY:
+                    time.sleep(random.randint(15, 25))
+
+        return last_result or {
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": "tiket_all_attempts_failed"
+        }
+
+    except Exception as e:
+        return {
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": f"tiket_browser_error: {str(e)[:80]}"
+        }
+    finally:
+        try:
+            if context:
+                context.close()
+            if browser:
+                browser.close()
+        except Exception:
+            pass
 
 
 def traveloka_extract_from_text(text):
@@ -616,7 +762,6 @@ def collect_traveloka_text(page):
         except Exception:
             pass
 
-    # Strategi 1: Raw HTML
     try:
         html = page.content()
         plain = re.sub(r"<[^>]+>", " ", html)
@@ -625,7 +770,6 @@ def collect_traveloka_text(page):
     except Exception:
         pass
 
-    # Strategi 2: JSON-LD structured data
     try:
         json_ld_texts = page.evaluate("""
             () => {
@@ -638,7 +782,6 @@ def collect_traveloka_text(page):
     except Exception:
         pass
 
-    # Strategi 3: Script tags berisi rating data
     try:
         script_texts = page.evaluate("""
             () => {
@@ -662,7 +805,6 @@ def collect_traveloka_text(page):
     except Exception:
         pass
 
-    # Strategi 4: Window JS state
     try:
         api_text = page.evaluate("""
             () => {
@@ -715,20 +857,14 @@ def fetch_traveloka(playwright, url):
             time.sleep(10)
 
         return last or {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": None,
-            "match_ok": False,
-            "error_reason": "traveloka_failed"
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": "traveloka_failed"
         }
 
     except Exception as e:
         return {
-            "rating": "N/A",
-            "reviews": "N/A",
-            "ranking": None,
-            "match_ok": False,
-            "error_reason": f"traveloka_error: {str(e)[:80]}"
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": f"traveloka_error: {str(e)[:80]}"
         }
     finally:
         try:
@@ -756,9 +892,6 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
             except Exception:
                 last_html = ""
 
-            if platform_name == "tiket":
-                debug_write(DEBUG_TIKET_FILE, hotel_name, url, text, last_html)
-
             if platform_name == "tripcom":
                 debug_write(DEBUG_TRIP_FILE, hotel_name, url, text, last_html)
 
@@ -774,23 +907,18 @@ def scrape_standard_platform(page, url, parser_func, hotel_name, platform_name, 
             last_error = str(e)
             time.sleep(10)
 
-    if platform_name == "tiket":
-        debug_write(DEBUG_TIKET_FILE, hotel_name, url, last_text, last_html)
-
     if platform_name == "tripcom":
         debug_write(DEBUG_TRIP_FILE, hotel_name, url, last_text, last_html)
 
     log_error(hotel_name, platform_name, last_error)
     return {
-        "rating": "N/A",
-        "reviews": "N/A",
-        "ranking": None,
-        "match_ok": False,
-        "error_reason": last_error or "scrape_failed"
+        "rating": "N/A", "reviews": "N/A", "ranking": None,
+        "match_ok": False, "error_reason": last_error or "scrape_failed"
     }
 
 
 def main():
+    # Reset debug files
     for file in [DEBUG_TIKET_FILE, DEBUG_TRIP_FILE]:
         try:
             with open(file, "w", encoding="utf-8") as f:
@@ -802,6 +930,7 @@ def main():
     hotels_today = []
 
     with sync_playwright() as p:
+        # Browser utama untuk Agoda, Booking, Trip.com
         browser = p.chromium.launch(headless=True, args=[
             "--disable-blink-features=AutomationControlled",
             "--disable-dev-shm-usage",
@@ -818,7 +947,6 @@ def main():
         )
 
         page = context.new_page()
-        # Stealth: sembunyikan tanda-tanda Playwright/automation
         page.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
             Object.defineProperty(navigator, 'plugins', {get: () => [1,2,3,4,5]});
@@ -837,16 +965,15 @@ def main():
             print("Hotel:", hotel_name)
             hotel_record = {"name": hotel_name, "platforms": {}}
 
+            # Platform standar (Agoda, Booking, Trip.com)
             platform_jobs = [
-                ("agoda", parse_agoda, 6000),
+                ("agoda",   parse_agoda,   6000),
                 ("booking", parse_booking, 9000),
                 ("tripcom", parse_tripcom, 12000),
-                ("tiket", parse_tiket, 12000),
             ]
 
             for platform_name, parser_func, wait_ms in platform_jobs:
                 print("  " + platform_name)
-
                 fresh = scrape_standard_platform(
                     page=page,
                     url=sources[platform_name],
@@ -855,28 +982,30 @@ def main():
                     platform_name=platform_name,
                     wait_ms=wait_ms
                 )
-
                 parsed = finalize_platform_result(hotel_name, platform_name, fresh, previous_data)
-
-                print("     rating:", parsed["rating"])
-                print("     reviews:", parsed["reviews"])
-                print("     status:", parsed["status"])
+                print(f"     rating: {parsed['rating']} | reviews: {parsed['reviews']} | status: {parsed['status']}")
                 if parsed.get("error_reason"):
-                    print("     error:", parsed["error_reason"])
-
+                    print(f"     error: {parsed['error_reason']}")
                 hotel_record["platforms"][platform_name] = parsed
 
+            # Traveloka — browser terpisah
             print("  traveloka")
             fresh = fetch_traveloka(p, sources["traveloka"])
             parsed = finalize_platform_result(hotel_name, "traveloka", fresh, previous_data)
-
-            print("     rating:", parsed["rating"])
-            print("     reviews:", parsed["reviews"])
-            print("     status:", parsed["status"])
+            print(f"     rating: {parsed['rating']} | reviews: {parsed['reviews']} | status: {parsed['status']}")
             if parsed.get("error_reason"):
-                print("     error:", parsed["error_reason"])
-
+                print(f"     error: {parsed['error_reason']}")
             hotel_record["platforms"]["traveloka"] = parsed
+
+            # Tiket — browser terpisah dengan stealth per hotel
+            print("  tiket")
+            fresh = fetch_tiket(p, hotel_name, sources["tiket"])
+            parsed = finalize_platform_result(hotel_name, "tiket", fresh, previous_data)
+            print(f"     rating: {parsed['rating']} | reviews: {parsed['reviews']} | status: {parsed['status']}")
+            if parsed.get("error_reason"):
+                print(f"     error: {parsed['error_reason']}")
+            hotel_record["platforms"]["tiket"] = parsed
+
             hotels_today.append(hotel_record)
 
         context.close()
