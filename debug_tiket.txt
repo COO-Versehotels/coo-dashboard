@@ -1,12 +1,12 @@
-# DEBUG LOG — 2026-05-30 04:16:06.196115
+# DEBUG LOG — 2026-05-30 06:11:00.926615
 
 ================================================================================
-TIME: 2026-05-30 04:21:38.041528
+TIME: 2026-05-30 06:13:39.364616
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03af3d8c918a9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b97a23b934b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -135,12 +135,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:22:25.457924
+TIME: 2026-05-30 06:14:31.322282
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03af4afdd20a9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b98e759494b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -269,12 +269,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:23:08.318573
+TIME: 2026-05-30 06:15:10.021260
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03af5c56f1ea9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b99dada334b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -403,12 +403,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:28:18.255364
+TIME: 2026-05-30 06:17:37.208121
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03afd99ebb67330 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b9d713d364b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -537,12 +537,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:28:58.577236
+TIME: 2026-05-30 06:18:24.810999
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03afe4fab217330 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b9e9cdd144b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -671,12 +671,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:29:43.796485
+TIME: 2026-05-30 06:19:17.791106
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03aff6aea3a7330 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03b9fe5ad334b39 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -805,12 +805,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:34:55.735737
+TIME: 2026-05-30 06:21:56.590590
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b07566a5e7330 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03ba3c3bcf1f0af Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -939,12 +939,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:35:41.251760
+TIME: 2026-05-30 06:22:41.541051
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b08296d377330 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03ba4df39daf0af Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1073,146 +1073,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:36:33.575131
+TIME: 2026-05-30 06:23:22.980152
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b09652edc7330 Kami akan segera mengarahkan anda ke tiket.com
---------------------------------------------------------------------------------
-HTML SNIPPET:
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Tunggu sebentar...</title>
-    <style>
-
-      /* Base Reset & Typography */
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        font-family:
-          TiketOdysseyText,
-          system-ui,
-          -apple-system,
-          'Segoe UI',
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif,
-          'Apple Color Emoji',
-          'Segoe UI Emoji';
-      }
-
-      * {
-        font: inherit;
-        line-height: 143%;
-      }
-
-      /* Header System */
-      .header_container {
-        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
-        padding: 20px 0;
-        display: none;
-      }
-
-      .header_wrapper {
-        box-sizing: content-box;
-        padding-left: 20px;
-        padding-right: 20px;
-        max-width: none;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .header_wrapper img {
-        display: flex;
-      }
-
-      /* Main Layout */
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-
-      .hide {
-        display: none;
-      }
-
-      .image {
-        width: 320px;
-        height: 213px;
-      }
-
-      .content {
-        margin-top: 24px;
-        max-width: 320px;
-        text-align: center;
-      }
-
-      /* Common Typography */
-      .title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 134%;
-      }
-
-      .description {
-        margin-top: 8px;
-        font-size: 16px;
-        color: #303135;
-        line-height: 138%;
-      }
-
-      /* Common Ray ID Styles */
-      .ray_id {
-        text-align: center;
-        color: #71747d;
-        font-size: 12px;
-        margin: 0;
-        padding: 8px 0;
-      }
-
-      /* Verify-specific styles */
-      .cf_container {
-        display: flex;
-        justify-content: center;
-        padding: 16px 0 26px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-      }
-
-      .cf_captcha_box {
-        width: 320px;
-        position: relative;
-        border-radius: 8px;
-        min-height: 97px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .cf_captcha {
-        flex: 1;
-      }
-
-  
-
-================================================================================
-TIME: 2026-05-30 04:41:55.438353
-HOTEL: Oak Tree Mahakam Blok M
-URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
-TEXT LENGTH: 1319
---------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b1192fc21a9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03ba5df3f41f0af Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1341,12 +1207,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:42:38.863249
+TIME: 2026-05-30 06:25:57.030721
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b1255def0a9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03ba9a3fcb5f0af Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1475,12 +1341,146 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-05-30 04:43:31.832349
+TIME: 2026-05-30 06:26:40.179785
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
-TEXT LENGTH: 1319
+TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ekstensi browser atau konfigurasi jaringan yang tidak kompatibel Ekstensi browser atau pengaturan jaringan Anda telah memblokir proses verifikasi keamanan yang diperlukan oleh www.tiket.com. Untuk mengatasi hal ini, coba langkah-langkah berikut: Nonaktifkan sementara ekstensi browser: Buka pengaturan browser Anda. Temukan ekstensi browser Anda dan nonaktifkan sementara. Setelah ekstensi browser dinonaktifkan, muat ulang halaman ini. Periksa pengaturan jaringan Anda: Verifikasi apakah pengaturan internet atau firewall Anda telah memblokir perangkat Anda untuk mengakses "challenges.cloudflare.com". Anda mungkin perlu merujuk dengan dokumentasi bantuan sistem operasi Anda atau administrator jaringan Anda untuk panduan tentang penyesuaian pengaturan firewall. Jika Anda tidak memiliki izin untuk menyesuaikan pengaturan jaringan, coba sambungkan ke jaringan lain. Jika langkah-langkah ini tidak menyelesaikan masalah, lihat dokumentasi pemecahan masalah Cloudflare untuk bantuan lebih lanjut. Untuk panduan terperinci tentang cara menonaktifkan ekstensi browser Anda atau memeriksa pengaturan jaringan Anda, lihat dokumentasi browser atau perangkat Anda. Ray ID: a03b139d7a5aa9a4 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03baab7cbadf0af Kami akan segera mengarahkan anda ke tiket.com
+--------------------------------------------------------------------------------
+HTML SNIPPET:
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Tunggu sebentar...</title>
+    <style>
+
+      /* Base Reset & Typography */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family:
+          TiketOdysseyText,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji';
+      }
+
+      * {
+        font: inherit;
+        line-height: 143%;
+      }
+
+      /* Header System */
+      .header_container {
+        box-shadow: 0 2px 8px rgb(48 49 53 / 16%);
+        padding: 20px 0;
+        display: none;
+      }
+
+      .header_wrapper {
+        box-sizing: content-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .header_wrapper img {
+        display: flex;
+      }
+
+      /* Main Layout */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .image {
+        width: 320px;
+        height: 213px;
+      }
+
+      .content {
+        margin-top: 24px;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      /* Common Typography */
+      .title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 134%;
+      }
+
+      .description {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #303135;
+        line-height: 138%;
+      }
+
+      /* Common Ray ID Styles */
+      .ray_id {
+        text-align: center;
+        color: #71747d;
+        font-size: 12px;
+        margin: 0;
+        padding: 8px 0;
+      }
+
+      /* Verify-specific styles */
+      .cf_container {
+        display: flex;
+        justify-content: center;
+        padding: 16px 0 26px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .cf_captcha_box {
+        width: 320px;
+        position: relative;
+        border-radius: 8px;
+        min-height: 97px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cf_captcha {
+        flex: 1;
+      }
+
+  
+
+================================================================================
+TIME: 2026-05-30 06:27:23.926570
+HOTEL: Oak Tree Mahakam Blok M
+URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
+TEXT LENGTH: 158
+--------------------------------------------------------------------------------
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a03babc56995f0af Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
