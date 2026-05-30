@@ -336,38 +336,49 @@ def parse_agoda(text):
     rating = "N/A"
     reviews = "N/A"
 
-    # Pola baru Agoda: "8.6 Exceptional 4,979 reviews"
+    # Agoda format: "8.6 Exceptional 4,979 reviews"
+    # Review count harus realistis (min 50) untuk hindari false positive
     combined_patterns = [
         r"(\d[.,]\d)\s+(?:Exceptional|Fabulous|Superb|Very Good|Good|Pleasant|Fair|Luar Biasa|Sangat Baik|Mengesankan|Bagus|Menyenangkan|Memuaskan)\s+([\d,\.]+)\s+reviews?",
-        r"(\d[.,]\d)\s*/?\s*10\b.{0,200}?([\d,\.]+)\s+reviews?",
-        r"([\d,\.]+)\s+reviews?.{0,200}?(\d[.,]\d)\s*/?\s*10\b",
+        r"(\d[.,]\d)\s*/?\s*10\b.{0,300}?([\d,\.]+)\s+reviews?",
+        r"([\d,\.]+)\s+reviews?.{0,300}?(\d[.,]\d)\s*/?\s*10\b",
     ]
     for pattern in combined_patterns:
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             r1, r2 = clean_rating(match.group(1)), clean_number(match.group(2))
-            if is_valid_rating(r1, 1, 10) and is_valid_reviews(r2, 1):
+            # Minimum 50 reviews untuk hindari false positive
+            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 50):
                 rating, reviews = r1, r2
                 break
+            # Coba terbalik
+            r1b, r2b = clean_rating(match.group(2)), clean_number(match.group(1))
+            if is_valid_rating(r1b, 5, 10) and is_valid_reviews(r2b, 50):
+                rating, reviews = r1b, r2b
+                break
 
-    if rating == "N/A":
-        # Fallback: cari rating saja
-        for pattern in [r"\b(\d[.,]\d)\b"]:
-            m = re.search(pattern, text)
-            if m:
-                c = clean_rating(m.group(1))
-                if is_valid_rating(c, 5, 10):
-                    rating = c
-                    break
-
+    # Fallback: scan semua "X reviews" dengan minimum 50
     if reviews == "N/A":
-        m = re.search(r"([\d,\.]+)\s+reviews?", text, re.IGNORECASE)
-        if m:
+        candidates = []
+        for m in re.finditer(r"([\d,\.]+)\s+reviews?", text, re.IGNORECASE):
             c = clean_number(m.group(1))
-            if is_valid_reviews(c, 1):
-                reviews = c
+            if is_valid_reviews(c, 50):
+                try:
+                    candidates.append(int(c))
+                except Exception:
+                    pass
+        if candidates:
+            reviews = str(max(candidates))
 
-    ok = is_valid_rating(rating, 1, 10) and is_valid_reviews(reviews, 1)
+    # Fallback rating
+    if rating == "N/A":
+        for m in re.finditer(r"\b(\d[.,]\d)\b", text):
+            c = clean_rating(m.group(1))
+            if is_valid_rating(c, 5, 10):
+                rating = c
+                break
+
+    ok = is_valid_rating(rating, 5, 10) and is_valid_reviews(reviews, 50)
     return {
         "rating": rating if ok else "N/A",
         "reviews": reviews if ok else "N/A",
@@ -430,6 +441,8 @@ def fetch_agoda(url, hotel_name, playwright=None):
                     html = ""
 
                 result = parse_agoda(text + " " + html)
+                # Debug: tulis teks yang diterima Agoda
+                debug_write(DEBUG_TRIP_FILE, hotel_name + "_AGODA", url, text[:3000], html[:1000])
                 if result.get("match_ok"):
                     print(f"    [agoda] Berhasil attempt {attempt}: rating={result['rating']}, reviews={result['reviews']}")
                     return result
