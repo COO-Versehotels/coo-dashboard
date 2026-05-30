@@ -3939,9 +3939,9 @@
             "rating": "7.9",
             "reviews": "100",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-30",
-            "error_reason": null
+            "error_reason": "agoda_pattern_not_found"
           },
           "booking": {
             "rating": "6.5",
@@ -3953,11 +3953,11 @@
           },
           "traveloka": {
             "rating": "8.1",
-            "reviews": "5970",
+            "reviews": "6003",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-05-10",
-            "error_reason": "traveloka_strong_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-05-30",
+            "error_reason": null
           },
           "tripcom": {
             "rating": "7.3",
@@ -3984,9 +3984,9 @@
             "rating": "7.9",
             "reviews": "100",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-05-30",
-            "error_reason": null
+            "error_reason": "agoda_pattern_not_found"
           },
           "booking": {
             "rating": "7.9",
@@ -4027,11 +4027,11 @@
         "platforms": {
           "agoda": {
             "rating": "7.7",
-            "reviews": "1",
+            "reviews": "100",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-05-30",
-            "error_reason": "agoda_pattern_not_found"
+            "error_reason": null
           },
           "booking": {
             "rating": "5.7",
