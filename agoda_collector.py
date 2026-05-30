@@ -377,20 +377,81 @@ def parse_agoda(text):
     }
 
 
-def fetch_agoda(url, hotel_name):
-    """Agoda: coba HTTP request dulu, fallback ke Playwright."""
-    for attempt in range(1, MAX_RETRY + 1):
+def fetch_agoda(url, hotel_name, playwright=None):
+    """
+    Agoda: butuh JavaScript render — gunakan Playwright.
+    HTTP request biasa hanya dapat navigasi, tidak ada rating/review.
+    """
+    if playwright is None:
+        return {
+            "rating": "N/A", "reviews": "N/A", "ranking": None,
+            "match_ok": False, "error_reason": "agoda_no_playwright"
+        }
+
+    browser = None
+    context = None
+    try:
+        browser = playwright.chromium.launch(headless=True, args=[
+            "--disable-blink-features=AutomationControlled",
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+            "--disable-gpu",
+        ])
+        context = browser.new_context(
+            locale="id-ID",
+            viewport={"width": 1366, "height": 768},
+            user_agent=random.choice(USER_AGENTS),
+        )
+        page = context.new_page()
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            Object.defineProperty(navigator, 'languages', {get: () => ['id-ID','id','en-US','en']});
+            window.chrome = {runtime: {}};
+        """)
+        page.set_extra_http_headers({
+            "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8",
+        })
+
+        for attempt in range(1, MAX_RETRY + 1):
+            try:
+                safe_goto(page, url, timeout=80000)
+                # Agoda butuh waktu untuk load rating via AJAX
+                page.wait_for_timeout(10000)
+
+                # Scroll untuk trigger lazy load
+                for pos in [500, 1000, 1500]:
+                    page.evaluate(f"window.scrollTo(0, {pos})")
+                    page.wait_for_timeout(1500)
+
+                text = get_page_text(page, 2000)
+                try:
+                    html = page.content()
+                except Exception:
+                    html = ""
+
+                result = parse_agoda(text + " " + html)
+                if result.get("match_ok"):
+                    print(f"    [agoda] Berhasil attempt {attempt}: rating={result['rating']}, reviews={result['reviews']}")
+                    return result
+
+                print(f"    [agoda] Pattern tidak match attempt {attempt}, text_len={len(text)}")
+                time.sleep(8)
+
+            except Exception as e:
+                log_error(hotel_name, "agoda", f"attempt_{attempt}: {str(e)[:80]}")
+                time.sleep(8)
+
+    except Exception as e:
+        log_error(hotel_name, "agoda", f"browser_error: {str(e)[:80]}")
+    finally:
         try:
-            html = http_get(url, {"Referer": "https://www.agoda.com/"})
-            text = normalize_text(re.sub(r"<[^>]+>", " ", html))
-            result = parse_agoda(text + " " + html)
-            if result.get("match_ok"):
-                print(f"    [agoda] HTTP berhasil attempt {attempt}")
-                return result
-            time.sleep(8)
-        except Exception as e:
-            log_error(hotel_name, "agoda", f"http_attempt_{attempt}: {str(e)[:80]}")
-            time.sleep(8)
+            if context:
+                context.close()
+            if browser:
+                browser.close()
+        except Exception:
+            pass
+
     return {
         "rating": "N/A", "reviews": "N/A", "ranking": None,
         "match_ok": False, "error_reason": "agoda_pattern_not_found"
@@ -531,12 +592,21 @@ def fetch_tripcom(url, hotel_name):
 # ─────────────────────────────────────────────
 # PARSER + FETCH: TRAVELOKA (urllib — server-side render)
 # ─────────────────────────────────────────────
+def is_rating_format(text):
+    """Cek apakah teks adalah format rating (X,X atau X.X) bukan ribuan seperti 6.468."""
+    # Rating harus: 1 digit, koma/titik, 1 digit — misal 8,3 atau 8.3
+    # Bukan ribuan seperti 6.468 atau 6,468
+    return bool(re.match(r'^\d[.,]\d$', str(text).strip()))
+
+
 def parse_traveloka(text):
     rating = "N/A"
     reviews = "N/A"
 
     # Pola dari halaman Traveloka yang ter-render:
     # "8,3 /10 Mengesankan 6.468 ulasan"
+    # PENTING: rating harus format X,X (1 digit koma 1 digit)
+    # Angka ribuan seperti "6.468" bukan rating!
     combined_patterns = [
         r"(\d[.,]\d)\s*/\s*10\s*(?:Mengesankan|Sangat\s+Bagus|Luar\s+Biasa|Menyenangkan|Bagus|Memuaskan|Baik)?\s*([\d,.]+)\s+ulasan",
         r"(\d[.,]\d)\s*/\s*10.{0,200}?([\d,.]+)\s+ulasan",
@@ -547,10 +617,18 @@ def parse_traveloka(text):
         match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
         if match:
             g1, g2 = match.group(1), match.group(2)
-            r1, r2 = clean_rating(g1), clean_number(g2)
-            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 10):
-                rating, reviews = r1, r2
-                break
+            # Validasi: g1 harus format rating (X,X), g2 adalah review count
+            if is_rating_format(g1):
+                r1, r2 = clean_rating(g1), clean_number(g2)
+                if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 10):
+                    rating, reviews = r1, r2
+                    break
+            # Coba terbalik: g2 adalah rating, g1 adalah review
+            elif is_rating_format(g2):
+                r1, r2 = clean_rating(g2), clean_number(g1)
+                if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 10):
+                    rating, reviews = r1, r2
+                    break
 
     # JSON-LD / structured data
     if rating == "N/A":
@@ -562,7 +640,7 @@ def parse_traveloka(text):
             m = re.search(pattern, text, re.IGNORECASE)
             if m:
                 c = clean_rating(m.group(1))
-                if is_valid_rating(c, 5, 10):
+                if is_valid_rating(c, 5, 10) and is_rating_format(m.group(1)):
                     rating = c
                     break
 
@@ -936,9 +1014,9 @@ def main():
             print(f"{'='*50}")
             hotel_record = {"name": hotel_name, "platforms": {}}
 
-            # ── Agoda (HTTP request) ──
+            # ── Agoda (Playwright — JS render diperlukan) ──
             print("  agoda")
-            fresh = fetch_agoda(sources["agoda"], hotel_name)
+            fresh = fetch_agoda(sources["agoda"], hotel_name, playwright=p)
             parsed = finalize_platform_result(hotel_name, "agoda", fresh, previous_data)
             print(f"     rating: {parsed['rating']} | reviews: {parsed['reviews']} | status: {parsed['status']}")
             if parsed.get("error_reason"):
