@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-02 17:14:20.144617",
+  "last_update": "2026-06-02 21:42:13.816370",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -91,9 +91,9 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-01",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-02",
+          "error_reason": null
         },
         "booking": {
           "rating": "6.5",
