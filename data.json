@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-03 00:20:38.249105",
+  "last_update": "2026-06-03 05:32:44.901765",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -38,7 +38,7 @@
         },
         "tripcom": {
           "rating": "8.4",
-          "reviews": "210",
+          "reviews": "221",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-06-03",
@@ -73,7 +73,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 0,
+            "review_change": 11,
             "ranking_change": null
           },
           "tiket": {
@@ -91,13 +91,13 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-06-03",
-          "error_reason": null
+          "error_reason": "agoda_pattern_not_found"
         },
         "booking": {
           "rating": "6.5",
-          "reviews": "888",
+          "reviews": "889",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-06-03",
@@ -138,7 +138,7 @@
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -1,
+            "review_change": 0,
             "ranking_change": null
           },
           "traveloka": {
@@ -166,9 +166,9 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-02",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-03",
+          "error_reason": null
         },
         "booking": {
           "rating": "7.9",
@@ -263,7 +263,7 @@
         },
         "tripcom": {
           "rating": "8.5",
-          "reviews": "134",
+          "reviews": "140",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-06-03",
@@ -298,7 +298,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 0,
+            "review_change": 6,
             "ranking_change": null
           },
           "tiket": {
