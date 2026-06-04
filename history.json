@@ -4819,9 +4819,9 @@
             "rating": "8.6",
             "reviews": "100",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-06-04",
-            "error_reason": null
+            "error_reason": "agoda_pattern_not_found"
           },
           "booking": {
             "rating": "7.8",
@@ -4885,7 +4885,7 @@
             "error_reason": "traveloka_strong_pattern_not_found"
           },
           "tripcom": {
-            "rating": "7.2",
+            "rating": "7.3",
             "reviews": "191",
             "ranking": null,
             "status": "AUTO",
@@ -4954,9 +4954,9 @@
             "rating": "7.7",
             "reviews": "100",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-06-04",
-            "error_reason": null
+            "error_reason": "agoda_pattern_not_found"
           },
           "booking": {
             "rating": "5.7",
