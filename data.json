@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-03 21:48:28.005670",
+  "last_update": "2026-06-04 00:18:45.654518",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -16,16 +16,16 @@
           "rating": "8.6",
           "reviews": "100",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-06-03",
-          "error_reason": null
+          "error_reason": "agoda_pattern_not_found"
         },
         "booking": {
           "rating": "7.8",
           "reviews": "570",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "traveloka": {
@@ -41,7 +41,7 @@
           "reviews": "221",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "tiket": {
@@ -91,16 +91,16 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-03",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-04",
+          "error_reason": null
         },
         "booking": {
           "rating": "6.5",
           "reviews": "891",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "traveloka": {
@@ -112,11 +112,11 @@
           "error_reason": "traveloka_strong_pattern_not_found"
         },
         "tripcom": {
-          "rating": "7.2",
+          "rating": "7.3",
           "reviews": "191",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "tiket": {
@@ -147,7 +147,7 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": -0.1,
+            "rating_change": 0.0,
             "review_change": 1,
             "ranking_change": null
           },
@@ -175,7 +175,7 @@
           "reviews": "52",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "traveloka": {
@@ -191,7 +191,7 @@
           "reviews": "120",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "tiket": {
@@ -250,7 +250,7 @@
           "reviews": "71",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "traveloka": {
@@ -266,7 +266,7 @@
           "reviews": "140",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-03",
+          "source_date": "2026-06-04",
           "error_reason": null
         },
         "tiket": {
