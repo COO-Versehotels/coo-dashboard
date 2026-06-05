@@ -5010,7 +5010,7 @@
           },
           "booking": {
             "rating": "7.8",
-            "reviews": "571",
+            "reviews": "570",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-06-05",
@@ -5094,9 +5094,9 @@
             "rating": "7.9",
             "reviews": "100",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-06-03",
-            "error_reason": "agoda_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-06-05",
+            "error_reason": null
           },
           "booking": {
             "rating": "7.9",
@@ -5139,9 +5139,9 @@
             "rating": "7.7",
             "reviews": "100",
             "ranking": null,
-            "status": "CACHED",
-            "source_date": "2026-06-04",
-            "error_reason": "agoda_pattern_not_found"
+            "status": "AUTO",
+            "source_date": "2026-06-05",
+            "error_reason": null
           },
           "booking": {
             "rating": "5.7",
