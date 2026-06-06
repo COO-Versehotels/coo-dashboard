@@ -5189,9 +5189,9 @@
             "rating": "8.6",
             "reviews": "100",
             "ranking": null,
-            "status": "CACHED",
+            "status": "AUTO",
             "source_date": "2026-06-06",
-            "error_reason": "agoda_pattern_not_found"
+            "error_reason": null
           },
           "booking": {
             "rating": "7.8",
@@ -5240,7 +5240,7 @@
           },
           "booking": {
             "rating": "6.5",
-            "reviews": "891",
+            "reviews": "889",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-06-06",
