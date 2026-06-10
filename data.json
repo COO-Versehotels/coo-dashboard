@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-10 00:03:31.798844",
+  "last_update": "2026-06-10 05:06:24.971924",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -16,9 +16,9 @@
           "rating": "8.6",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-09",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-10",
+          "error_reason": null
         },
         "booking": {
           "rating": "7.8",
@@ -41,7 +41,7 @@
           "reviews": "240",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "tiket": {
@@ -92,7 +92,7 @@
           "reviews": "100",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "booking": {
@@ -116,7 +116,7 @@
           "reviews": "191",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "tiket": {
@@ -191,7 +191,7 @@
           "reviews": "120",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "tiket": {
