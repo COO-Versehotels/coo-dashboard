@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-09 20:42:13.886429",
+  "last_update": "2026-06-10 00:03:31.798844",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -250,7 +250,7 @@
           "reviews": "71",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "traveloka": {
@@ -266,7 +266,7 @@
           "reviews": "148",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-09",
+          "source_date": "2026-06-10",
           "error_reason": null
         },
         "tiket": {
