@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-12 00:14:03.437247",
+  "last_update": "2026-06-12 05:21:05.559639",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -16,9 +16,9 @@
           "rating": "8.6",
           "reviews": "100",
           "ranking": null,
-          "status": "AUTO",
+          "status": "CACHED",
           "source_date": "2026-06-11",
-          "error_reason": null
+          "error_reason": "agoda_pattern_not_found"
         },
         "booking": {
           "rating": "7.8",
@@ -37,11 +37,11 @@
           "error_reason": "traveloka_strong_pattern_not_found"
         },
         "tripcom": {
-          "rating": "8.5",
-          "reviews": "244",
+          "rating": "8.4",
+          "reviews": "245",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-11",
+          "source_date": "2026-06-12",
           "error_reason": null
         },
         "tiket": {
@@ -72,8 +72,8 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.1,
-            "review_change": 34,
+            "rating_change": 0.0,
+            "review_change": 35,
             "ranking_change": null
           },
           "tiket": {
@@ -91,9 +91,9 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-11",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-12",
+          "error_reason": null
         },
         "booking": {
           "rating": "6.5",
@@ -166,9 +166,9 @@
           "rating": "7.9",
           "reviews": "100",
           "ranking": null,
-          "status": "CACHED",
-          "source_date": "2026-06-11",
-          "error_reason": "agoda_pattern_not_found"
+          "status": "AUTO",
+          "source_date": "2026-06-12",
+          "error_reason": null
         },
         "booking": {
           "rating": "7.9",
