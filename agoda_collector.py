@@ -336,33 +336,45 @@ def parse_agoda(text):
     rating = "N/A"
     reviews = "N/A"
 
+    def is_not_pagination(n):
+        """Filter angka yang kemungkinan besar adalah pagination (10,25,50,100,200)"""
+        try:
+            v = int(str(n).replace(",","").replace(".",""))
+            # Angka persis 100 sangat sering muncul sebagai "Showing 100 reviews"
+            # Angka valid harus > 100 atau angka kecil yang sangat spesifik
+            if v == 100:
+                return False
+            return True
+        except:
+            return True
+
     # Agoda format: "8.6 Exceptional 4,979 reviews"
-    # Review count harus realistis (min 50) untuk hindari false positive
+    # Prioritas: cari angka > 100 untuk hindari false positive pagination
     combined_patterns = [
         r"(\d[.,]\d)\s+(?:Exceptional|Fabulous|Superb|Very Good|Good|Pleasant|Fair|Luar Biasa|Sangat Baik|Mengesankan|Bagus|Menyenangkan|Memuaskan)\s+([\d,\.]+)\s+reviews?",
         r"(\d[.,]\d)\s*/?\s*10\b.{0,300}?([\d,\.]+)\s+reviews?",
         r"([\d,\.]+)\s+reviews?.{0,300}?(\d[.,]\d)\s*/?\s*10\b",
     ]
     for pattern in combined_patterns:
-        match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
-        if match:
+        for match in re.finditer(pattern, text, re.IGNORECASE | re.DOTALL):
             r1, r2 = clean_rating(match.group(1)), clean_number(match.group(2))
-            # Minimum 50 reviews untuk hindari false positive
-            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 50):
+            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 50) and is_not_pagination(r2):
                 rating, reviews = r1, r2
                 break
             # Coba terbalik
             r1b, r2b = clean_rating(match.group(2)), clean_number(match.group(1))
-            if is_valid_rating(r1b, 5, 10) and is_valid_reviews(r2b, 50):
+            if is_valid_rating(r1b, 5, 10) and is_valid_reviews(r2b, 50) and is_not_pagination(r2b):
                 rating, reviews = r1b, r2b
                 break
+        if rating != "N/A" and reviews != "N/A":
+            break
 
-    # Fallback: scan semua "X reviews" dengan minimum 50
+    # Fallback: scan semua "X reviews" — ambil yang TERBESAR dan bukan 100
     if reviews == "N/A":
         candidates = []
         for m in re.finditer(r"([\d,\.]+)\s+reviews?", text, re.IGNORECASE):
             c = clean_number(m.group(1))
-            if is_valid_reviews(c, 50):
+            if is_valid_reviews(c, 50) and is_not_pagination(c):
                 try:
                     candidates.append(int(c))
                 except Exception:
@@ -370,7 +382,15 @@ def parse_agoda(text):
         if candidates:
             reviews = str(max(candidates))
 
-    # Fallback rating
+    # JSON-LD fallback untuk rating
+    if rating == "N/A":
+        for m in re.finditer(r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?', text, re.IGNORECASE):
+            c = clean_rating(m.group(1))
+            if is_valid_rating(c, 5, 10):
+                rating = c
+                break
+
+    # Fallback rating dari teks
     if rating == "N/A":
         for m in re.finditer(r"\b(\d[.,]\d)\b", text):
             c = clean_rating(m.group(1))
@@ -442,7 +462,15 @@ def fetch_agoda(url, hotel_name, playwright=None):
 
                 result = parse_agoda(text + " " + html)
                 # Debug: tulis teks yang diterima Agoda
-                debug_write(DEBUG_TRIP_FILE, hotel_name + "_AGODA", url, text[:3000], html[:1000])
+                debug_write(DEBUG_TRIP_FILE, hotel_name + "_AGODA", url, text[:5000], html[:2000])
+                # Tambahan: log potongan teks di sekitar kata "reviews"
+                import re as _re
+                for _m in _re.finditer(r".{0,80}reviews?.{0,80}", text, _re.IGNORECASE):
+                    try:
+                        with open("debug_agoda_reviews.txt", "a", encoding="utf-8") as _df:
+                            _df.write(f"{hotel_name}: {_m.group()}\n")
+                    except Exception:
+                        pass
                 if result.get("match_ok"):
                     print(f"    [agoda] Berhasil attempt {attempt}: rating={result['rating']}, reviews={result['reviews']}")
                     return result
@@ -479,12 +507,24 @@ def parse_booking(text):
     reviews = "N/A"
 
     rating_patterns = [
+        # Format lama
         r"Scored\s+(\d[.,]\d)",
         r"\b(\d[.,]\d)\s*/\s*10\b",
+        # Format baru Booking.com 2025+
         r"\b(\d[.,]\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
+        # JSON-LD / structured data
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"reviewScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        r'"aggregateRating"[^}]{0,200}?"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
+        # Format score card baru
+        r"score[^\w]\s*(\d[.,]\d)",
+        r"rated\s+(\d[.,]\d)",
+        r"(\d[.,]\d)\s*out of\s*10",
+        # Standalone rating di awal/akhir baris
+        r"^\s*(\d[.,]\d)\s*$",
     ]
     for pattern in rating_patterns:
-        match = re.search(pattern, text, re.IGNORECASE)
+        match = re.search(pattern, text, re.IGNORECASE | re.MULTILINE)
         if match:
             candidate = clean_rating(match.group(1))
             if is_valid_rating(candidate, 1, 10):
@@ -497,6 +537,11 @@ def parse_booking(text):
         r"([\d,\.]+)\s+ulasan",
         r"based on\s+([\d,\.]+)",
         r"from\s+([\d,\.]+)\s+reviews",
+        r'"reviewCount"\s*:\s*"?(\d+)"?',
+        r'"ratingCount"\s*:\s*"?(\d+)"?',
+        r"([\d,\.]+)\s+verified\s+reviews",
+        r"([\d,\.]+)\s+guest\s+reviews",
+        r"([\d,\.]+)\s+ratings",
     ]
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
@@ -621,9 +666,17 @@ def parse_traveloka(text):
     # PENTING: rating harus format X,X (1 digit koma 1 digit)
     # Angka ribuan seperti "6.468" bukan rating!
     combined_patterns = [
+        # Format Indonesia (ulasan)
         r"(\d[.,]\d)\s*/\s*10\s*(?:Mengesankan|Sangat\s+Bagus|Luar\s+Biasa|Menyenangkan|Bagus|Memuaskan|Baik)?\s*([\d,.]+)\s+ulasan",
         r"(\d[.,]\d)\s*/\s*10.{0,200}?([\d,.]+)\s+ulasan",
         r"([\d,.]+)\s+ulasan.{0,200}?(\d[.,]\d)\s*/\s*10",
+        # Format English (reviews) — Traveloka 2025
+        r"(\d[.,]\d)\s*/\s*10\s*(?:Exceptional|Fabulous|Very Good|Good|Pleasant|Fair)?.{0,200}?([\d,.]+)\s+reviews?",
+        r"([\d,.]+)\s+reviews?.{0,200}?(\d[.,]\d)\s*/\s*10",
+        # Format tanpa /10
+        r"(\d[.,]\d)\s+(?:Mengesankan|Sangat\s+Bagus|Luar\s+Biasa|Bagus).{0,100}?([\d,.]+)\s+(?:ulasan|reviews?)",
+        # JSON-LD
+        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.{0,200}?"reviewCount"\s*:\s*"?(\d+)"?',
     ]
 
     for pattern in combined_patterns:
@@ -753,9 +806,17 @@ def fetch_traveloka(playwright, url, hotel_name):
 
             combined = normalize_text(" ".join(collected))
             result = parse_traveloka(combined)
+            # Debug: tulis teks untuk diagnosa
+            try:
+                with open("debug_traveloka.txt", "a", encoding="utf-8") as df:
+                    df.write(f"\n\n=== {hotel_name} ===\n")
+                    df.write(combined[:3000])
+            except Exception:
+                pass
             if result.get("match_ok"):
                 print(f"    [traveloka] Playwright berhasil: rating={result['rating']}, reviews={result['reviews']}")
                 return result
+            print(f"    [traveloka] Playwright pattern tidak match, text_len={len(combined)}")
             time.sleep(10)
 
     except Exception as e:
