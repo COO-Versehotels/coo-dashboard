@@ -590,7 +590,46 @@ function buildDatasets(timeline,hotelName,metric) {
   }).filter(Boolean);
 }
 function createChart(canvas,labels,datasets,isRating) {
-  return new Chart(canvas,{type:"line",data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{position:"bottom",labels:{usePointStyle:true,boxWidth:8,padding:10,font:{size:10.5,weight:"600"}}},tooltip:{backgroundColor:"rgba(15,23,42,0.95)",titleFont:{size:12,weight:"700"},bodyFont:{size:11.5},padding:10,cornerRadius:8,callbacks:{label:(ctx)=>{const v=ctx.parsed.y;if(v===null)return`${ctx.dataset.label}: N/A`;return isRating?`${ctx.dataset.label}: ${v.toFixed(1)}`:`${ctx.dataset.label}: ${v.toLocaleString("en-US")}`;},},},},scales:{x:{grid:{display:false},ticks:{font:{size:10.5},color:"#64748b",maxRotation:0,autoSkip:true,maxTicksLimit:8}},y:Object.assign({beginAtZero:!isRating,grid:{color:"#e2e8f0"},ticks:{font:{size:10.5},color:"#64748b",callback:(v)=>isRating?v.toFixed(1):v.toLocaleString("en-US")}}, isRating?{suggestedMin:0,suggestedMax:10}:{})}},},});
+  var yScale = {
+    beginAtZero: !isRating,
+    grid: {color:"#e2e8f0"},
+    ticks: {
+      font:{size:10.5},
+      color:"#64748b",
+      callback: function(v){ return isRating ? v.toFixed(1) : v.toLocaleString("en-US"); }
+    }
+  };
+  if (isRating) { yScale.suggestedMin = 0; yScale.suggestedMax = 10; }
+  return new Chart(canvas, {
+    type: "line",
+    data: {labels: labels, datasets: datasets},
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {mode:"index", intersect:false},
+      plugins: {
+        legend: {position:"bottom", labels:{usePointStyle:true,boxWidth:8,padding:10,font:{size:10.5,weight:"600"}}},
+        tooltip: {
+          backgroundColor: "rgba(15,23,42,0.95)",
+          titleFont: {size:12,weight:"700"},
+          bodyFont: {size:11.5},
+          padding: 10,
+          cornerRadius: 8,
+          callbacks: {
+            label: function(ctx) {
+              var v = ctx.parsed.y;
+              if (v === null) return ctx.dataset.label + ": N/A";
+              return isRating ? ctx.dataset.label + ": " + v.toFixed(1) : ctx.dataset.label + ": " + v.toLocaleString("en-US");
+            }
+          }
+        }
+      },
+      scales: {
+        x: {grid:{display:false}, ticks:{font:{size:10.5},color:"#64748b",maxRotation:0,autoSkip:true,maxTicksLimit:8}},
+        y: yScale
+      }
+    }
+  });
 }
 function renderCharts(todayData, history) {
   const el = document.getElementById("chartsSection");
