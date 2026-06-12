@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-12 18:42:35.776359",
+  "last_update": "2026-06-12 22:22:41.906683",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -37,7 +37,7 @@
           "error_reason": "traveloka_strong_pattern_not_found"
         },
         "tripcom": {
-          "rating": "8.5",
+          "rating": "8.4",
           "reviews": "245",
           "ranking": null,
           "status": "AUTO",
@@ -72,7 +72,7 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.1,
+            "rating_change": 0.0,
             "review_change": 35,
             "ranking_change": null
           },
