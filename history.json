@@ -6505,11 +6505,11 @@
             "error_reason": "traveloka_strong_pattern_not_found"
           },
           "tripcom": {
-            "rating": "8.5",
-            "reviews": "245",
+            "rating": "8.4",
+            "reviews": "247",
             "ranking": null,
             "status": "AUTO",
-            "source_date": "2026-06-12",
+            "source_date": "2026-06-13",
             "error_reason": null
           },
           "tiket": {
@@ -6554,7 +6554,7 @@
             "reviews": "191",
             "ranking": null,
             "status": "AUTO",
-            "source_date": "2026-06-12",
+            "source_date": "2026-06-13",
             "error_reason": null
           },
           "tiket": {
