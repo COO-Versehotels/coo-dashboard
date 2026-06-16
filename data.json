@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-16 17:42:23.984390",
+  "last_update": "2026-06-16 21:41:18.974496",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -113,7 +113,7 @@
         },
         "tripcom": {
           "rating": "7.2",
-          "reviews": "202",
+          "reviews": "201",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-06-16",
@@ -148,7 +148,7 @@
           },
           "tripcom": {
             "rating_change": -0.1,
-            "review_change": 12,
+            "review_change": 11,
             "ranking_change": null
           },
           "tiket": {

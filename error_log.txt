@@ -4944,3 +4944,33 @@ Call log:
 2026-06-16 17:41:43.466548 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_2
 2026-06-16 17:42:23.888027 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_3
 2026-06-16 17:42:23.923280 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-06-16 21:19:40.185269 | Verse Lite Gajah Mada | agoda | CACHED_USED: agoda_pattern_not_found
+2026-06-16 21:20:42.209249 | Verse Lite Gajah Mada | booking | booking_pattern_not_found
+2026-06-16 21:20:42.209402 | Verse Lite Gajah Mada | booking | CACHED_USED: booking_pattern_not_found
+2026-06-16 21:21:55.618193 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-06-16 21:22:56.333095 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_1
+2026-06-16 21:23:37.785371 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_2
+2026-06-16 21:24:20.837135 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_3
+2026-06-16 21:24:20.871955 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-06-16 21:25:39.450531 | Verse Luxe Wahid Hasyim | agoda | CACHED_USED: agoda_pattern_not_found
+2026-06-16 21:26:42.827837 | Verse Luxe Wahid Hasyim | booking | booking_pattern_not_found
+2026-06-16 21:26:42.827954 | Verse Luxe Wahid Hasyim | booking | CACHED_USED: booking_pattern_not_found
+2026-06-16 21:27:56.246431 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-06-16 21:28:39.852383 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_1
+2026-06-16 21:29:28.609675 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_2
+2026-06-16 21:30:18.036590 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_3
+2026-06-16 21:30:18.071143 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-06-16 21:31:37.229684 | Verse Cirebon | agoda | CACHED_USED: agoda_pattern_not_found
+2026-06-16 21:32:40.448021 | Verse Cirebon | booking | booking_pattern_not_found
+2026-06-16 21:32:40.448138 | Verse Cirebon | booking | CACHED_USED: booking_pattern_not_found
+2026-06-16 21:33:53.748381 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-06-16 21:34:46.814220 | Verse Cirebon | tiket | cloudflare_captcha_attempt_1
+2026-06-16 21:35:37.679754 | Verse Cirebon | tiket | cloudflare_captcha_attempt_2
+2026-06-16 21:36:22.522231 | Verse Cirebon | tiket | cloudflare_captcha_attempt_3
+2026-06-16 21:36:22.559957 | Verse Cirebon | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-06-16 21:37:41.581067 | Oak Tree Mahakam Blok M | agoda | CACHED_USED: agoda_pattern_not_found
+2026-06-16 21:39:05.898989 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-06-16 21:39:45.443552 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_1
+2026-06-16 21:40:30.747267 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_2
+2026-06-16 21:41:18.862526 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_3
+2026-06-16 21:41:18.906275 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_cloudflare_captcha
