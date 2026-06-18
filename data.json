@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-17 22:36:36.663951",
+  "last_update": "2026-06-18 00:13:39.481632",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -116,7 +116,7 @@
           "reviews": "201",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-17",
+          "source_date": "2026-06-18",
           "error_reason": null
         },
         "tiket": {
@@ -191,7 +191,7 @@
           "reviews": "119",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-17",
+          "source_date": "2026-06-18",
           "error_reason": null
         },
         "tiket": {
@@ -250,7 +250,7 @@
           "reviews": "71",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-17",
+          "source_date": "2026-06-18",
           "error_reason": null
         },
         "traveloka": {
@@ -266,7 +266,7 @@
           "reviews": "158",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-17",
+          "source_date": "2026-06-18",
           "error_reason": null
         },
         "tiket": {
