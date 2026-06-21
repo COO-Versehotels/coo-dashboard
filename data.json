@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-20 23:58:34.164957",
+  "last_update": "2026-06-21 05:39:59.491071",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -38,10 +38,10 @@
         },
         "tripcom": {
           "rating": "8.5",
-          "reviews": "262",
+          "reviews": "266",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-20",
+          "source_date": "2026-06-21",
           "error_reason": null
         },
         "tiket": {
@@ -73,7 +73,7 @@
           },
           "tripcom": {
             "rating_change": 0.1,
-            "review_change": 52,
+            "review_change": 56,
             "ranking_change": null
           },
           "tiket": {
@@ -113,10 +113,10 @@
         },
         "tripcom": {
           "rating": "7.2",
-          "reviews": "202",
+          "reviews": "207",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-20",
+          "source_date": "2026-06-21",
           "error_reason": null
         },
         "tiket": {
@@ -148,7 +148,7 @@
           },
           "tripcom": {
             "rating_change": -0.1,
-            "review_change": 12,
+            "review_change": 17,
             "ranking_change": null
           },
           "tiket": {
@@ -191,7 +191,7 @@
           "reviews": "119",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-20",
+          "source_date": "2026-06-21",
           "error_reason": null
         },
         "tiket": {
@@ -250,7 +250,7 @@
           "reviews": "72",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-20",
+          "source_date": "2026-06-21",
           "error_reason": null
         },
         "traveloka": {
@@ -266,7 +266,7 @@
           "reviews": "161",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-20",
+          "source_date": "2026-06-21",
           "error_reason": null
         },
         "tiket": {
