@@ -19,29 +19,29 @@ RETRY_DELAY_SECONDS = 6
 
 HOTELS = {
     "Verse Lite Gajah Mada": {
-        "agoda": "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html#tab-reviews",
+        "agoda": "https://www.agoda.com/verse-lite-hotel-gajah-mada/hotel/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-3000010028056",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
     },
     "Verse Luxe Wahid Hasyim": {
-        "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/reviews/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html#tab-reviews",
+        "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/hotel/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-3000010036666",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
     },
     "Verse Cirebon": {
-        "agoda": "https://www.agoda.com/verse-hotel-cirebon/reviews/cirebon-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-cirebon.html#tab-reviews",
+        "agoda": "https://www.agoda.com/verse-hotel-cirebon/hotel/cirebon-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-cirebon.html",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-hotel-cirebon-3000010015654",
         "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
     },
     "Oak Tree Mahakam Blok M": {
-        "agoda": "https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews",
+        "agoda": "https://www.agoda.com/oak-tree-urban-hotel/hotel/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/oak-tree-urban-hotel-jakarta-461895",
         "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/",
         "tiket": "https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
@@ -338,37 +338,31 @@ def parse_agoda(text):
 
     # Agoda format: "8.6 Exceptional 4,979 reviews"
     # Review count harus realistis (min 50) untuk hindari false positive
-    def _not_pagination(n):
-        try:
-            v = int(str(n).replace(",","").replace(".",""))
-            return v != 100  # 100 = "Showing 100 reviews" pagination
-        except Exception:
-            return True
-
     combined_patterns = [
         r"(\d[.,]\d)\s+(?:Exceptional|Fabulous|Superb|Very Good|Good|Pleasant|Fair|Luar Biasa|Sangat Baik|Mengesankan|Bagus|Menyenangkan|Memuaskan)\s+([\d,\.]+)\s+reviews?",
         r"(\d[.,]\d)\s*/?\s*10\b.{0,300}?([\d,\.]+)\s+reviews?",
         r"([\d,\.]+)\s+reviews?.{0,300}?(\d[.,]\d)\s*/?\s*10\b",
     ]
     for pattern in combined_patterns:
-        for match in re.finditer(pattern, text, re.IGNORECASE | re.DOTALL):
+        match = re.search(pattern, text, re.IGNORECASE | re.DOTALL)
+        if match:
             r1, r2 = clean_rating(match.group(1)), clean_number(match.group(2))
-            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 50) and _not_pagination(r2):
+            # Minimum 50 reviews untuk hindari false positive
+            if is_valid_rating(r1, 5, 10) and is_valid_reviews(r2, 50):
                 rating, reviews = r1, r2
                 break
+            # Coba terbalik
             r1b, r2b = clean_rating(match.group(2)), clean_number(match.group(1))
-            if is_valid_rating(r1b, 5, 10) and is_valid_reviews(r2b, 50) and _not_pagination(r2b):
+            if is_valid_rating(r1b, 5, 10) and is_valid_reviews(r2b, 50):
                 rating, reviews = r1b, r2b
                 break
-        if rating != "N/A" and reviews != "N/A":
-            break
 
-    # Fallback: scan semua "X reviews" — ambil terbesar, bukan 100
+    # Fallback: scan semua "X reviews" dengan minimum 50
     if reviews == "N/A":
         candidates = []
         for m in re.finditer(r"([\d,\.]+)\s+reviews?", text, re.IGNORECASE):
             c = clean_number(m.group(1))
-            if is_valid_reviews(c, 50) and _not_pagination(c):
+            if is_valid_reviews(c, 50):
                 try:
                     candidates.append(int(c))
                 except Exception:
@@ -454,11 +448,6 @@ def fetch_agoda(url, hotel_name, playwright=None):
                     return result
 
                 print(f"    [agoda] Pattern tidak match attempt {attempt}, text_len={len(text)}")
-                if attempt == 1:
-                    sample = text.replace("\n"," ")[:600]
-                    print(f"    [agoda] SAMPLE: {sample}")
-                    hits = re.findall(r".{0,50}[Rr]eviews?.{0,50}", text)
-                    for h in hits[:5]: print(f"    [agoda] REVIEW_HIT: {h.strip()}")
                 time.sleep(8)
 
             except Exception as e:
@@ -493,9 +482,6 @@ def parse_booking(text):
         r"Scored\s+(\d[.,]\d)",
         r"\b(\d[.,]\d)\s*/\s*10\b",
         r"\b(\d[.,]\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
-        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-        r'"reviewScore"\s*:\s*"?(\d+(?:[.,]\d+)?)"?',
-        r"(\d[.,]\d)\s*out of\s*10",
     ]
     for pattern in rating_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
@@ -511,10 +497,6 @@ def parse_booking(text):
         r"([\d,\.]+)\s+ulasan",
         r"based on\s+([\d,\.]+)",
         r"from\s+([\d,\.]+)\s+reviews",
-        r'"reviewCount"\s*:\s*"?(\d+)"?',
-        r'"ratingCount"\s*:\s*"?(\d+)"?',
-        r"([\d,\.]+)\s+guest\s+reviews",
-        r"([\d,\.]+)\s+verified\s+reviews",
     ]
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
@@ -642,9 +624,6 @@ def parse_traveloka(text):
         r"(\d[.,]\d)\s*/\s*10\s*(?:Mengesankan|Sangat\s+Bagus|Luar\s+Biasa|Menyenangkan|Bagus|Memuaskan|Baik)?\s*([\d,.]+)\s+ulasan",
         r"(\d[.,]\d)\s*/\s*10.{0,200}?([\d,.]+)\s+ulasan",
         r"([\d,.]+)\s+ulasan.{0,200}?(\d[.,]\d)\s*/\s*10",
-        r"(\d[.,]\d)\s*/\s*10.{0,200}?([\d,.]+)\s+reviews?",
-        r"([\d,.]+)\s+reviews?.{0,200}?(\d[.,]\d)\s*/\s*10",
-        r'"ratingValue"\s*:\s*"?(\d+(?:[.,]\d+)?)"?.{0,100}?"reviewCount"\s*:\s*"?(\d+)"?',
     ]
 
     for pattern in combined_patterns:
@@ -777,11 +756,6 @@ def fetch_traveloka(playwright, url, hotel_name):
             if result.get("match_ok"):
                 print(f"    [traveloka] Playwright berhasil: rating={result['rating']}, reviews={result['reviews']}")
                 return result
-            print(f"    [traveloka] no match, len={len(combined)}")
-            if hotel_name == "Verse Lite Gajah Mada":
-                print(f"    [traveloka] SAMPLE: {combined.replace(chr(10),' ')[:600]}")
-                hits = re.findall(r".{0,50}(?:[Uu]lasan|[Rr]eviews?|/10).{0,50}", combined)
-                for h in hits[:5]: print(f"    [traveloka] HIT: {h.strip()}")
             time.sleep(10)
 
     except Exception as e:
@@ -994,11 +968,6 @@ def scrape_booking(page, url, hotel_name, wait_ms=9000):
             if result.get("match_ok"):
                 return result
             last_error = result.get("error_reason", "booking_pattern_not_found")
-            if _ == 0:
-                sample = text.replace("\n"," ")[:600]
-                print(f"    [booking] SAMPLE: {sample}")
-                hits = re.findall(r".{0,50}(?:[Rr]eviews?|[Ss]cored|[Rr]ating|ulasan).{0,50}", text)
-                for h in hits[:5]: print(f"    [booking] HIT: {h.strip()}")
             time.sleep(10)
         except Exception as e:
             last_error = str(e)
