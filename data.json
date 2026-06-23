@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-22 22:35:47.329112",
+  "last_update": "2026-06-23 04:39:07.822809",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -17,7 +17,7 @@
           "reviews": "168",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "booking": {
@@ -41,7 +41,7 @@
           "reviews": "267",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "tiket": {
@@ -92,7 +92,7 @@
           "reviews": "285",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "booking": {
@@ -116,7 +116,7 @@
           "reviews": "211",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "tiket": {
@@ -167,7 +167,7 @@
           "reviews": "165",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "booking": {
@@ -191,7 +191,7 @@
           "reviews": "119",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "tiket": {
@@ -242,7 +242,7 @@
           "reviews": "116",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "booking": {
@@ -262,11 +262,11 @@
           "error_reason": "traveloka_strong_pattern_not_found"
         },
         "tripcom": {
-          "rating": "8.5",
+          "rating": "8.4",
           "reviews": "163",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-22",
+          "source_date": "2026-06-23",
           "error_reason": null
         },
         "tiket": {
@@ -297,7 +297,7 @@
             "ranking_change": null
           },
           "tripcom": {
-            "rating_change": 0.0,
+            "rating_change": -0.1,
             "review_change": 29,
             "ranking_change": null
           },
