@@ -973,6 +973,13 @@ def scrape_booking(page, url, hotel_name, wait_ms=9000):
             if result.get("match_ok"):
                 return result
             last_error = result.get("error_reason", "booking_pattern_not_found")
+            if _ == 0:
+                # Debug: print sample teks untuk diagnosa
+                sample = text.replace("\n", " ")[:800]
+                print(f"    [booking] DEBUG SAMPLE: {sample}")
+                hits = re.findall(r".{0,40}(?:ratingValue|reviewCount|Scored|reviews).{0,40}", text, re.IGNORECASE)
+                for h in hits[:6]:
+                    print(f"    [booking] HIT: {h.strip()}")
             time.sleep(10)
         except Exception as e:
             last_error = str(e)
