@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-25 20:40:56.515016",
+  "last_update": "2026-06-26 00:02:20.487170",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -266,7 +266,7 @@
           "reviews": "165",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-06-25",
+          "source_date": "2026-06-26",
           "error_reason": null
         },
         "tiket": {
