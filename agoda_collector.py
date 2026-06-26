@@ -19,29 +19,29 @@ RETRY_DELAY_SECONDS = 6
 
 HOTELS = {
     "Verse Lite Gajah Mada": {
-        "agoda": "https://www.agoda.com/verse-lite-hotel-gajah-mada/hotel/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html",
+        "agoda": "https://www.agoda.com/verse-lite-hotel-gajah-mada/reviews/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-lite-pembangunan.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-lite-hotel-gajah-mada-3000010028056",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-6449572/verse-lite-hotel-gajah-mada/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254"
     },
     "Verse Luxe Wahid Hasyim": {
-        "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/hotel/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html",
+        "agoda": "https://www.agoda.com/verse-luxe-hotel-wahid-hasyim/reviews/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-luxe-wahid-hasyim.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-3000010036666",
         "tripcom": "https://id.trip.com/hotels/central-jakarta-city-hotel-detail-9029304/verse-luxe-hotel-wahid-hasyim/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268"
     },
     "Verse Cirebon": {
-        "agoda": "https://www.agoda.com/verse-hotel-cirebon/hotel/cirebon-id.html",
-        "booking": "https://www.booking.com/hotel/id/verse-cirebon.html",
+        "agoda": "https://www.agoda.com/verse-hotel-cirebon/reviews/cirebon-id.html",
+        "booking": "https://www.booking.com/hotel/id/verse-cirebon.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/verse-hotel-cirebon-3000010015654",
         "tripcom": "https://id.trip.com/hotels/kedawung-hotel-detail-5965336/verse-hotel-cirebon/",
         "tiket": "https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528"
     },
     "Oak Tree Mahakam Blok M": {
-        "agoda": "https://www.agoda.com/oak-tree-urban-hotel/hotel/jakarta-id.html",
-        "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html",
+        "agoda": "https://www.agoda.com/oak-tree-urban-hotel/reviews/jakarta-id.html",
+        "booking": "https://www.booking.com/hotel/id/oak-tree-urban.html#tab-reviews",
         "traveloka": "https://www.traveloka.com/id-id/hotel/indonesia/oak-tree-urban-hotel-jakarta-461895",
         "tripcom": "https://id.trip.com/hotels/south-jakarta-city-hotel-detail-2652976/oak-tree-urban-hotel-jakarta/",
         "tiket": "https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183"
@@ -357,18 +357,31 @@ def parse_agoda(text):
                 rating, reviews = r1b, r2b
                 break
 
-    # Fallback: scan semua "X reviews" dengan minimum 50
+    # Fallback: scan semua "X reviews" — ambil terbesar, filter pagination
     if reviews == "N/A":
         candidates = []
         for m in re.finditer(r"([\d,\.]+)\s+reviews?", text, re.IGNORECASE):
             c = clean_number(m.group(1))
-            if is_valid_reviews(c, 50):
+            if is_valid_reviews(c, 50) and _not_pagination(c):
                 try:
                     candidates.append(int(c))
                 except Exception:
                     pass
         if candidates:
             reviews = str(max(candidates))
+
+    # JSON-LD fallback
+    if rating == "N/A" or reviews == "N/A":
+        r_jld = re.search(r'"ratingValue"\s*:\s*"?([\d.]+)"?', text, re.IGNORECASE)
+        n_jld = re.search(r'"reviewCount"\s*:\s*"?(\d+)"?', text, re.IGNORECASE)
+        if r_jld and rating == "N/A":
+            c = clean_rating(r_jld.group(1))
+            if is_valid_rating(c, 5, 10):
+                rating = c
+        if n_jld and reviews == "N/A":
+            c = clean_number(n_jld.group(1))
+            if is_valid_reviews(c, 50) and _not_pagination(c):
+                reviews = c
 
     # Fallback rating
     if rating == "N/A":
@@ -479,6 +492,10 @@ def parse_booking(text):
     reviews = "N/A"
 
     rating_patterns = [
+        # JSON-LD structured data (format aktual Booking.com 2025)
+        r'"ratingValue"\s*:\s*([\d.]+)',
+        r'"reviewScore"\s*:\s*([\d.]+)',
+        # Format lama
         r"Scored\s+(\d[.,]\d)",
         r"\b(\d[.,]\d)\s*/\s*10\b",
         r"\b(\d[.,]\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
@@ -492,11 +509,16 @@ def parse_booking(text):
                 break
 
     review_patterns = [
+        # JSON-LD structured data (format aktual Booking.com 2025)
+        r'"reviewCount"\s*:\s*(\d+)',
+        r'"ratingCount"\s*:\s*(\d+)',
+        # Format teks biasa
         r"([\d,\.]+)\s+reviews",
         r"([\d,\.]+)\s+review",
         r"([\d,\.]+)\s+ulasan",
         r"based on\s+([\d,\.]+)",
         r"from\s+([\d,\.]+)\s+reviews",
+        r"([\d,\.]+)\s+guest\s+reviews",
     ]
     for pattern in review_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
