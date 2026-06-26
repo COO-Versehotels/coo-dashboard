@@ -479,8 +479,13 @@ def parse_booking(text):
     reviews = "N/A"
 
     rating_patterns = [
+        # Format Indonesia aktual Booking.com 2025
+        r"Skor\s+(\d+[.,]\d+)",
+        r"(\d[.,]\d)\s+Rating\s+(?:baik|buruk|sangat|luar|menyenangkan|memuaskan|istimewa|wonderful|fabulous|exceptional|good)",
+        # JSON-LD structured data
         r'"ratingValue"\s*:\s*([\d.]+)',
         r'"reviewScore"\s*:\s*([\d.]+)',
+        # Format lama
         r"Scored\s+(\d[.,]\d)",
         r"\b(\d[.,]\d)\s*/\s*10\b",
         r"\b(\d[.,]\d)\s*(?:Very good|Wonderful|Exceptional|Good|Pleasant|Fair|Fabulous|Superb|Baik|Menyenangkan|Istimewa|Sangat baik|Luar biasa)",
@@ -494,8 +499,12 @@ def parse_booking(text):
                 break
 
     review_patterns = [
+        # Format Indonesia aktual Booking.com 2025
+        r"(\d+)\s+ulasan",
+        # JSON-LD structured data
         r'"reviewCount"\s*:\s*(\d+)',
         r'"ratingCount"\s*:\s*(\d+)',
+        # Format lama
         r"([\d,\.]+)\s+reviews",
         r"([\d,\.]+)\s+review",
         r"([\d,\.]+)\s+ulasan",
@@ -973,13 +982,6 @@ def scrape_booking(page, url, hotel_name, wait_ms=9000):
             if result.get("match_ok"):
                 return result
             last_error = result.get("error_reason", "booking_pattern_not_found")
-            if _ == 0:
-                # Debug: print sample teks untuk diagnosa
-                sample = text.replace("\n", " ")[:800]
-                print(f"    [booking] DEBUG SAMPLE: {sample}")
-                hits = re.findall(r".{0,40}(?:ratingValue|reviewCount|Scored|reviews).{0,40}", text, re.IGNORECASE)
-                for h in hits[:6]:
-                    print(f"    [booking] HIT: {h.strip()}")
             time.sleep(10)
         except Exception as e:
             last_error = str(e)
