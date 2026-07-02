@@ -10050,7 +10050,7 @@
           },
           "booking": {
             "rating": "6.5",
-            "reviews": "882",
+            "reviews": "880",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-02",
@@ -10066,7 +10066,7 @@
           },
           "tripcom": {
             "rating": "7.4",
-            "reviews": "214",
+            "reviews": "215",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-02",
@@ -10087,7 +10087,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "163",
+            "reviews": "162",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-02",
