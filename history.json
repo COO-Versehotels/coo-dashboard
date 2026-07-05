@@ -10605,7 +10605,7 @@
           },
           "booking": {
             "rating": "6.5",
-            "reviews": "879",
+            "reviews": "876",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-05",
@@ -10649,8 +10649,8 @@
             "error_reason": null
           },
           "booking": {
-            "rating": "7.8",
-            "reviews": "54",
+            "rating": "8.0",
+            "reviews": "53",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-05",
