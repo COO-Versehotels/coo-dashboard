@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-07-11 03:54:25.529073",
+  "last_update": "2026-07-11 06:40:56.038402",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -38,7 +38,7 @@
         },
         "tripcom": {
           "rating": "8.6",
-          "reviews": "279",
+          "reviews": "280",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-07-11",
@@ -73,7 +73,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 4,
+            "review_change": 5,
             "ranking_change": null
           },
           "tiket": {
@@ -97,7 +97,7 @@
         },
         "booking": {
           "rating": "6.5",
-          "reviews": "872",
+          "reviews": "871",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-07-11",
@@ -113,7 +113,7 @@
         },
         "tripcom": {
           "rating": "7.4",
-          "reviews": "218",
+          "reviews": "219",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-07-11",
@@ -138,7 +138,7 @@
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -10,
+            "review_change": -11,
             "ranking_change": null
           },
           "traveloka": {
@@ -148,7 +148,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 4,
+            "review_change": 5,
             "ranking_change": null
           },
           "tiket": {
@@ -164,7 +164,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.9",
-          "reviews": "163",
+          "reviews": "162",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-07-11",
@@ -208,7 +208,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 0,
+            "review_change": -1,
             "ranking_change": null
           },
           "booking": {
