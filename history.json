@@ -12122,15 +12122,15 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "162",
+            "reviews": "161",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-13",
             "error_reason": null
           },
           "booking": {
-            "rating": "7.8",
-            "reviews": "53",
+            "rating": "7.4",
+            "reviews": "54",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-13",
@@ -12191,7 +12191,7 @@
           },
           "tripcom": {
             "rating": "8.3",
-            "reviews": "173",
+            "reviews": "174",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-13",
