@@ -13520,7 +13520,7 @@
           },
           "booking": {
             "rating": "7.9",
-            "reviews": "589",
+            "reviews": "590",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-21",
@@ -13535,8 +13535,8 @@
             "error_reason": "traveloka_strong_pattern_not_found"
           },
           "tripcom": {
-            "rating": "8.6",
-            "reviews": "279",
+            "rating": "8.4",
+            "reviews": "287",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-21",
@@ -13671,7 +13671,7 @@
           },
           "tripcom": {
             "rating": "8.4",
-            "reviews": "179",
+            "reviews": "180",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-07-21",
