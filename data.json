@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-07-28 21:36:53.943975",
+  "last_update": "2026-07-28 23:29:47.342658",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -22,7 +22,7 @@
         },
         "booking": {
           "rating": "7.9",
-          "reviews": "589",
+          "reviews": "591",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-07-28",
@@ -63,7 +63,7 @@
           },
           "booking": {
             "rating_change": 0.1,
-            "review_change": 12,
+            "review_change": 14,
             "ranking_change": null
           },
           "traveloka": {
