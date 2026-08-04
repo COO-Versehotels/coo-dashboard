@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-04 11:04:42.642697",
+  "last_update": "2026-08-04 14:53:32.280168",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -13,7 +13,7 @@
       "name": "Verse Lite Gajah Mada",
       "platforms": {
         "agoda": {
-          "rating": "8.6",
+          "rating": "5.3",
           "reviews": "164",
           "ranking": null,
           "status": "AUTO",
@@ -57,7 +57,7 @@
         "baseline_date": "2026-08-01",
         "platforms": {
           "agoda": {
-            "rating_change": 0.0,
+            "rating_change": -3.3,
             "review_change": -1,
             "ranking_change": null
           },
