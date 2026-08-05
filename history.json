@@ -16332,7 +16332,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "281",
+            "reviews": "283",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-08-05",
@@ -16400,7 +16400,7 @@
             "error_reason": "traveloka_strong_pattern_not_found"
           },
           "tripcom": {
-            "rating": "8.6",
+            "rating": "8.7",
             "reviews": "118",
             "ranking": null,
             "status": "AUTO",
