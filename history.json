@@ -16849,8 +16849,8 @@
             "error_reason": null
           },
           "booking": {
-            "rating": "7.9",
-            "reviews": "600",
+            "rating": "8.0",
+            "reviews": "602",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-08-08",
@@ -16887,7 +16887,7 @@
         "platforms": {
           "agoda": {
             "rating": "7.9",
-            "reviews": "283",
+            "reviews": "284",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-08-08",
