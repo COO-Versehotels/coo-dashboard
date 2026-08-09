@@ -17034,7 +17034,7 @@
             "error_reason": null
           },
           "booking": {
-            "rating": "8.0",
+            "rating": "7.9",
             "reviews": "604",
             "ranking": null,
             "status": "AUTO",
@@ -17125,7 +17125,7 @@
           },
           "booking": {
             "rating": "7.4",
-            "reviews": "53",
+            "reviews": "52",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-08-09",
@@ -17186,7 +17186,7 @@
           },
           "tripcom": {
             "rating": "8.4",
-            "reviews": "185",
+            "reviews": "186",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-08-09",
