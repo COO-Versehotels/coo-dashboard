@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-13 09:47:44.320577",
+  "last_update": "2026-08-13 11:26:15.587447",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -97,7 +97,7 @@
         },
         "booking": {
           "rating": "6.6",
-          "reviews": "845",
+          "reviews": "842",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-13",
@@ -138,7 +138,7 @@
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -9,
+            "review_change": -12,
             "ranking_change": null
           },
           "traveloka": {
@@ -163,7 +163,7 @@
       "name": "Verse Cirebon",
       "platforms": {
         "agoda": {
-          "rating": "7.1",
+          "rating": "7.9",
           "reviews": "162",
           "ranking": null,
           "status": "AUTO",
@@ -207,7 +207,7 @@
         "baseline_date": "2026-08-01",
         "platforms": {
           "agoda": {
-            "rating_change": -0.8,
+            "rating_change": 0.0,
             "review_change": 2,
             "ranking_change": null
           },
