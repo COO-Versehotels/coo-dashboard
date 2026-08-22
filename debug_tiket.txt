@@ -1,12 +1,12 @@
-# DEBUG LOG — 2026-08-22 12:58:30.330325
+# DEBUG LOG — 2026-08-22 14:35:47.022094
 
 ================================================================================
-TIME: 2026-08-22 13:00:55.512625
+TIME: 2026-08-22 14:38:05.874217
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f20fb74ae11770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f29e136f04f7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -135,12 +135,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:01:40.388791
+TIME: 2026-08-22 14:38:59.260799
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f210d17e701770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f29f618f27f7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -269,12 +269,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:02:32.931939
+TIME: 2026-08-22 14:39:51.747978
 HOTEL: Verse Lite Gajah Mada
 URL: https://www.tiket.com/hotel/indonesia/verse-lite-hotel-gajah-mada-807001751612826254
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2121bfb0b1770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2a0a8ed5ef7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -403,12 +403,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:04:49.793863
+TIME: 2026-08-22 14:42:23.819245
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f215713de45836 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2a45aeba3f7d7 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -537,12 +537,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:05:35.027302
+TIME: 2026-08-22 14:43:10.414914
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2168ffdf15836 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2a581eee3f7d7 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -671,12 +671,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:06:19.970540
+TIME: 2026-08-22 14:43:58.350363
 HOTEL: Verse Luxe Wahid Hasyim
 URL: https://www.tiket.com/hotel/indonesia/verse-luxe-hotel-wahid-hasyim-112001545304320268
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f217a47c4d5836 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2a6ab690df7d7 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -805,12 +805,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:08:39.874741
+TIME: 2026-08-22 14:46:25.242723
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f21b105edd8c22 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2aa42dbbef7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -939,12 +939,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:09:19.882014
+TIME: 2026-08-22 14:47:16.232058
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f21c08799f8c22 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2ab861f3bf7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1073,12 +1073,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:10:02.906248
+TIME: 2026-08-22 14:48:09.126964
 HOTEL: Verse Cirebon
 URL: https://www.tiket.com/hotel/indonesia/verse-hotel-cirebon-108001534490349528
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f21d154a958c22 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2accaf82af7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1207,12 +1207,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:12:34.163592
+TIME: 2026-08-22 14:50:45.693006
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f220c6dcf11770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2b09dbf33f7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1341,12 +1341,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:13:26.709345
+TIME: 2026-08-22 14:51:38.250058
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f222120c701770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2b1e82d9cf7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
@@ -1475,12 +1475,12 @@ HTML SNIPPET:
   
 
 ================================================================================
-TIME: 2026-08-22 13:14:11.933405
+TIME: 2026-08-22 14:52:29.757025
 HOTEL: Oak Tree Mahakam Blok M
 URL: https://www.tiket.com/hotel/indonesia/oak-tree-urban-jakarta-412001639976768183
 TEXT LENGTH: 158
 --------------------------------------------------------------------------------
-Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2232ebbd91770 Kami akan segera mengarahkan anda ke tiket.com
+Robot atau manusia? Centang kotak di bawah ini untuk memverifikasi bahwa kamu manusia. Ray ID: a2f2b32a5be1f7c9 Kami akan segera mengarahkan anda ke tiket.com
 --------------------------------------------------------------------------------
 HTML SNIPPET:
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
