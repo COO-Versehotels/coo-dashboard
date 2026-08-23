@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-23 05:05:53.120123",
+  "last_update": "2026-08-23 07:15:09.954096",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -38,7 +38,7 @@
         },
         "tripcom": {
           "rating": "8.5",
-          "reviews": "305",
+          "reviews": "306",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-23",
@@ -73,7 +73,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 14,
+            "review_change": 15,
             "ranking_change": null
           },
           "tiket": {
@@ -97,7 +97,7 @@
         },
         "booking": {
           "rating": "6.6",
-          "reviews": "829",
+          "reviews": "828",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-23",
@@ -138,7 +138,7 @@
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -25,
+            "review_change": -26,
             "ranking_change": null
           },
           "traveloka": {
@@ -188,7 +188,7 @@
         },
         "tripcom": {
           "rating": "8.6",
-          "reviews": "120",
+          "reviews": "121",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-23",
@@ -223,7 +223,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 2,
+            "review_change": 3,
             "ranking_change": null
           },
           "tiket": {
