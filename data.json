@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-29 03:03:56.191708",
+  "last_update": "2026-08-29 11:18:44.695500",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -89,7 +89,7 @@
       "platforms": {
         "agoda": {
           "rating": "8.6",
-          "reviews": "288",
+          "reviews": "287",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-29",
@@ -133,7 +133,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.7,
-            "review_change": 9,
+            "review_change": 8,
             "ranking_change": null
           },
           "booking": {
