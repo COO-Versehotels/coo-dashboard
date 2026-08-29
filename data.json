@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-28 18:54:20.732728",
+  "last_update": "2026-08-29 03:03:56.191708",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -17,7 +17,7 @@
           "reviews": "163",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "booking": {
@@ -25,7 +25,7 @@
           "reviews": "615",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "traveloka": {
@@ -41,7 +41,7 @@
           "reviews": "311",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "tiket": {
@@ -88,19 +88,19 @@
       "name": "Verse Luxe Wahid Hasyim",
       "platforms": {
         "agoda": {
-          "rating": "7.9",
+          "rating": "8.6",
           "reviews": "288",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "booking": {
           "rating": "6.6",
-          "reviews": "826",
+          "reviews": "823",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "traveloka": {
@@ -116,7 +116,7 @@
           "reviews": "223",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "tiket": {
@@ -132,13 +132,13 @@
         "baseline_date": "2026-08-01",
         "platforms": {
           "agoda": {
-            "rating_change": 0.0,
+            "rating_change": 0.7,
             "review_change": 9,
             "ranking_change": null
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -28,
+            "review_change": -31,
             "ranking_change": null
           },
           "traveloka": {
@@ -167,7 +167,7 @@
           "reviews": "162",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "booking": {
@@ -175,7 +175,7 @@
           "reviews": "53",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "traveloka": {
@@ -191,7 +191,7 @@
           "reviews": "121",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "tiket": {
@@ -242,7 +242,7 @@
           "reviews": "117",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "booking": {
@@ -250,7 +250,7 @@
           "reviews": "70",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "traveloka": {
@@ -263,10 +263,10 @@
         },
         "tripcom": {
           "rating": "8.3",
-          "reviews": "193",
+          "reviews": "194",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-08-28",
+          "source_date": "2026-08-29",
           "error_reason": null
         },
         "tiket": {
@@ -298,7 +298,7 @@
           },
           "tripcom": {
             "rating_change": -0.1,
-            "review_change": 10,
+            "review_change": 11,
             "ranking_change": null
           },
           "tiket": {
