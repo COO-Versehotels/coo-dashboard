@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-08-30 08:32:38.409420",
+  "last_update": "2026-08-30 15:08:11.675259",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -88,7 +88,7 @@
       "name": "Verse Luxe Wahid Hasyim",
       "platforms": {
         "agoda": {
-          "rating": "8.6",
+          "rating": "8.0",
           "reviews": "287",
           "ranking": null,
           "status": "AUTO",
@@ -97,7 +97,7 @@
         },
         "booking": {
           "rating": "6.6",
-          "reviews": "821",
+          "reviews": "822",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-08-30",
@@ -132,13 +132,13 @@
         "baseline_date": "2026-08-01",
         "platforms": {
           "agoda": {
-            "rating_change": 0.7,
+            "rating_change": 0.1,
             "review_change": 8,
             "ranking_change": null
           },
           "booking": {
             "rating_change": 0.0,
-            "review_change": -33,
+            "review_change": -32,
             "ranking_change": null
           },
           "traveloka": {
