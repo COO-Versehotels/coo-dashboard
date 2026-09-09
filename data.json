@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-09-09 04:53:37.987480",
+  "last_update": "2026-09-09 11:33:41.593568",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -14,7 +14,7 @@
       "platforms": {
         "agoda": {
           "rating": "8.7",
-          "reviews": "164",
+          "reviews": "163",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-09",
@@ -38,7 +38,7 @@
         },
         "tripcom": {
           "rating": "8.5",
-          "reviews": "311",
+          "reviews": "312",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-09",
@@ -58,7 +58,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 1,
+            "review_change": 0,
             "ranking_change": null
           },
           "booking": {
@@ -73,7 +73,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 1,
+            "review_change": 2,
             "ranking_change": null
           },
           "tiket": {
@@ -239,15 +239,15 @@
       "platforms": {
         "agoda": {
           "rating": "7.7",
-          "reviews": "117",
+          "reviews": "118",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-09",
           "error_reason": null
         },
         "booking": {
-          "rating": "5.7",
-          "reviews": "71",
+          "rating": "5.5",
+          "reviews": "72",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-09",
@@ -283,12 +283,12 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 0,
+            "review_change": 1,
             "ranking_change": null
           },
           "booking": {
-            "rating_change": -0.2,
-            "review_change": 1,
+            "rating_change": -0.4,
+            "review_change": 2,
             "ranking_change": null
           },
           "traveloka": {
