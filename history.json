@@ -23092,9 +23092,9 @@
             "rating": "5.5",
             "reviews": "72",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-09-10",
-            "error_reason": null
+            "error_reason": "booking_pattern_not_found"
           },
           "traveloka": {
             "rating": "7.9",
