@@ -24064,8 +24064,8 @@
             "error_reason": null
           },
           "booking": {
-            "rating": "7.9",
-            "reviews": "632",
+            "rating": "8.0",
+            "reviews": "634",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-09-16",
@@ -24170,7 +24170,7 @@
             "error_reason": "traveloka_strong_pattern_not_found"
           },
           "tripcom": {
-            "rating": "8.6",
+            "rating": "8.7",
             "reviews": "118",
             "ranking": null,
             "status": "AUTO",
