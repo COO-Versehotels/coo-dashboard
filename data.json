@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-09-21 05:07:29.805520",
+  "last_update": "2026-09-21 12:59:51.702314",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -14,7 +14,7 @@
       "platforms": {
         "agoda": {
           "rating": "8.7",
-          "reviews": "160",
+          "reviews": "162",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-21",
@@ -58,7 +58,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": -3,
+            "review_change": -1,
             "ranking_change": null
           },
           "booking": {
@@ -89,7 +89,7 @@
       "platforms": {
         "agoda": {
           "rating": "8.0",
-          "reviews": "291",
+          "reviews": "290",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-21",
@@ -133,7 +133,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 6,
+            "review_change": 5,
             "ranking_change": null
           },
           "booking": {
@@ -163,7 +163,7 @@
       "name": "Verse Cirebon",
       "platforms": {
         "agoda": {
-          "rating": "7.9",
+          "rating": "8.0",
           "reviews": "159",
           "ranking": null,
           "status": "AUTO",
@@ -207,7 +207,7 @@
         "baseline_date": "2026-09-01",
         "platforms": {
           "agoda": {
-            "rating_change": 0.0,
+            "rating_change": 0.1,
             "review_change": -3,
             "ranking_change": null
           },
@@ -239,7 +239,7 @@
       "platforms": {
         "agoda": {
           "rating": "7.7",
-          "reviews": "118",
+          "reviews": "119",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-21",
@@ -263,7 +263,7 @@
         },
         "tripcom": {
           "rating": "8.3",
-          "reviews": "205",
+          "reviews": "206",
           "ranking": null,
           "status": "AUTO",
           "source_date": "2026-09-21",
@@ -283,7 +283,7 @@
         "platforms": {
           "agoda": {
             "rating_change": 0.0,
-            "review_change": 1,
+            "review_change": 2,
             "ranking_change": null
           },
           "booking": {
@@ -298,7 +298,7 @@
           },
           "tripcom": {
             "rating_change": 0.0,
-            "review_change": 14,
+            "review_change": 15,
             "ranking_change": null
           },
           "tiket": {
