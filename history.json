@@ -25561,7 +25561,7 @@
           },
           "tripcom": {
             "rating": "8.6",
-            "reviews": "321",
+            "reviews": "320",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-09-24",
@@ -25698,9 +25698,9 @@
             "rating": "8.3",
             "reviews": "207",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-09-24",
-            "error_reason": null
+            "error_reason": "tripcom_pattern_not_found"
           },
           "tiket": {
             "rating": "3.9",
