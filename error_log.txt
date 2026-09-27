@@ -21468,3 +21468,26 @@ Call log:
 2026-09-27 08:21:54.096615 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_2
 2026-09-27 08:22:43.525728 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_3
 2026-09-27 08:22:43.562227 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-09-27 13:56:39.732057 | Verse Lite Gajah Mada | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-09-27 13:57:39.144582 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_1
+2026-09-27 13:58:32.267775 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_2
+2026-09-27 13:59:11.273268 | Verse Lite Gajah Mada | tiket | cloudflare_captcha_attempt_3
+2026-09-27 13:59:11.316270 | Verse Lite Gajah Mada | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-09-27 14:00:52.844132 | Verse Luxe Wahid Hasyim | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-09-27 14:01:52.573022 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_1
+2026-09-27 14:02:32.120780 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_2
+2026-09-27 14:03:16.634881 | Verse Luxe Wahid Hasyim | tiket | cloudflare_captcha_attempt_3
+2026-09-27 14:03:16.679546 | Verse Luxe Wahid Hasyim | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-09-27 14:04:58.456174 | Verse Cirebon | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-09-27 14:05:55.558211 | Verse Cirebon | tiket | cloudflare_captcha_attempt_1
+2026-09-27 14:06:48.526778 | Verse Cirebon | tiket | cloudflare_captcha_attempt_2
+2026-09-27 14:07:37.565050 | Verse Cirebon | tiket | cloudflare_captcha_attempt_3
+2026-09-27 14:07:37.618556 | Verse Cirebon | tiket | CACHED_USED: tiket_cloudflare_captcha
+2026-09-27 14:08:57.322752 | Oak Tree Mahakam Blok M | booking | booking_pattern_not_found
+2026-09-27 14:08:57.322869 | Oak Tree Mahakam Blok M | booking | CACHED_USED: booking_pattern_not_found
+2026-09-27 14:10:10.151495 | Oak Tree Mahakam Blok M | traveloka | CACHED_USED: traveloka_strong_pattern_not_found
+2026-09-27 14:10:36.793947 | Oak Tree Mahakam Blok M | tripcom | CACHED_USED: tripcom_pattern_not_found
+2026-09-27 14:11:21.668287 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_1
+2026-09-27 14:12:15.142219 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_2
+2026-09-27 14:13:02.973579 | Oak Tree Mahakam Blok M | tiket | cloudflare_captcha_attempt_3
+2026-09-27 14:13:03.017467 | Oak Tree Mahakam Blok M | tiket | CACHED_USED: tiket_cloudflare_captcha
