@@ -26462,7 +26462,7 @@
         "platforms": {
           "agoda": {
             "rating": "8.7",
-            "reviews": "162",
+            "reviews": "161",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-09-29",
@@ -26507,7 +26507,7 @@
         "platforms": {
           "agoda": {
             "rating": "8.0",
-            "reviews": "287",
+            "reviews": "288",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-09-29",
@@ -26533,9 +26533,9 @@
             "rating": "7.7",
             "reviews": "228",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-09-29",
-            "error_reason": null
+            "error_reason": "tripcom_pattern_not_found"
           },
           "tiket": {
             "rating": "4.2",
@@ -26552,7 +26552,7 @@
         "platforms": {
           "agoda": {
             "rating": "8.0",
-            "reviews": "158",
+            "reviews": "157",
             "ranking": null,
             "status": "AUTO",
             "source_date": "2026-09-29",
@@ -26578,9 +26578,9 @@
             "rating": "8.7",
             "reviews": "118",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-09-29",
-            "error_reason": null
+            "error_reason": "tripcom_pattern_not_found"
           },
           "tiket": {
             "rating": "3.9",
