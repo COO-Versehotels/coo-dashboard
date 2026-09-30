@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-09-29 22:29:46.445053",
+  "last_update": "2026-09-30 01:35:34.582832",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -17,7 +17,7 @@
           "reviews": "161",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "booking": {
@@ -25,7 +25,7 @@
           "reviews": "637",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "traveloka": {
@@ -41,7 +41,7 @@
           "reviews": "324",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "tiket": {
@@ -92,7 +92,7 @@
           "reviews": "288",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "booking": {
@@ -100,7 +100,7 @@
           "reviews": "787",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "traveloka": {
@@ -167,7 +167,7 @@
           "reviews": "157",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "booking": {
@@ -175,7 +175,7 @@
           "reviews": "55",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "traveloka": {
@@ -242,7 +242,7 @@
           "reviews": "122",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-09-29",
+          "source_date": "2026-09-30",
           "error_reason": null
         },
         "booking": {
