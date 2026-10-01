@@ -26858,9 +26858,9 @@
             "rating": "8.6",
             "reviews": "324",
             "ranking": null,
-            "status": "AUTO",
+            "status": "CACHED",
             "source_date": "2026-10-01",
-            "error_reason": null
+            "error_reason": "tripcom_pattern_not_found"
           },
           "tiket": {
             "rating": "4.2",
