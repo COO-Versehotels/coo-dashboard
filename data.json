@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-10-03 23:18:57.646080",
+  "last_update": "2026-10-04 06:06:22.162089",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -17,7 +17,7 @@
           "reviews": "161",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "booking": {
@@ -25,7 +25,7 @@
           "reviews": "638",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "traveloka": {
@@ -92,7 +92,7 @@
           "reviews": "289",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "booking": {
@@ -100,7 +100,7 @@
           "reviews": "783",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "traveloka": {
@@ -163,11 +163,11 @@
       "name": "Verse Cirebon",
       "platforms": {
         "agoda": {
-          "rating": "7.4",
+          "rating": "8.0",
           "reviews": "157",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "booking": {
@@ -175,7 +175,7 @@
           "reviews": "55",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "traveloka": {
@@ -207,7 +207,7 @@
         "baseline_date": "2026-10-01",
         "platforms": {
           "agoda": {
-            "rating_change": -0.6,
+            "rating_change": 0.0,
             "review_change": 0,
             "ranking_change": null
           },
@@ -242,7 +242,7 @@
           "reviews": "121",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-03",
+          "source_date": "2026-10-04",
           "error_reason": null
         },
         "booking": {
