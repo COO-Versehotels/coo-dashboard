@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-10-04 21:38:59.797205",
+  "last_update": "2026-10-05 01:12:01.689649",
   "comparison_mode": "start_of_month_vs_today",
   "platform_scope": [
     "agoda",
@@ -17,7 +17,7 @@
           "reviews": "161",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "booking": {
@@ -25,7 +25,7 @@
           "reviews": "638",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "traveloka": {
@@ -92,7 +92,7 @@
           "reviews": "290",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "booking": {
@@ -100,7 +100,7 @@
           "reviews": "783",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "traveloka": {
@@ -167,7 +167,7 @@
           "reviews": "157",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "booking": {
@@ -175,7 +175,7 @@
           "reviews": "55",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "traveloka": {
@@ -242,7 +242,7 @@
           "reviews": "121",
           "ranking": null,
           "status": "AUTO",
-          "source_date": "2026-10-04",
+          "source_date": "2026-10-05",
           "error_reason": null
         },
         "booking": {
